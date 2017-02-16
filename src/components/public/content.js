@@ -1,5 +1,5 @@
 import React from 'react';
-
+import styles from '../layouts.css';
 const content = (props) => {
   return (
     <div>

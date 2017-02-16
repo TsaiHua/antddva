@@ -1,13 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import layout from '../components/Layouts';
+import Layouts from '../components/layouts';
 import styles from './adsense.css';
 
 function adsense() {
   return (
-    <layout>
-    </layout>
+    <Layouts>
+    </Layouts>
   );
 }
 

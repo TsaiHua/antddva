@@ -1,13 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'dva';
+import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+const { Header, Footer, Sider, Content } = Layout;
+
+import Layouts from '../components/layouts';
 import { Link } from 'dva/router';
-import layout from '../components/Layouts';
 import styles from './orders.css';
 
 function orders() {
   return (
-    <layout>orders
-    </layout>
+      <Layouts>
+        dfsfa
+      </Layouts>
   );
 }
 

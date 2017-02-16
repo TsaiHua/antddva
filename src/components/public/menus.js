@@ -1,33 +1,102 @@
 import React from 'react';
+import { Link } from 'react-router';
 import {Menu, Breadcrumb, Icon } from 'antd';
+import styles from '../layouts.css';
 const menus = (props) => {
   return (
     <div>
       <div className="logo" />
       <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+
           <Menu.Item key="1">
-            <Icon type="user" />
-            <span className="nav-text">nav 1</span>
+            <Link to="/users">
+              <Icon type="user" />
+              <span className="nav-text">用户</span>
+            </Link>
           </Menu.Item>
+
           <Menu.Item key="2">
-            <Icon type="video-camera" />
-            <span className="nav-text">nav 2</span>
+            <Link to="/auth">
+              <Icon type="check-square" />
+              <span className="nav-text">权限</span>
+            </Link>
           </Menu.Item>
+
           <Menu.Item key="3">
-            <Icon type="upload" />
-            <span className="nav-text">nav 3</span>
+            <Link to="/role">
+              <Icon type="team" />
+              <span className="nav-text">角色</span>
+            </Link>
           </Menu.Item>
+
           <Menu.Item key="4">
-            <Icon type="user" />
-            <span className="nav-text">nav 4</span>
+            <Link to="/goods">
+              <Icon type="bulb" />
+              <span className="nav-text">商品</span>
+            </Link>
           </Menu.Item>
           <Menu.Item key="5">
-            <Icon type="heart-o" />
-            <span className="nav-text">nav 5</span>
+            <Link to="/orders">
+              <Icon type="bars" />
+              <span className="nav-text">订单</span>
+            </Link>
           </Menu.Item>
           <Menu.Item key="6">
-            <Icon type="team" />
-            <span className="nav-text">nav 6</span>
+            <Link to="/adsense">
+              <Icon type="notification" />
+              <span className="nav-text">广告</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="7">
+            <Link to="/activity">
+              <Icon type="frown" />
+              <span className="nav-text">活动</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="8">
+            <Link to="/brands">
+              <Icon type="rocket" />
+              <span className="nav-text">品牌</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="9">
+            <Link to="/types">
+              <Icon type="appstore" />
+              <span className="nav-text">分类</span>
+            </Link>
+          </Menu.Item>
+
+          <Menu.Item key="10">
+            <Link to="/finance">
+              <Icon type="pay-circle-o" />
+              <span className="nav-text">充值</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="11">
+            <Link to="/finance">
+              <Icon type="pay-circle" />
+              <span className="nav-text">提现</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="12">
+            <Link to="/finance">
+              <Icon type="swap" />
+              <span className="nav-text">退款</span>
+            </Link>
+          </Menu.Item>
+
+          <Menu.Item key="13">
+            <Link to="/statistics">
+              <Icon type="area-chart" />
+              <span className="nav-text">统计</span>
+            </Link>
+          </Menu.Item>
+
+          <Menu.Item key="14">
+            <Link to="/system">
+              <Icon type="setting" />
+              <span className="nav-text">设置</span>
+            </Link>
           </Menu.Item>
       </Menu>
     </div>

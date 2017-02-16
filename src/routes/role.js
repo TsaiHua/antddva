@@ -1,13 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import layout from '../components/Layouts';
+import Layouts from '../components/layouts';
 import styles from './role.css';
 
 function role() {
   return (
-    <layout>role
-    </layout>
+    <Layouts>role
+    </Layouts>
   );
 }
 

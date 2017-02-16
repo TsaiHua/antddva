@@ -1,18 +1,29 @@
-import React,{propTypes} from 'react';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import React from 'react';
+import { Layout,Table } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
-import menus from './public/menus';
+import Menus from './public/menus';
+import Headers from './public/header';
+import Footers from './public/footer';
 
 const layouts = (props) => {
   return (
     <Layout>
-         <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
-             <menus/>
+         <Sider collapsible collapsed={false} onCollapse={true}>
+           <Menus />
          </Sider>
+
          <Layout>
-             <Header>Header1</Header>
-             <Content>Content2</Content>
-             <Footer>Footer3</Footer>
+             <Header>
+               <Headers />
+             </Header>
+
+             <Content>
+                  {props.children}
+             </Content>
+
+             <Footer>
+               <Footers />
+             </Footer>
          </Layout>
     </Layout>
   );
