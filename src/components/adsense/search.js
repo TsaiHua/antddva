@@ -1,7 +1,7 @@
 import React,{ PropTypes } from 'react';
 import { Form, Button, Row, Col } from 'antd'
 
-import styles from './users.less';
+import styles from './adsense.less';
 
 // 方法
 const Search = ({

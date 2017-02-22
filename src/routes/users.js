@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import Layouts from '../components/layouts';
 
-import Modal from '../components/public/modal';
+import Modal from '../components/users/modal';
 import Search from '../components/users/search';
 import List from '../components/users/list';
 
@@ -34,38 +34,6 @@ function Users ({ location, dispatch, users }) {
         })
       }
     }
-
-    // const userListProps = {
-    //   dataSource: list,
-    //   loading,
-    //   pagination: pagination,
-    //   onPageChange (page) {
-    //     const { query, pathname } = location
-    //     dispatch(routerRedux.push({
-    //       pathname: pathname,
-    //       query: {
-    //         ...query,
-    //         page: page.current,
-    //         pageSize: page.pageSize
-    //       }
-    //     }))
-    //   },
-    //   onDeleteItem (id) {
-    //     dispatch({
-    //       type: 'users/delete',
-    //       payload: id
-    //     })
-    //   },
-    //   onEditItem (item) {
-    //     dispatch({
-    //       type: 'users/showModal',
-    //       payload: {
-    //         modalType: 'update',
-    //         currentItem: item
-    //       }
-    //     })
-    //   }
-    // }
 
     const userSearchProps = {
           field,

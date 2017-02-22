@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './users.less';
+import styles from './adsense.less';
 import { Table, Icon } from 'antd';
 
 const data = [{
