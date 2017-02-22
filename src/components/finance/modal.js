@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select } from 'antd'
 const FormItem = Form.Item
 
-import styles from './activity.less';
+import styles from './finance.less';
 
 const formItemLayout = {
   labelCol: {

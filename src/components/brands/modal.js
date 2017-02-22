@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select } from 'antd'
 const FormItem = Form.Item
 
-import styles from './activity.less';
+import styles from './brands.less';
 
 const formItemLayout = {
   labelCol: {
@@ -41,7 +41,7 @@ const Modals = ({
   }
 
   const modalOpts = {
-    title: `${type === 'create' ? '新增活动' : '修改活动'}`,
+    title: `${type === 'create' ? '新增品牌' : '修改品牌'}`,
     visible,
     onOk: handleOk,
     onCancel,
@@ -51,49 +51,65 @@ const Modals = ({
   return (
     <Modal {...modalOpts}>
       <Form horizontal>
-        <FormItem label='活动名称：' hasFeedback {...formItemLayout}>
+        <FormItem label='品牌名称：' hasFeedback {...formItemLayout}>
           {getFieldDecorator('name', {
             initialValue: item.name,
             rules: [
               {
                 required: true,
-                message: '活动名称未填写'
+                message: '品牌名称未填写'
               }
             ]
           })(<Input />)}
         </FormItem>
 
-        <FormItem label='活动图片：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('name1', {
-            initialValue: item.name1,
-            rules: [
-              {
-                required: true,
-                message: '图片未上传'
-              }
-            ]
-          })(<Upload name="logo" action="/upload.do" listType="picture" >
-            <Button>
-              <Icon type="upload" /> 点击上传
-            </Button>
-          </Upload>)}
+        <FormItem label="品牌分类" hasFeedback {...formItemLayout} >
+            {getFieldDecorator('name1', {
+              initialValue: item.name1,
+              rules: [
+                {
+                  required: true,
+                  message: '品牌分类未填写'
+                }
+              ]
+            })(<Select>
+              <Select.Option value="one">one</Select.Option>
+              <Select.Option value="two">two</Select.Option>
+              <Select.Option value="three">three</Select.Option>
+            </Select>)}
         </FormItem>
 
-        <FormItem label='活动简介：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('name2', {
-            initialValue: item.name2,
+        <FormItem label="品牌系列" hasFeedback {...formItemLayout} >
+            {getFieldDecorator('name2', {
+              initialValue: item.name2,
+              rules: [
+                {
+                  required: true,
+                  message: '品牌系列未填写'
+                }
+              ]
+            })(<Select>
+              <Select.Option value="one">one</Select.Option>
+              <Select.Option value="two">two</Select.Option>
+              <Select.Option value="three">three</Select.Option>
+            </Select>)}
+        </FormItem>
+
+        <FormItem label='品牌描述：' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('name3', {
+            initialValue: item.name3,
             rules: [
               {
                 required: true,
-                message: '活动简介未填写'
+                message: '品牌描述未填写'
               }
             ]
           })(<Input type="textarea"/>)}
         </FormItem>
 
         <FormItem label="状态" hasFeedback {...formItemLayout} >
-            {getFieldDecorator('name3', {
-              initialValue: item.name3,
+            {getFieldDecorator('name4', {
+              initialValue: item.name4,
               rules: [
                 {
                   required: true,
@@ -105,18 +121,6 @@ const Modals = ({
               <Select.Option value="two">two</Select.Option>
               <Select.Option value="three">three</Select.Option>
             </Select>)}
-        </FormItem>
-
-        <FormItem label='活动时间：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('name4', {
-            initialValue: item.name4,
-            rules: [
-              {
-                required: true,
-                message: '活动时间未填写'
-              }
-            ]
-          })(<Input />)}
         </FormItem>
       </Form>
     </Modal>
