@@ -2,16 +2,19 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import Layouts from '../components/layouts';
-import styles from './finance.css';
+import styles from './finance.less';
 
-function finance() {
+// 方法
+function Finance() {
   return (
     <Layouts>finance
     </Layouts>
   );
 }
 
-finance.propTypes = {
+// 参数验证
+Finance.propTypes = {
 };
 
-export default connect()(finance);
+// 暴露方法
+export default connect()(Finance);

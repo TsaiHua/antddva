@@ -1,14 +1,18 @@
 import React from 'react';
-import styles from '../layouts.css';
-const footer = (props) => {
+import styles from '../layouts.less';
+
+// 方法
+const Footer = (props) => {
   return (
-    <div className={styles['con']}>
+    <div className={styles.con}>
       版权所有 © 2017 湖南猛势信息科技有限公司
     </div>
   );
 };
 
-footer.propTypes = {
+// 参数验证
+Footer.propTypes = {
 };
 
-export default footer;
+// 暴露方法
+export default Footer;

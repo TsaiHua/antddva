@@ -2,16 +2,19 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import Layouts from '../components/layouts';
-import styles from './statistics.css';
+import styles from './statistics.less';
 
-function statistics() {
+// 方法
+function Statistics() {
   return (
     <Layouts>statistics
     </Layouts>
   );
 }
 
-statistics.propTypes = {
+// 参数验证
+Statistics.propTypes = {
 };
 
-export default connect()(statistics);
+// 暴露方法
+export default connect()(Statistics);

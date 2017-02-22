@@ -2,8 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import Layouts from '../components/layouts';
-import styles from './home.css';
-function home() {
+import styles from './home.less';
+
+// 方法
+function Home() {
   return (
     <Layouts>
       kkk
@@ -11,8 +13,10 @@ function home() {
   );
 }
 
-home.propTypes = {
+// 参数验证
+Home.propTypes = {
 
 };
 
-export default connect()(home);
+// 暴露方法
+export default connect()(Home);

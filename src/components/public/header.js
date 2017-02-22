@@ -1,14 +1,18 @@
 import React from 'react';
-import styles from '../layouts.css';
-const header = (props) => {
+import styles from '../layouts.less';
+
+// 方法
+const Header = (props) => {
   return (
     <div>
-      header
+      
     </div>
   );
 };
 
-header.propTypes = {
+// 参数验证
+Header.propTypes = {
 };
 
-export default header;
+// 暴露方法
+export default Header;

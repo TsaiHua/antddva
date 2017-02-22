@@ -2,16 +2,19 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import Layouts from '../components/layouts';
-import styles from './types.css';
+import styles from './types.less';
 
-function types() {
+// 方法
+function Types() {
   return (
     <Layouts>types
     </Layouts>
   );
 }
 
-types.propTypes = {
+// 参数验证
+Types.propTypes = {
 };
 
-export default connect()(types);
+// 暴露方法
+export default connect()(Types);

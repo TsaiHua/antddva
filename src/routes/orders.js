@@ -5,9 +5,10 @@ const { Header, Footer, Sider, Content } = Layout;
 
 import Layouts from '../components/layouts';
 import { Link } from 'dva/router';
-import styles from './orders.css';
+import styles from './orders.less';
 
-function orders() {
+// 方法
+function Orders() {
   return (
       <Layouts>
         dfsfa
@@ -15,7 +16,9 @@ function orders() {
   );
 }
 
-orders.propTypes = {
+// 参数验证
+Orders.propTypes = {
 };
 
-export default connect()(orders);
+// 暴露方法
+export default connect()(Orders);
