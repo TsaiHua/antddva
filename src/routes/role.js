@@ -11,7 +11,7 @@ import styles from './role.less';
 import { Table, Icon } from 'antd';
 
 // 方法
-function Users ({ location, dispatch, users }) {
+function Role ({ location, dispatch, users }) {
 
   const { loading, list, pagination, currentItem, modalVisible, modalType } = users;
   const { field, keyword } = location.query;
@@ -69,7 +69,7 @@ function Users ({ location, dispatch, users }) {
 };
 
 // 参数验证
-Users.propTypes = {
+Role.propTypes = {
   users: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
@@ -80,4 +80,4 @@ function mapStateToProps ({ users }) {
 }
 
 // 暴露方法
-export default connect(mapStateToProps)(Users)
+export default connect(mapStateToProps)(Role)
