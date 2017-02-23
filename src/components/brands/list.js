@@ -12,7 +12,7 @@ const data = [{
     condition: '禁用',
   },{
       key: '2',
-      id: '1',
+      id: '2',
       brand: '宝宝乐',
       classification: '特供',
       brandseries: '白色',
