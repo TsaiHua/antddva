@@ -1,40 +1,45 @@
 import React from 'react';
-import styles from './activity.less';
+import styles from './brands.less';
 import { Table, Icon } from 'antd';
 
 const data = [{
     key: '1',
     id: '1',
-    activity: '冰桶挑战',
-    pic: 'pic',
-    activitycycle: '2017-02-14 00:00:00至2017-02-14 23:59:59',
-    condition: '正常/已到期/禁用',
-  }, {
+    brand: '特能赢',
+    classification: '一级特供',
+    brandseries: '白色黑色',
+    quantity: '59',
+    condition: '禁用',
+  },{
       key: '2',
-      id: '2',
-      activity: '与王失聪面对面',
-      pic: 'pic',
-      activitycycle: '2017-02-14 00:00:00至2017-02-14 23:59:59',
+      id: '1',
+      brand: '宝宝乐',
+      classification: '特供',
+      brandseries: '白色',
+      quantity: '233',
       condition: '正常',
-    },];
+    }];
 
 const columns = [{
     title: 'ID',
     dataIndex: 'id',
     key: 'id',
   },{
-    title: '活动名',
-    dataIndex: 'activity',
-    key: 'activity',
-    render: text => <a href="#">{text}</a>,
+    title: '品牌名',
+    dataIndex: 'brand',
+    key: 'brand',
   },{
-    title: '活动图片',
-    dataIndex: 'pic',
-    key: 'pic',
+    title: '品牌分类',
+    dataIndex: 'classification',
+    key: 'classification',
   },{
-    title: '活动周期',
-    dataIndex: 'activitycycle',
-    key: 'activitycycle',
+    title: '品牌系列',
+    dataIndex: 'brandseries',
+    key: 'brandseries',
+  },{
+    title: '商品数量',
+    dataIndex: 'quantity',
+    key: 'quantity',
   },{
     title: '状态',
     dataIndex: 'condition',

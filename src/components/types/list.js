@@ -1,40 +1,39 @@
 import React from 'react';
-import styles from './activity.less';
+import styles from './types.less';
 import { Table, Icon } from 'antd';
 
 const data = [{
     key: '1',
     id: '1',
-    activity: '冰桶挑战',
-    pic: 'pic',
-    activitycycle: '2017-02-14 00:00:00至2017-02-14 23:59:59',
-    condition: '正常/已到期/禁用',
-  }, {
+    name: '股票',
+    class: '一级分类',
+    quantity: '168',
+    condition: '正常',
+  },{
       key: '2',
-      id: '2',
-      activity: '与王失聪面对面',
-      pic: 'pic',
-      activitycycle: '2017-02-14 00:00:00至2017-02-14 23:59:59',
+      id: '1',
+      name: '股票>牛匹选',
+      class: '二级分类',
+      quantity: '168',
       condition: '正常',
-    },];
+    }];
 
 const columns = [{
     title: 'ID',
     dataIndex: 'id',
     key: 'id',
   },{
-    title: '活动名',
-    dataIndex: 'activity',
-    key: 'activity',
-    render: text => <a href="#">{text}</a>,
+    title: '分类名称',
+    dataIndex: 'name',
+    key: 'name',
   },{
-    title: '活动图片',
-    dataIndex: 'pic',
-    key: 'pic',
+    title: '分类级别',
+    dataIndex: 'class',
+    key: 'class',
   },{
-    title: '活动周期',
-    dataIndex: 'activitycycle',
-    key: 'activitycycle',
+    title: '商品数量',
+    dataIndex: 'quantity',
+    key: 'quantity',
   },{
     title: '状态',
     dataIndex: 'condition',
@@ -45,6 +44,8 @@ const columns = [{
     key: 'operation',
     render: (text, record) => (
       <span>
+        <a href="#" className="ant-dropdown-link">增加子级</a>
+        <span className="ant-divider" />
         <a href="#" className="ant-dropdown-link">查看</a>
       </span>
     ),

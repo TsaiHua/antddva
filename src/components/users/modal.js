@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { Form, Input, InputNumber, Radio, Modal } from 'antd'
+import { Form, Input, InputNumber, Radio, Modal,Select } from 'antd'
 const FormItem = Form.Item
 
 import styles from './users.less';
@@ -41,7 +41,7 @@ const Modals = ({
   }
 
   const modalOpts = {
-    title: `${type === 'create' ? '新建用户' : '修改用户'}`,
+    title: `${type === 'create' ? '新增用户' : '修改用户'}`,
     visible,
     onOk: handleOk,
     onCancel,
@@ -51,20 +51,56 @@ const Modals = ({
   return (
     <Modal {...modalOpts}>
       <Form horizontal>
-        <FormItem label='姓名：' hasFeedback {...formItemLayout}>
+        <FormItem label='用户名：' hasFeedback {...formItemLayout}>
           {getFieldDecorator('name', {
             initialValue: item.name,
             rules: [
               {
                 required: true,
-                message: '姓名未填写'
+                message: '用户名未填写'
               }
             ]
           })(<Input />)}
         </FormItem>
+        <FormItem label='密码：' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('name1', {
+            initialValue: item.name1,
+            rules: [
+              {
+                required: true,
+                message: '密码未填写'
+              }
+            ]
+          })(<Input />)}
+        </FormItem>
+
+        <FormItem label='手机号：' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('name2', {
+            initialValue: item.name2,
+            rules: [
+              {
+                required: true,
+                message: '手机号未填写'
+              }
+            ]
+          })(<Input />)}
+        </FormItem>
+
+        <FormItem label='邮箱：' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('name3', {
+            initialValue: item.name3,
+            rules: [
+              {
+                required: true,
+                message: '邮箱未填写'
+              }
+            ]
+          })(<Input />)}
+        </FormItem>
+
         <FormItem label='昵称：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('nickName', {
-            initialValue: item.nickName,
+          {getFieldDecorator('name4', {
+            initialValue: item.name4,
             rules: [
               {
                 required: true,
@@ -73,67 +109,39 @@ const Modals = ({
             ]
           })(<Input />)}
         </FormItem>
-        <FormItem label='性别' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('isMale', {
-            initialValue: item.isMale,
+
+        <FormItem label='角色' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('name6', {
+            initialValue: item.name6,
             rules: [
               {
                 required: true,
                 type: 'boolean',
-                message: '请选择性别'
+                message: '请选择角色'
               }
             ]
           })(
             <Radio.Group>
-              <Radio value>男</Radio>
-              <Radio value={false}>女</Radio>
+              <Radio value>管理员</Radio>
+              <Radio value={false}>用户</Radio>
             </Radio.Group>
           )}
         </FormItem>
-        <FormItem label='年龄：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('age', {
-            initialValue: item.age,
-            rules: [
-              {
-                required: true,
-                type: 'number',
-                message: '年龄未填写'
-              }
-            ]
-          })(<InputNumber min={18} max={100} />)}
-        </FormItem>
-        <FormItem label='电话：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('phone', {
-            initialValue: item.phone,
-            rules: [
-              {
-                required: true,
-                message: '不能为空'
-              }
-            ]
-          })(<Input />)}
-        </FormItem>
-        <FormItem label='邮箱：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('email', {
-            initialValue: item.email,
-            rules: [
-              {
-                required: true,
-                message: '不能为空'
-              }
-            ]
-          })(<Input />)}
-        </FormItem>
-        <FormItem label='住址：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('address', {
-            initialValue: item.address,
-            rules: [
-              {
-                required: true,
-                message: '不能为空'
-              }
-            ]
-          })(<Input />)}
+
+        <FormItem label="状态" hasFeedback {...formItemLayout} >
+            {getFieldDecorator('name7', {
+              initialValue: item.name7,
+              rules: [
+                {
+                  required: true,
+                  message: '状态未填写'
+                }
+              ]
+            })(<Select>
+              <Select.Option value="one">one</Select.Option>
+              <Select.Option value="two">two</Select.Option>
+              <Select.Option value="three">three</Select.Option>
+            </Select>)}
         </FormItem>
       </Form>
     </Modal>
