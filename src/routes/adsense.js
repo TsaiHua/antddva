@@ -11,27 +11,73 @@ import { Table, Icon } from 'antd';
 import styles from './adsense.less';
 
 // 方法
-function Adsense() {
+function Users ({ location, dispatch, users }) {
+
+  const { loading, list, pagination, currentItem, modalVisible, modalType } = users;
+  const { field, keyword } = location.query;
+
+
+    const userModalProps = {
+      item: modalType === 'create' ? {} : currentItem,
+      type: modalType,
+      visible: modalVisible,
+      onOk (data) {
+        dispatch({
+          type: `users/${modalType}`,
+          payload: data
+        })
+      },
+      onCancel () {
+        dispatch({
+          type: 'users/hideModal'
+        })
+      }
+    }
+
+    const userSearchProps = {
+          field,
+          keyword,
+          // onSearch (fieldsValue) {
+          //   fieldsValue.keyword.length ? dispatch(routerRedux.push({
+          //     pathname: '/users',
+          //     query: {
+          //       field: fieldsValue.field,
+          //       keyword: fieldsValue.keyword
+          //     }
+          //   })) : dispatch(routerRedux.push({
+          //     pathname: '/users'
+          //   }))
+          // },
+        onAdd () {
+          dispatch({
+            type: 'users/showModal',
+            payload: {
+              modalType: 'create'
+            }
+          })
+        }
+  }
+
+
   return (
     <Layouts>
-      <Search />
-      <List />
-      <Modal />
+      <Search {...userSearchProps} />
+      <List/>
+      <Modal {...userModalProps} />
     </Layouts>
-  );
-}
-
-
-// 参数验证
-Adsense.propTypes = {
-  // users: PropTypes.object,
-  // location: PropTypes.object,
-  // dispatch: PropTypes.func
+    );
 };
 
-function mapStateToProps ({ adsense }) {
-  return { adsense }
+// 参数验证
+Users.propTypes = {
+  users: PropTypes.object,
+  location: PropTypes.object,
+  dispatch: PropTypes.func
+};
+
+function mapStateToProps ({ users }) {
+  return { users }
 }
 
 // 暴露方法
-export default connect(mapStateToProps)(Adsense);
+export default connect(mapStateToProps)(Users)

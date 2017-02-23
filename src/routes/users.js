@@ -49,14 +49,14 @@ function Users ({ location, dispatch, users }) {
           //     pathname: '/users'
           //   }))
           // },
-          onAdd () {
-            dispatch({
-              type: 'users/showModal',
-              payload: {
-                modalType: 'create'
-              }
-            })
-          }
+        onAdd () {
+          dispatch({
+            type: 'users/showModal',
+            payload: {
+              modalType: 'create'
+            }
+          })
+        }
   }
 
 
