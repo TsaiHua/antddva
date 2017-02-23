@@ -2,13 +2,13 @@
 import React, {Component, PropTypes} from 'react';
 // 引入 dva版路由
 import {routerRedux} from 'dva/router'
-// 引入dva
+// 引入 dva链接模型组件
 import {connect} from 'dva'
-// 引入阿里的antd视觉组件
+// 引入 阿里的antd视觉组件
 import {Layout, Table, Breadcrumb, Icon} from 'antd';
 // 通过视觉组件调出布局模块
 const {Header, Footer, Sider, Content} = Layout;
-// 引入自定义模块
+// 引入 自定义模块
 import Headers from './public/header';
 import Footers from './public/footer';
 import Siders from './public/sider';
