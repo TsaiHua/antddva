@@ -11,8 +11,8 @@ const data = [{
   classification: '股票',
   brand: '牛匹选',
   Returnrule: '允许退货',
-  Factory: '56：00',
-  buyingprice:'58：00',
+  Factory: '56.00',
+  buyingprice:'58.00',
   Sellingprice: '62.8',
   integra: '56',
   status:'上架'
@@ -25,8 +25,8 @@ const data = [{
   classification: '股票',
   brand: '牛匹选',
   Returnrule: '允许退货',
-  Factory: '56：00',
-  buyingprice:'58：00',
+  Factory: '56.00',
+  buyingprice:'58.00',
   Sellingprice: '62.8',
   integra: '56',
   status:'下架'
@@ -39,7 +39,8 @@ const columns = [{
 },{
     title: '商品名',
     dataIndex: 'Commodityname',
-    key: 'Commodityname'
+    key: 'Commodityname',
+   render: text => <a href="#">{text}</a>
   },{
     title: '商品编号',
     dataIndex: 'Commodityquantity',

@@ -11,7 +11,7 @@ const data = [{
   Contactnumber: '18872603358',
   Deliveryaddress: '枫林路，102号',
   freight: '8.8',
-  Orderprice: '960：00',
+  Orderprice: '960.00',
   Createtime:'2017-02-16：18：31：36',
   status:'已支付'
 }, {
@@ -23,7 +23,7 @@ const data = [{
   Contactnumber: '18872603358',
   Deliveryaddress: '枫林路，102号',
   freight: '8.8',
-  Orderprice: '960：00',
+  Orderprice: '960.00',
   Createtime:'2017-02-16：18：31：36',
   status:'已支付'
 }];
@@ -35,7 +35,8 @@ const columns = [{
 },{
     title: '订单编号',
     dataIndex: 'Ordernumber',
-    key: 'Ordernumber'
+    key: 'Ordernumber',
+    render: text => <a href="#">{text}</a>
   },{
     title: '收货人',
     dataIndex: 'Consignee',
