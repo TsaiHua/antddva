@@ -1,4 +1,6 @@
+// 引入 React
 import React from 'react';
+// 引入布局样式
 import styles from '../layouts.less';
 
 // 方法
@@ -11,8 +13,7 @@ const Footer = (props) => {
 };
 
 // 参数验证
-Footer.propTypes = {
-};
+Footer.propTypes = {};
 
 // 暴露方法
 export default Footer;
