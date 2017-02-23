@@ -12,7 +12,7 @@ const {Header, Footer, Sider, Content} = Layout;
 import Headers from './public/header';
 import Footers from './public/footer';
 import Siders from './public/sider';
-// 引入布局样式
+// 引入 布局样式
 import styles from './layouts.less';
 
 // 方法

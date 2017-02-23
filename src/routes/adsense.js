@@ -1,13 +1,15 @@
 import React,{ Component, PropTypes } from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
+// 引入 布局
 import Layouts from '../components/layouts';
-
+// 引入 自定义模块
 import Modal from '../components/adsense/modal';
 import Search from '../components/adsense/search';
 import List from '../components/adsense/list';
 
 import { Table, Icon } from 'antd';
+// 引入 样式
 import styles from './adsense.less';
 
 // 方法
