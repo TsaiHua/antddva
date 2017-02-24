@@ -6,7 +6,7 @@ import {routerRedux} from 'dva/router'
 import {connect} from 'dva'
 // 引入 阿里的antd视觉组件
 import {Layout, Table, Breadcrumb, Icon} from 'antd';
-// 通过视觉组件调出布局模块
+// 调出 视觉组件布局模块
 const {Header, Footer, Sider, Content} = Layout;
 // 引入 自定义模块
 import Headers from './public/header';
