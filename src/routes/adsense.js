@@ -18,7 +18,7 @@ import {Table, Icon} from 'antd';
 import styles from './adsense.less';
 
 // 方法
-function Adsense({location, dispatch, users}) {
+function Adsense({location, dispatch, adsense}) {
 
   const {
     loading,
@@ -27,7 +27,7 @@ function Adsense({location, dispatch, users}) {
     currentItem,
     modalVisible,
     modalType
-  } = users;
+  } = adsense;
   const {field, keyword} = location.query;
 
   const userModalProps = {
@@ -37,10 +37,10 @@ function Adsense({location, dispatch, users}) {
     type: modalType,
     visible: modalVisible,
     onOk(data) {
-      dispatch({type: `users/${modalType}`, payload: data})
+      dispatch({type: `adsense/${modalType}`, payload: data})
     },
     onCancel() {
-      dispatch({type: 'users/hideModal'})
+      dispatch({type: 'adsense/hideModal'})
     }
   }
 
@@ -60,7 +60,7 @@ function Adsense({location, dispatch, users}) {
     // },
     onAdd() {
       dispatch({
-        type: 'users/showModal',
+        type: 'adsense/showModal',
         payload: {
           modalType: 'create'
         }
@@ -82,13 +82,13 @@ function Adsense({location, dispatch, users}) {
 
 // 参数验证
 Adsense.propTypes = {
-  users: PropTypes.object,
+  adsense: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
 };
 
-function mapStateToProps({users}) {
-  return {users}
+function mapStateToProps({adsense}) {
+  return {adsense}
 }
 
 // 暴露方法

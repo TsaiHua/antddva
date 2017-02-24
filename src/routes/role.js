@@ -19,9 +19,9 @@ import styles from './role.less';
 
 
 // 方法
-function Role ({ location, dispatch, users }) {
+function Role ({ location, dispatch, role }) {
 
-  const { loading, list, pagination, currentItem, modalVisible, modalType } = users;
+  const { loading, list, pagination, currentItem, modalVisible, modalType } = role;
   const { field, keyword } = location.query;
 
 
@@ -31,13 +31,13 @@ function Role ({ location, dispatch, users }) {
       visible: modalVisible,
       onOk (data) {
         dispatch({
-          type: `users/${modalType}`,
+          type: `role/${modalType}`,
           payload: data
         })
       },
       onCancel () {
         dispatch({
-          type: 'users/hideModal'
+          type: 'role/hideModal'
         })
       }
     }
@@ -58,7 +58,7 @@ function Role ({ location, dispatch, users }) {
           // },
         onAdd () {
           dispatch({
-            type: 'users/showModal',
+            type: 'role/showModal',
             payload: {
               modalType: 'create'
             }
@@ -81,13 +81,13 @@ function Role ({ location, dispatch, users }) {
 
 // 参数验证
 Role.propTypes = {
-  users: PropTypes.object,
+  role: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
 };
 
-function mapStateToProps ({ users }) {
-  return { users }
+function mapStateToProps ({ role }) {
+  return { role }
 }
 
 // 暴露方法

@@ -19,9 +19,9 @@ import styles from './orders.less';
 
 
 // 方法
-function Orders ({ location, dispatch, users }) {
+function Orders ({ location, dispatch, orders }) {
 
-  const { loading, list, pagination, currentItem, modalVisible, modalType } = users;
+  const { loading, list, pagination, currentItem, modalVisible, modalType } = orders;
   const { field, keyword } = location.query;
 
 
@@ -31,13 +31,13 @@ function Orders ({ location, dispatch, users }) {
       visible: modalVisible,
       onOk (data) {
         dispatch({
-          type: `users/${modalType}`,
+          type: `orders/${modalType}`,
           payload: data
         })
       },
       onCancel () {
         dispatch({
-          type: 'users/hideModal'
+          type: 'orders/hideModal'
         })
       }
     }
@@ -58,7 +58,7 @@ function Orders ({ location, dispatch, users }) {
           // },
         onAdd () {
           dispatch({
-            type: 'users/showModal',
+            type: 'orders/showModal',
             payload: {
               modalType: 'create'
             }
@@ -81,13 +81,13 @@ function Orders ({ location, dispatch, users }) {
 
 // 参数验证
 Orders.propTypes = {
-  users: PropTypes.object,
+  orders: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
 };
 
-function mapStateToProps ({ users }) {
-  return { users }
+function mapStateToProps ({ orders }) {
+  return { orders }
 }
 
 // 暴露方法

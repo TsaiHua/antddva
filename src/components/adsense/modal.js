@@ -70,7 +70,7 @@ const Modals = ({
 
   const modalOpts = {
     title: `${type === 'create'
-      ? '新建用户'
+      ? '新增广告'
       : '修改用户'}`,
     visible,
     onOk: handleOk,

@@ -41,7 +41,7 @@ const Modals = ({
   }
 
   const modalOpts = {
-    title: `${type === 'create' ? '新建用户' : '修改用户'}`,
+    title: `${type === 'create' ? '新增规则' : '修改用户'}`,
     visible,
     onOk: handleOk,
     onCancel,

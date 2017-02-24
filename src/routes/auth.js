@@ -18,7 +18,7 @@ import {Table, Icon} from 'antd';
 import styles from './auth.less';
 
 // 方法
-function Auth({location, dispatch, users}) {
+function Auth({location, dispatch, auth}) {
 
   const {
     loading,
@@ -27,7 +27,7 @@ function Auth({location, dispatch, users}) {
     currentItem,
     modalVisible,
     modalType
-  } = users;
+  } = auth;
   const {field, keyword} = location.query;
 
   const userModalProps = {
@@ -37,10 +37,10 @@ function Auth({location, dispatch, users}) {
     type: modalType,
     visible: modalVisible,
     onOk(data) {
-      dispatch({type: `users/${modalType}`, payload: data})
+      dispatch({type: `auth/${modalType}`, payload: data})
     },
     onCancel() {
-      dispatch({type: 'users/hideModal'})
+      dispatch({type: 'auth/hideModal'})
     }
   }
 
@@ -60,7 +60,7 @@ function Auth({location, dispatch, users}) {
     // },
     onAdd() {
       dispatch({
-        type: 'users/showModal',
+        type: 'auth/showModal',
         payload: {
           modalType: 'create'
         }
@@ -82,13 +82,13 @@ function Auth({location, dispatch, users}) {
 
 // 参数验证
 Auth.propTypes = {
-  users: PropTypes.object,
+  auth: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
 };
 
-function mapStateToProps({ users }) {
-  return { users }
+function mapStateToProps({ auth }) {
+  return { auth }
 }
 
 // 暴露方法
