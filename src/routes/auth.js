@@ -13,24 +13,73 @@ import {Table, Icon} from 'antd';
 import styles from './auth.less';
 
 // 方法
-function Auth() {
+function Auth({location, dispatch, users}) {
+
+  const {
+    loading,
+    list,
+    pagination,
+    currentItem,
+    modalVisible,
+    modalType
+  } = users;
+  const {field, keyword} = location.query;
+
+  const userModalProps = {
+    item: modalType === 'create'
+      ? {}
+      : currentItem,
+    type: modalType,
+    visible: modalVisible,
+    onOk(data) {
+      dispatch({type: `users/${modalType}`, payload: data})
+    },
+    onCancel() {
+      dispatch({type: 'users/hideModal'})
+    }
+  }
+
+  const userSearchProps = {
+    field,
+    keyword,
+    // onSearch (fieldsValue) {
+    //   fieldsValue.keyword.length ? dispatch(routerRedux.push({
+    //     pathname: '/users',
+    //     query: {
+    //       field: fieldsValue.field,
+    //       keyword: fieldsValue.keyword
+    //     }
+    //   })) : dispatch(routerRedux.push({
+    //     pathname: '/users'
+    //   }))
+    // },
+    onAdd() {
+      dispatch({
+        type: 'users/showModal',
+        payload: {
+          modalType: 'create'
+        }
+      })
+    }
+  }
+
   return (
     <div>
       <Helmet title="权限配置"/>
       <Layouts>
-        <Search/>
+        <Search {...userSearchProps}/>
         <List/>
-        <Modal/>
+        <Modal {...userModalProps}/>
       </Layouts>
     </div>
   );
-}
+};
 
 // 参数验证
 Auth.propTypes = {
-  // users: PropTypes.object,
-  // location: PropTypes.object,
-  // dispatch: PropTypes.func
+  users: PropTypes.object,
+  location: PropTypes.object,
+  dispatch: PropTypes.func
 };
 
 function mapStateToProps({auth}) {
@@ -38,4 +87,4 @@ function mapStateToProps({auth}) {
 }
 
 // 暴露方法
-export default connect(mapStateToProps)(Auth);
+export default connect(mapStateToProps)(Auth)

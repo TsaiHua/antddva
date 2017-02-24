@@ -10,6 +10,7 @@ import {Layout, Table, Breadcrumb, Icon} from 'antd';
 const {Header, Footer, Sider, Content} = Layout;
 // 引入 自定义模块
 import Headers from './public/header';
+import Bread from './public/bread';
 import Footers from './public/footer';
 import Siders from './public/sider';
 // 引入 布局样式
@@ -47,13 +48,7 @@ class Layouts extends React.Component {
           <Content style={{
             margin: '0 16px'
           }}>
-            <Breadcrumb style={{
-              margin: '12px 0'
-            }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb>
+            {/* <Bread/> */}
             <div style={{
               padding: 24,
               background: '#fff',

@@ -1,8 +1,36 @@
-import React, { PropTypes } from 'react'
-import { Form, Input, InputNumber, Radio, Modal } from 'antd'
+import React, {PropTypes} from 'react'
+import {
+  Upload,
+  message,
+  Button,
+  Icon,
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Modal,
+  Select
+} from 'antd'
 const FormItem = Form.Item
-
 import styles from './adsense.less';
+
+const props = {
+  name: 'file',
+  action: '/upload.do',
+  headers: {
+    authorization: 'authorization-text'
+  },
+  onChange(info) {
+    if (info.file.status !== 'uploading') {
+      console.log(info.file, info.fileList);
+    }
+    if (info.file.status === 'done') {
+      message.success(`${info.file.name} file uploaded successfully`);
+    } else if (info.file.status === 'error') {
+      message.error(`${info.file.name} file upload failed.`);
+    }
+  }
+};
 
 const formItemLayout = {
   labelCol: {
@@ -27,7 +55,7 @@ const Modals = ({
   }
 }) => {
 
-  function handleOk () {
+  function handleOk() {
     validateFields((errors) => {
       if (errors) {
         return
@@ -41,7 +69,9 @@ const Modals = ({
   }
 
   const modalOpts = {
-    title: `${type === 'create' ? '新建用户' : '修改用户'}`,
+    title: `${type === 'create'
+      ? '新建用户'
+      : '修改用户'}`,
     visible,
     onOk: handleOk,
     onCancel,
@@ -51,90 +81,47 @@ const Modals = ({
   return (
     <Modal {...modalOpts}>
       <Form horizontal>
-        <FormItem label='姓名：' hasFeedback {...formItemLayout}>
+        <FormItem label='广告标题：' hasFeedback {...formItemLayout}>
           {getFieldDecorator('name', {
             initialValue: item.name,
             rules: [
               {
                 required: true,
-                message: '姓名未填写'
+                message: '广告标题未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
-        <FormItem label='昵称：' hasFeedback {...formItemLayout}>
+
+        <FormItem label='广告图片：' hasFeedback {...formItemLayout}>
+          <Upload {...props}>
+            <Button>
+              <Icon type="upload"/>
+              上传图片
+            </Button>
+          </Upload>
+        </FormItem>
+
+        <FormItem label='广告简介：' hasFeedback {...formItemLayout}>
           {getFieldDecorator('nickName', {
             initialValue: item.nickName,
             rules: [
               {
                 required: true,
-                message: '昵称未填写'
+                message: '广告简介未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
-        <FormItem label='性别' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('isMale', {
-            initialValue: item.isMale,
-            rules: [
-              {
-                required: true,
-                type: 'boolean',
-                message: '请选择性别'
-              }
-            ]
-          })(
-            <Radio.Group>
-              <Radio value>男</Radio>
-              <Radio value={false}>女</Radio>
-            </Radio.Group>
-          )}
+
+        <FormItem label='状态' hasFeedback {...formItemLayout}>
+
+          <Select placeholder="服装">
+            <Option value="china">股票</Option>
+            <Option value="use">食物</Option>
+          </Select>
         </FormItem>
-        <FormItem label='年龄：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('age', {
-            initialValue: item.age,
-            rules: [
-              {
-                required: true,
-                type: 'number',
-                message: '年龄未填写'
-              }
-            ]
-          })(<InputNumber min={18} max={100} />)}
-        </FormItem>
-        <FormItem label='电话：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('phone', {
-            initialValue: item.phone,
-            rules: [
-              {
-                required: true,
-                message: '不能为空'
-              }
-            ]
-          })(<Input />)}
-        </FormItem>
-        <FormItem label='邮箱：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('email', {
-            initialValue: item.email,
-            rules: [
-              {
-                required: true,
-                message: '不能为空'
-              }
-            ]
-          })(<Input />)}
-        </FormItem>
-        <FormItem label='住址：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('address', {
-            initialValue: item.address,
-            rules: [
-              {
-                required: true,
-                message: '不能为空'
-              }
-            ]
-          })(<Input />)}
-        </FormItem>
+
       </Form>
     </Modal>
   );

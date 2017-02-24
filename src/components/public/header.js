@@ -1,12 +1,25 @@
 // 引入 React
 import React from 'react';
-// 引入布局样式
+// 引入 阿里的antd视觉组件
+import {Menu, Icon, Popover} from 'antd'
+// 引入 布局样式
 import styles from '../layouts.less';
 
 // 方法
 const Header = (props) => {
   return (
-    <div></div>
+    <div className={styles.header}>
+      <Menu className='header-menu' mode='horizontal'>
+        {/* <SubMenu style={{
+          float: 'right'
+        }} title={< span > <Icon type='user'/>
+          {user.name} < /span>}>
+          <Menu.Item key='logout'>
+            <a>注销</a>
+          </Menu.Item>
+        </SubMenu> */}
+      </Menu>
+    </div>
   );
 };
 

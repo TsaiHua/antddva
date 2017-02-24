@@ -36,7 +36,7 @@ const Search = ({
        {/* <SearchGroup {...searchGroupProps} /> */}
      </Col>
      <Col lg={{offset: 8, span: 8}} md={12} sm={8} xs={24} style={{marginBottom: 16, textAlign: 'right'}}>
-       <Button size='large' type='ghost' onClick={onAdd}>添加</Button>
+       <Button size='large' type='ghost' onClick={onAdd}>新增规则</Button>
      </Col>
    </Row>
   );

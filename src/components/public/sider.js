@@ -2,17 +2,21 @@
 import React from 'react';
 // 引入 链接组件
 import {Link} from 'react-router';
-// 引入阿里的antd视觉组件
+// 引入 阿里的antd视觉组件
 import {Menu, Breadcrumb, Icon} from 'antd';
-// 引入布局样式
+// 引入 布局样式
 import styles from '../layouts.less';
 
 // 方法
 const Sider = (props) => {
   return (
     <div>
-      <div className={styles['logo']}/>
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+      <div className={styles.logo}/>
+      <Menu
+        theme='dark'
+        mode='inline'
+        defaultSelectedKeys={['1']}
+        >
         <Menu.Item key="1">
           <Link to="/users">
             <Icon type="user"/>

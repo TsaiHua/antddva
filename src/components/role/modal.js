@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
-import {Form, Input, InputNumber, Radio, Modal ,Select} from 'antd'
+import { Form, Input, InputNumber, Radio, Modal,Select } from 'antd'
 const FormItem = Form.Item
 
-import styles from './auth.less';
+import styles from './role.less';
 
 const formItemLayout = {
   labelCol: {
@@ -51,35 +51,62 @@ const Modals = ({
   return (
     <Modal {...modalOpts}>
       <Form horizontal>
-        <FormItem label='规则名称：' hasFeedback {...formItemLayout}>
+        <FormItem label='角色名称：' hasFeedback {...formItemLayout}>
           {getFieldDecorator('name', {
             initialValue: item.name,
             rules: [
               {
                 required: true,
-                message: '规则名称未填写'
+                message: '姓名未填写'
               }
             ]
           })(<Input />)}
         </FormItem>
-        <FormItem label='规则描述' hasFeedback {...formItemLayout}>
+        <FormItem label='模块名称：' hasFeedback {...formItemLayout}>
           {getFieldDecorator('nickName', {
             initialValue: item.nickName,
             rules: [
               {
                 required: true,
-                message: '规则描述未填写'
+                message: '昵称未填写'
               }
             ]
           })(<Input />)}
         </FormItem>
-        <FormItem label='父级节点' hasFeedback {...formItemLayout}>
 
-          <Select placeholder="管理员">
-              <Option value="admin">管理员</Option>
-              <Option value="users">用户</Option>
-              <Option value="service">客服</Option>
-            </Select>
+
+        <FormItem label='控制器名称：' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('phone', {
+            initialValue: item.phone,
+            rules: [
+              {
+                required: true,
+                message: '不能为空'
+              }
+            ]
+          })(<Input />)}
+        </FormItem>
+        <FormItem label='节点名称：' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('email', {
+            initialValue: item.email,
+            rules: [
+              {
+                required: true,
+                message: '不能为空'
+              }
+            ]
+          })(<Input />)}
+        </FormItem>
+        <FormItem label='角色描述：' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('address', {
+            initialValue: item.address,
+            rules: [
+              {
+                required: true,
+                message: '不能为空'
+              }
+            ]
+          })(<Input />)}
         </FormItem>
 
         <FormItem label='状态' hasFeedback {...formItemLayout}>
