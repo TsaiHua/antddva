@@ -57,7 +57,7 @@ const Modals = ({
             rules: [
               {
                 required: true,
-                message: '姓名未填写'
+                message: '角色名称未填写'
               }
             ]
           })(<Input />)}
@@ -68,7 +68,7 @@ const Modals = ({
             rules: [
               {
                 required: true,
-                message: '昵称未填写'
+                message: '模块名称未填写'
               }
             ]
           })(<Input />)}
@@ -81,7 +81,7 @@ const Modals = ({
             rules: [
               {
                 required: true,
-                message: '不能为空'
+                message: '控制器名称未填写'
               }
             ]
           })(<Input />)}
@@ -92,7 +92,7 @@ const Modals = ({
             rules: [
               {
                 required: true,
-                message: '不能为空'
+                message: '节点名称未填写'
               }
             ]
           })(<Input />)}
@@ -103,7 +103,7 @@ const Modals = ({
             rules: [
               {
                 required: true,
-                message: '不能为空'
+                message: '角色描述未填写'
               }
             ]
           })(<Input />)}

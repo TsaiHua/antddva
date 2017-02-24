@@ -3,70 +3,66 @@ import styles from './finance.less';
 import { Table, Icon } from 'antd';
 
 const data = [{
-  key: '1',
-  username: '何晓亮',
-  mobile: '13133339998',
-  role: '超管',
-  nickname: '小何',
-  last_ip: '127.0.0.1',
-  jifen: 88,
-  last_time: '2017-02-14 22:55:20',
-  status:'正常'
-
-}, {
-  key: '2',
-  username: '何晓亮',
-  mobile: '15533339998',
-  role: '超管',
-  nickname: '小何',
-  last_ip: '127.0.0.1',
-  jifen: 88,
-  last_time: '2017-02-14 22:55:20',
-  status:'正常'
-}];
+    key: '1',
+    id: '1',
+    client: '李某(个人)',
+    topupway: '微信',
+    recharge: '123.45',
+    balance: '123.45',
+    creationtime: '2017-04-01 00:00:00',
+    expenditure: '0.22',
+    condition: '成功到帐',
+  }, {
+      key: '2',
+      id: '2',
+      client: '王某某(个人)',
+      topupway: '支付宝',
+      recharge: '666.22',
+      balance: '666.22',
+      creationtime: '2017-04-01 00:00:00',
+      expenditure: '666',
+      condition: '未到帐',
+    }];
 
 const columns = [{
-    title: '用户名',
-    dataIndex: 'username',
-    key: 'username',
-    render: text => <a href="#">{text}</a>,
+    title: 'ID',
+    dataIndex: 'id',
+    key: 'id',
   },{
-    title: '手机号',
-    dataIndex: 'mobile',
-    key: 'mobile',
+    title: '客户名/类型',
+    dataIndex: 'client',
+    key: 'client',
   },{
-      title: '角色',
-      dataIndex: 'role',
-      key: 'role',
-      render: text => <a href="#">{text}</a>,
+    title: '充值途径',
+    dataIndex: 'topupway',
+    key: 'topupway',
   },{
-    title: '昵称',
-    dataIndex: 'nickname',
-    key: 'nickname',
+    title: '充值金额',
+    dataIndex: 'recharge',
+    key: 'recharge',
   },{
-    title: '最后登录IP',
-    dataIndex: 'last_ip',
-    key: 'last_ip',
+    title: '账户余额',
+    dataIndex: 'balance',
+    key: 'balance',
   },{
-    title: '积分',
-    dataIndex: 'jifen',
-    key: 'jifen',
+    title: '创建时间',
+    dataIndex: 'creationtime',
+    key: 'creationtime',
   },{
-    title: '最后登录时间',
-    dataIndex: 'last_time',
-    key: 'last_time',
+    title: '支出',
+    dataIndex: 'expenditure',
+    key: 'expenditure',
   },{
     title: '状态',
-    dataIndex: 'status',
-    key: 'status',
-  }, {
+    dataIndex: 'condition',
+    key: 'condition',
+  },{
     title: '操作',
-    key: 'action',
+    dataIndex: 'operation',
+    key: 'operation',
     render: (text, record) => (
       <span>
-        <a href="#">授权</a>
-        <span className="ant-divider" />
-        <a href="/#users/" className="ant-dropdown-link">查看</a>
+        <a href="#" className="ant-dropdown-link">账户明细</a>
       </span>
     ),
   }];
