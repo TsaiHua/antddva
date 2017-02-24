@@ -18,9 +18,9 @@ import {Table, Icon} from 'antd';
 import styles from './brands.less';
 
 // 方法
-function Brands ({ location, dispatch, users }) {
+function Brands ({ location, dispatch, brands }) {
 
-  const { loading, list, pagination, currentItem, modalVisible, modalType } = users;
+  const { loading, list, pagination, currentItem, modalVisible, modalType } = brands;
   const { field, keyword } = location.query;
 
 
@@ -30,13 +30,13 @@ function Brands ({ location, dispatch, users }) {
       visible: modalVisible,
       onOk (data) {
         dispatch({
-          type: `users/${modalType}`,
+          type: `brands/${modalType}`,
           payload: data
         })
       },
       onCancel () {
         dispatch({
-          type: 'users/hideModal'
+          type: 'brands/hideModal'
         })
       }
     }
@@ -46,18 +46,18 @@ function Brands ({ location, dispatch, users }) {
           keyword,
           // onSearch (fieldsValue) {
           //   fieldsValue.keyword.length ? dispatch(routerRedux.push({
-          //     pathname: '/users',
+          //     pathname: '/brands',
           //     query: {
           //       field: fieldsValue.field,
           //       keyword: fieldsValue.keyword
           //     }
           //   })) : dispatch(routerRedux.push({
-          //     pathname: '/users'
+          //     pathname: '/brands'
           //   }))
           // },
           onAdd () {
             dispatch({
-              type: 'users/showModal',
+              type: 'brands/showModal',
               payload: {
                 modalType: 'create'
               }
@@ -80,13 +80,13 @@ function Brands ({ location, dispatch, users }) {
 
 // 参数验证
 Brands.propTypes = {
-  users: PropTypes.object,
+  brands: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
 };
 
-function mapStateToProps ({ users }) {
-  return { users }
+function mapStateToProps ({ brands }) {
+  return { brands }
 }
 
 // 暴露方法

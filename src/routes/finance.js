@@ -18,9 +18,9 @@ import {Table, Icon} from 'antd';
 import styles from './finance.less';
 
 // 方法
-function Finance ({ location, dispatch, users }) {
+function Finance ({ location, dispatch, finance }) {
 
-  const { loading, list, pagination, currentItem, modalVisible, modalType } = users;
+  const { loading, list, pagination, currentItem, modalVisible, modalType } = finance;
   const { field, keyword } = location.query;
 
 
@@ -30,13 +30,13 @@ function Finance ({ location, dispatch, users }) {
       visible: modalVisible,
       onOk (data) {
         dispatch({
-          type: `users/${modalType}`,
+          type: `finance/${modalType}`,
           payload: data
         })
       },
       onCancel () {
         dispatch({
-          type: 'users/hideModal'
+          type: 'finance/hideModal'
         })
       }
     }
@@ -46,18 +46,18 @@ function Finance ({ location, dispatch, users }) {
           keyword,
           // onSearch (fieldsValue) {
           //   fieldsValue.keyword.length ? dispatch(routerRedux.push({
-          //     pathname: '/users',
+          //     pathname: '/finance',
           //     query: {
           //       field: fieldsValue.field,
           //       keyword: fieldsValue.keyword
           //     }
           //   })) : dispatch(routerRedux.push({
-          //     pathname: '/users'
+          //     pathname: '/finance'
           //   }))
           // },
           onAdd () {
             dispatch({
-              type: 'users/showModal',
+              type: 'finance/showModal',
               payload: {
                 modalType: 'create'
               }
@@ -80,13 +80,13 @@ function Finance ({ location, dispatch, users }) {
 
 // 参数验证
 Finance.propTypes = {
-  users: PropTypes.object,
+  finance: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
 };
 
-function mapStateToProps ({ users }) {
-  return { users }
+function mapStateToProps ({ finance }) {
+  return { finance }
 }
 
 // 暴露方法

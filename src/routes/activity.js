@@ -18,7 +18,7 @@ import {Table, Icon} from 'antd';
 import styles from './activity.less';
 
 // 方法
-function Activity({location, dispatch, users}) {
+function Activity({location, dispatch, activity}) {
   const {
     loading,
     list,
@@ -26,7 +26,7 @@ function Activity({location, dispatch, users}) {
     currentItem,
     modalVisible,
     modalType
-  } = users;
+  } = activity;
   const {field, keyword} = location.query;
 
   const userModalProps = {
@@ -36,10 +36,10 @@ function Activity({location, dispatch, users}) {
     type: modalType,
     visible: modalVisible,
     onOk(data) {
-      dispatch({type: `users/${modalType}`, payload: data})
+      dispatch({type: `activity/${modalType}`, payload: data})
     },
     onCancel() {
-      dispatch({type: 'users/hideModal'})
+      dispatch({type: 'activity/hideModal'})
     }
   }
 
@@ -59,7 +59,7 @@ function Activity({location, dispatch, users}) {
     // },
     onAdd() {
       dispatch({
-        type: 'users/showModal',
+        type: 'activity/showModal',
         payload: {
           modalType: 'create'
         }
@@ -81,13 +81,13 @@ function Activity({location, dispatch, users}) {
 
 // 参数验证
 Activity.propTypes = {
-  users: PropTypes.object,
+  activity: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
 };
 
-function mapStateToProps({users}) {
-  return {users}
+function mapStateToProps({activity}) {
+  return {activity}
 }
 
 // 暴露方法
