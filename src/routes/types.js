@@ -1,21 +1,26 @@
-import React,{ Component, PropTypes } from 'react';
-import { connect } from 'dva';
-import { Link } from 'dva/router';
+// 引入 React，组件，参数
+import React, {Component, PropTypes} from 'react';
+// 引入 dva链接模型组件
+import {connect} from 'dva';
+// 引入 路由链接组件
+import {Link} from 'dva/router';
+// 引入 布局视图
 import Layouts from '../components/layouts';
 // 引入 头管理组件
 import Helmet from "react-helmet";
+// 引入 自定义模块
 import Modal from '../components/types/modal';
 import Search from '../components/types/search';
 import List from '../components/types/list';
-
-import { Table, Icon } from 'antd';
+// 引入 antd视觉组件
+import {Table, Icon} from 'antd';
+// 引入 样式
 import styles from './types.less';
 
-
 // 方法
-function Types ({ location, dispatch, users }) {
+function Types ({ location, dispatch, types }) {
 
-  const { loading, list, pagination, currentItem, modalVisible, modalType } = users;
+  const { loading, list, pagination, currentItem, modalVisible, modalType } = types;
   const { field, keyword } = location.query;
 
 
@@ -25,13 +30,13 @@ function Types ({ location, dispatch, users }) {
       visible: modalVisible,
       onOk (data) {
         dispatch({
-          type: `users/${modalType}`,
+          type: `types/${modalType}`,
           payload: data
         })
       },
       onCancel () {
         dispatch({
-          type: 'users/hideModal'
+          type: 'types/hideModal'
         })
       }
     }
@@ -41,18 +46,18 @@ function Types ({ location, dispatch, users }) {
           keyword,
           // onSearch (fieldsValue) {
           //   fieldsValue.keyword.length ? dispatch(routerRedux.push({
-          //     pathname: '/users',
+          //     pathname: '/types',
           //     query: {
           //       field: fieldsValue.field,
           //       keyword: fieldsValue.keyword
           //     }
           //   })) : dispatch(routerRedux.push({
-          //     pathname: '/users'
+          //     pathname: '/types'
           //   }))
           // },
           onAdd () {
             dispatch({
-              type: 'users/showModal',
+              type: 'types/showModal',
               payload: {
                 modalType: 'create'
               }
@@ -63,7 +68,7 @@ function Types ({ location, dispatch, users }) {
 
   return (
     <div>
-      <Helmet title="分类"/>
+      <Helmet title="分类管理"/>
       <Layouts>
         <Search {...userSearchProps} />
         <List/>
@@ -75,13 +80,13 @@ function Types ({ location, dispatch, users }) {
 
 // 参数验证
 Types.propTypes = {
-  users: PropTypes.object,
+  types: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
 };
 
-function mapStateToProps ({ users }) {
-  return { users }
+function mapStateToProps ({ types }) {
+  return { types }
 }
 
 // 暴露方法

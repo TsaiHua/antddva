@@ -12,12 +12,13 @@ import Helmet from "react-helmet";
 import Modal from '../components/activity/modal';
 import Search from '../components/activity/search';
 import List from '../components/activity/list';
-// 引入 阿里的antd视觉组件
+// 引入 antd视觉组件
 import {Table, Icon} from 'antd';
 // 引入 样式
 import styles from './activity.less';
 
-function Activity({location, dispatch, users}) {
+// 方法
+function Activity({location, dispatch, activity}) {
   const {
     loading,
     list,
@@ -25,7 +26,7 @@ function Activity({location, dispatch, users}) {
     currentItem,
     modalVisible,
     modalType
-  } = users;
+  } = activity;
   const {field, keyword} = location.query;
 
   const userModalProps = {
@@ -35,10 +36,10 @@ function Activity({location, dispatch, users}) {
     type: modalType,
     visible: modalVisible,
     onOk(data) {
-      dispatch({type: `users/${modalType}`, payload: data})
+      dispatch({type: `activity/${modalType}`, payload: data})
     },
     onCancel() {
-      dispatch({type: 'users/hideModal'})
+      dispatch({type: 'activity/hideModal'})
     }
   }
 
@@ -58,7 +59,7 @@ function Activity({location, dispatch, users}) {
     // },
     onAdd() {
       dispatch({
-        type: 'users/showModal',
+        type: 'activity/showModal',
         payload: {
           modalType: 'create'
         }
@@ -68,7 +69,7 @@ function Activity({location, dispatch, users}) {
 
   return (
     <div>
-      <Helmet title="活动"/>
+      <Helmet title="活动管理"/>
       <Layouts>
         <Search {...userSearchProps}/>
         <List/>
@@ -80,13 +81,13 @@ function Activity({location, dispatch, users}) {
 
 // 参数验证
 Activity.propTypes = {
-  users: PropTypes.object,
+  activity: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
 };
 
-function mapStateToProps({users}) {
-  return {users}
+function mapStateToProps({activity}) {
+  return {activity}
 }
 
 // 暴露方法

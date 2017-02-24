@@ -12,7 +12,7 @@ import Layouts from '../components/layouts';
 import Modal from '../components/orders/modal';
 import Search from '../components/orders/search';
 import List from '../components/orders/list';
-// 引入 阿里的antd视觉组件
+// 引入 antd视觉组件
 import { Table, Icon } from 'antd';
 // 引入 样式
 import styles from './orders.less';
@@ -69,7 +69,7 @@ function Orders ({ location, dispatch, orders }) {
 
   return (
     <div>
-      <Helmet title="订单"/>
+      <Helmet title="订单管理"/>
       <Layouts>
         <Search {...userSearchProps}/>
         <List/>

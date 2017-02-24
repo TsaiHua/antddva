@@ -1,7 +1,11 @@
+// 引入 React
 import React from 'react';
+// 引入布局样式
 import styles from './users.less';
+// 引入阿里的antd视觉组件
 import { Table, Icon } from 'antd';
 
+//列表数据来源
 const data = [{
   key: '1',
   username: '何晓亮',
@@ -12,8 +16,7 @@ const data = [{
   jifen: 88,
   last_time: '2017-02-14 22:55:20',
   status:'正常'
-
-}, {
+  }, {
   key: '2',
   username: '何晓亮',
   mobile: '15533339998',
@@ -25,6 +28,7 @@ const data = [{
   status:'正常'
 }];
 
+//列表字段
 const columns = [{
     title: '用户名',
     dataIndex: 'username',

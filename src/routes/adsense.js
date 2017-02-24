@@ -12,7 +12,7 @@ import Layouts from '../components/layouts';
 import Modal from '../components/adsense/modal';
 import Search from '../components/adsense/search';
 import List from '../components/adsense/list';
-// 引入 阿里的antd视觉组件
+// 引入 antd视觉组件
 import {Table, Icon} from 'antd';
 // 引入 样式
 import styles from './adsense.less';
@@ -70,7 +70,7 @@ function Adsense({location, dispatch, adsense}) {
 
   return (
     <div>
-      <Helmet title="广告"/>
+      <Helmet title="广告管理"/>
       <Layouts>
         <Search {...userSearchProps}/>
         <List/>

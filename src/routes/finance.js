@@ -1,21 +1,26 @@
-import React,{ Component, PropTypes } from 'react';
-import { connect } from 'dva';
-import { Link } from 'dva/router';
+// 引入 React，组件，参数
+import React, {Component, PropTypes} from 'react';
+// 引入 dva链接模型组件
+import {connect} from 'dva';
+// 引入 路由链接组件
+import {Link} from 'dva/router';
+// 引入 布局视图
 import Layouts from '../components/layouts';
 // 引入 头管理组件
 import Helmet from "react-helmet";
+// 引入 自定义模块
 import Modal from '../components/finance/modal';
 import Search from '../components/finance/search';
 import List from '../components/finance/list';
-
-import { Table, Icon } from 'antd';
+// 引入 antd视觉组件
+import {Table, Icon} from 'antd';
+// 引入 样式
 import styles from './finance.less';
 
-
 // 方法
-function Finance ({ location, dispatch, users }) {
+function Finance ({ location, dispatch, finance }) {
 
-  const { loading, list, pagination, currentItem, modalVisible, modalType } = users;
+  const { loading, list, pagination, currentItem, modalVisible, modalType } = finance;
   const { field, keyword } = location.query;
 
 
@@ -25,13 +30,13 @@ function Finance ({ location, dispatch, users }) {
       visible: modalVisible,
       onOk (data) {
         dispatch({
-          type: `users/${modalType}`,
+          type: `finance/${modalType}`,
           payload: data
         })
       },
       onCancel () {
         dispatch({
-          type: 'users/hideModal'
+          type: 'finance/hideModal'
         })
       }
     }
@@ -41,18 +46,18 @@ function Finance ({ location, dispatch, users }) {
           keyword,
           // onSearch (fieldsValue) {
           //   fieldsValue.keyword.length ? dispatch(routerRedux.push({
-          //     pathname: '/users',
+          //     pathname: '/finance',
           //     query: {
           //       field: fieldsValue.field,
           //       keyword: fieldsValue.keyword
           //     }
           //   })) : dispatch(routerRedux.push({
-          //     pathname: '/users'
+          //     pathname: '/finance'
           //   }))
           // },
           onAdd () {
             dispatch({
-              type: 'users/showModal',
+              type: 'finance/showModal',
               payload: {
                 modalType: 'create'
               }
@@ -75,13 +80,13 @@ function Finance ({ location, dispatch, users }) {
 
 // 参数验证
 Finance.propTypes = {
-  users: PropTypes.object,
+  finance: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
 };
 
-function mapStateToProps ({ users }) {
-  return { users }
+function mapStateToProps ({ finance }) {
+  return { finance }
 }
 
 // 暴露方法
