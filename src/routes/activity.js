@@ -17,6 +17,7 @@ import {Table, Icon} from 'antd';
 // 引入 样式
 import styles from './activity.less';
 
+// 方法
 function Activity({location, dispatch, users}) {
   const {
     loading,

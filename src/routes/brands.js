@@ -1,16 +1,23 @@
-import React,{ Component, PropTypes } from 'react';
-import { connect } from 'dva';
-import { Link } from 'dva/router';
+// 引入 React，组件，参数
+import React, {Component, PropTypes} from 'react';
+// 引入 dva链接模型组件
+import {connect} from 'dva';
+// 引入 路由链接组件
+import {Link} from 'dva/router';
+// 引入 布局视图
 import Layouts from '../components/layouts';
 // 引入 头管理组件
 import Helmet from "react-helmet";
+// 引入 自定义模块
 import Modal from '../components/brands/modal';
 import Search from '../components/brands/search';
 import List from '../components/brands/list';
-
-import { Table, Icon } from 'antd';
+// 引入 阿里的antd视觉组件
+import {Table, Icon} from 'antd';
+// 引入 样式
 import styles from './brands.less';
 
+// 方法
 function Brands ({ location, dispatch, users }) {
 
   const { loading, list, pagination, currentItem, modalVisible, modalType } = users;
