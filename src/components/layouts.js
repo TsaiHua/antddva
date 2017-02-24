@@ -8,6 +8,7 @@ import {connect} from 'dva'
 import {Layout, Table, Breadcrumb, Icon} from 'antd';
 // 调出 视觉组件布局模块
 const {Header, Footer, Sider, Content} = Layout;
+import {parse} from 'qs'
 // 引入 自定义模块
 import Headers from './public/header';
 import Bread from './public/bread';
@@ -18,10 +19,71 @@ import styles from './layouts.less';
 
 // 方法
 class Layouts extends React.Component {
+
   //组件状态
   state = {
-    collapsed: false
+    collapsed: false,
+    user: {
+      name: '阿俊'
+    },
+    siderFold: true,
+    darkTheme: false,
+    isNavbar:document.body.clientWidth < 769,
+    //menuPopoverVisible,
+    navOpenKeys: JSON.parse(localStorage.getItem('navOpenKeys') || '[]')
   };
+
+  //头部属性
+  const headerProps = {
+    user:this.state.user,
+    siderFold:this.state.siderFold,
+    location,
+    isNavbar:this.state.isNavbar,
+    //menuPopoverVisible,
+    navOpenKeys:this.state.navOpenKeys,
+
+    switchMenuPopover() {
+      dispatch({type: 'app/switchMenuPopver'})
+    },
+    logout() {
+      dispatch({type: 'app/logout'})
+    },
+    switchSider() {
+      dispatch({type: 'app/switchSider'})
+    },
+
+    changeOpenKeys(openKeys) {
+      localStorage.setItem('navOpenKeys', JSON.stringify(openKeys))
+      dispatch({
+        type: 'app/handleNavOpenKeys',
+        payload: {
+          navOpenKeys: openKeys
+        }
+      })
+    }
+
+  }
+
+  //边栏属性
+  const siderProps = {
+    siderFold,
+    darkTheme,
+    location,
+    navOpenKeys,
+    changeTheme() {
+      dispatch({type: 'app/changeTheme'})
+    },
+    changeOpenKeys(openKeys) {
+      localStorage.setItem('navOpenKeys', JSON.stringify(openKeys))
+      dispatch({
+        type: 'app/handleNavOpenKeys',
+        payload: {
+          navOpenKeys: openKeys
+        }
+      })
+    }
+  }
+
   //切换侧边栏方法
   toggle = () => {
     this.setState({
@@ -32,11 +94,11 @@ class Layouts extends React.Component {
   render() {
     return (
       <Layout>
-        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+        <Sider {...siderProps} trigger={null} collapsible collapsed={this.state.collapsed}>
           <Siders/>
         </Sider>
         <Layout>
-          <Header style={{
+          <Header {...headerProps} style={{
             background: '#fff',
             padding: 0
           }}>
@@ -48,7 +110,7 @@ class Layouts extends React.Component {
           <Content style={{
             margin: '0 16px'
           }}>
-            {/* <Bread/> */}
+            {/* <Bread location={location} /> */}
             <div style={{
               padding: 24,
               background: '#fff',

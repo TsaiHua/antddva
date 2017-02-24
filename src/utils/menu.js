@@ -4,27 +4,22 @@ module.exports = [
     name: '用户',
     icon: 'laptop'
   },
-  {
-    key: 'auth',
-    name: '权限',
-    icon: 'check-square'
-  },
-  {
-    key: 'role',
-    name: '角色',
-    icon: 'team',
-    clickable: false,
-    child: [
-      {
-        key: 'ico',
-        name: 'Ico 图标'
-      },
-      {
-        key: 'search',
-        name: 'Search 搜索'
-      }
-    ]
-  },
+  // {
+  //   key: 'role',
+  //   name: '角色',
+  //   icon: 'team',
+  //   clickable: false,
+  //   child: [
+  //     {
+  //       key: 'ico',
+  //       name: 'Ico 图标'
+  //     },
+  //     {
+  //       key: 'search',
+  //       name: 'Search 搜索'
+  //     }
+  //   ]
+  // },
   {
     key: 'auth',
     name: '权限',
@@ -65,16 +60,16 @@ module.exports = [
     name: '充值',
     icon: 'pay-circle-o'
   },
-  {
-    key: 'finance',
-    name: '提现',
-    icon: 'pay-circle'
-  },
-  {
-    key: 'finance',
-    name: '退款',
-    icon: 'swap'
-  },
+  // {
+  //   key: 'finance2',
+  //   name: '提现',
+  //   icon: 'pay-circle'
+  // },
+  // {
+  //   key: 'finance3',
+  //   name: '退款',
+  //   icon: 'swap'
+  // },
   {
     key: 'statistics',
     name: '统计',

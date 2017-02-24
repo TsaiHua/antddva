@@ -9,6 +9,7 @@ const app = dva();
 //app.use({});
 
 // 3. Model
+app.model(require('./models/app'));
 app.model(require('./models/users'));
 app.model(require('./models/auth'));
 app.model(require('./models/role'));
