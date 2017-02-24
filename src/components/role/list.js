@@ -1,7 +1,11 @@
+// 引入 React
 import React from 'react';
+// 引入布局样式
 import styles from './role.less';
+// 引入阿里的antd视觉组件
 import { Table, Icon } from 'antd';
 
+//列表数据来源
 const data = [{
   key: '1',
   rolename: 'admin',
@@ -16,6 +20,7 @@ const data = [{
   state: '禁用'
 }];
 
+//列表字段
 const columns = [{
     title: '角色名',
     dataIndex: 'rolename',
