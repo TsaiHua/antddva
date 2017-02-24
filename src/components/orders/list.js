@@ -1,7 +1,11 @@
+// 引入 React
 import React from 'react';
+// 引入布局样式
 import styles from './orders.less';
+// 引入阿里的antd视觉组件
 import { Table, Icon } from 'antd';
 
+//列表数据来源
 const data = [{
   key: '1',
   ID:'1',
@@ -28,6 +32,8 @@ const data = [{
   status:'已支付'
 }];
 
+
+//列表字段
 const columns = [{
   title: 'ID',
   dataIndex: 'ID',

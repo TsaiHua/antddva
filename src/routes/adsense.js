@@ -4,6 +4,8 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'dva';
 // 引入 路由链接组件
 import {Link} from 'dva/router';
+// 引入 头管理组件
+import Helmet from "react-helmet";
 // 引入 布局视图
 import Layouts from '../components/layouts';
 // 引入 自定义模块
@@ -67,11 +69,14 @@ function Adsense({location, dispatch, users}) {
   }
 
   return (
-    <Layouts>
-      <Search {...userSearchProps}/>
-      <List/>
-      <Modal {...userModalProps}/>
-    </Layouts>
+    <div>
+      <Helmet title="广告"/>
+      <Layouts>
+        <Search {...userSearchProps}/>
+        <List/>
+        <Modal {...userModalProps}/>
+      </Layouts>
+    </div>
   );
 };
 

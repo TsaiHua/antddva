@@ -1,7 +1,11 @@
+// 引入 React
 import React from 'react';
+// 引入布局样式
 import styles from './statistics.less';
+// 引入阿里的antd视觉组件
 import { Table, Icon } from 'antd';
 
+//列表数据来源
 const data = [{
   key: '1',
   username: '何晓亮',
@@ -25,6 +29,7 @@ const data = [{
   status:'正常'
 }];
 
+//列表字段
 const columns = [{
     title: '用户名',
     dataIndex: 'username',

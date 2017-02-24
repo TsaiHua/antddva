@@ -70,7 +70,7 @@ function Auth({location, dispatch, users}) {
 
   return (
     <div>
-      <Helmet title="权限配置"/>
+      <Helmet title="权限"/>
       <Layouts>
         <Search {...userSearchProps}/>
         <List/>
@@ -87,8 +87,8 @@ Auth.propTypes = {
   dispatch: PropTypes.func
 };
 
-function mapStateToProps({auth}) {
-  return {auth}
+function mapStateToProps({ users }) {
+  return { users }
 }
 
 // 暴露方法

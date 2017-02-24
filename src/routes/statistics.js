@@ -15,7 +15,7 @@ import styles from './statistics.less';
 function Statistics() {
   return (
     <div>
-      <Helmet title="系统配置"/>
+      <Helmet title="统计"/>
       <Layouts>statistics
       </Layouts>
     </div>

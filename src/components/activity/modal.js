@@ -1,9 +1,13 @@
-import React, { PropTypes } from 'react'
-import { Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select } from 'antd'
-const FormItem = Form.Item
-
+// 引入 React，组件
+import React, { PropTypes } from 'react';
+// 引入阿里的antd视觉组件
+import { Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select } from 'antd';
+// 引入布局样式
 import styles from './activity.less';
+//定义FormItem标签
+const FormItem = Form.Item;
 
+//定义FormItem标签的布局样式
 const formItemLayout = {
   labelCol: {
     span: 6
