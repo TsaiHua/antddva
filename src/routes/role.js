@@ -12,7 +12,7 @@ import Layouts from '../components/layouts';
 import Modal from '../components/role/modal';
 import Search from '../components/role/search';
 import List from '../components/role/list';
-// 引入 阿里的antd视觉组件
+// 引入 antd视觉组件
 import { Table, Icon } from 'antd';
 // 引入 样式
 import styles from './role.less';
@@ -69,7 +69,7 @@ function Role ({ location, dispatch, users }) {
 
   return (
     <div>
-      <Helmet title="角色"/>
+      <Helmet title="角色管理"/>
       <Layouts>
         <Search {...userSearchProps}/>
         <List/>

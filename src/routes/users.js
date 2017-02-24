@@ -12,7 +12,7 @@ import Helmet from "react-helmet";
 import Modal from '../components/users/modal';
 import Search from '../components/users/search';
 import List from '../components/users/list';
-// 引入 阿里的antd视觉组件
+// 引入 antd视觉组件
 import {Table, Icon} from 'antd';
 // 引入 样式
 import styles from './users.less';
@@ -68,7 +68,7 @@ function Users ({ location, dispatch, users }) {
 
   return (
     <div>
-      <Helmet title="用户"/>
+      <Helmet title="用户管理"/>
       <Layouts>
         <Search {...userSearchProps} />
         <List/>

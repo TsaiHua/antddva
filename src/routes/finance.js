@@ -12,7 +12,7 @@ import Helmet from "react-helmet";
 import Modal from '../components/finance/modal';
 import Search from '../components/finance/search';
 import List from '../components/finance/list';
-// 引入 阿里的antd视觉组件
+// 引入 antd视觉组件
 import {Table, Icon} from 'antd';
 // 引入 样式
 import styles from './finance.less';

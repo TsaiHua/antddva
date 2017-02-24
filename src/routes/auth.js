@@ -12,13 +12,13 @@ import Layouts from '../components/layouts';
 import Modal from '../components/auth/modal';
 import Search from '../components/auth/search';
 import List from '../components/auth/list';
-// 引入 阿里的antd视觉组件
+// 引入 antd视觉组件
 import {Table, Icon} from 'antd';
 // 引入 样式
 import styles from './auth.less';
 
 // 方法
-function Auth({location, dispatch, users}) {
+function Auth({location, dispatch, auth}) {
 
   const {
     loading,
@@ -27,7 +27,7 @@ function Auth({location, dispatch, users}) {
     currentItem,
     modalVisible,
     modalType
-  } = users;
+  } = auth;
   const {field, keyword} = location.query;
 
   const userModalProps = {
@@ -37,10 +37,10 @@ function Auth({location, dispatch, users}) {
     type: modalType,
     visible: modalVisible,
     onOk(data) {
-      dispatch({type: `users/${modalType}`, payload: data})
+      dispatch({type: `auth/${modalType}`, payload: data})
     },
     onCancel() {
-      dispatch({type: 'users/hideModal'})
+      dispatch({type: 'auth/hideModal'})
     }
   }
 
@@ -70,7 +70,7 @@ function Auth({location, dispatch, users}) {
 
   return (
     <div>
-      <Helmet title="权限"/>
+      <Helmet title="权限管理"/>
       <Layouts>
         <Search {...userSearchProps}/>
         <List/>
@@ -82,13 +82,13 @@ function Auth({location, dispatch, users}) {
 
 // 参数验证
 Auth.propTypes = {
-  users: PropTypes.object,
+  auth: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
 };
 
-function mapStateToProps({ users }) {
-  return { users }
+function mapStateToProps({ auth }) {
+  return { auth }
 }
 
 // 暴露方法
