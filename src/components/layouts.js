@@ -8,7 +8,6 @@ import {connect} from 'dva'
 import {Layout, Table, Breadcrumb, Icon} from 'antd';
 // 调出 视觉组件布局模块
 const {Header, Footer, Sider, Content} = Layout;
-import {parse} from 'qs'
 // 引入 自定义模块
 import Headers from './public/header';
 import Bread from './public/bread';
