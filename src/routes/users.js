@@ -6,7 +6,8 @@ import Layouts from '../components/layouts';
 import Modal from '../components/users/modal';
 import Search from '../components/users/search';
 import List from '../components/users/list';
-
+// 引入 头管理组件
+import Helmet from "react-helmet";
 import { Table, Icon } from 'antd';
 import styles from './users.less';
 
@@ -61,11 +62,14 @@ function Users ({ location, dispatch, users }) {
 
 
   return (
-    <Layouts>
-      <Search {...userSearchProps} />
-      <List/>
-      <Modal {...userModalProps} />
-    </Layouts>
+    <div>
+      <Helmet title="用户"/>
+      <Layouts>
+        <Search {...userSearchProps} />
+        <List/>
+        <Modal {...userModalProps} />
+      </Layouts>
+    </div>
     );
 };
 

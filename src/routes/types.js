@@ -2,7 +2,8 @@ import React,{ Component, PropTypes } from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import Layouts from '../components/layouts';
-
+// 引入 头管理组件
+import Helmet from "react-helmet";
 import Modal from '../components/types/modal';
 import Search from '../components/types/search';
 import List from '../components/types/list';
@@ -61,12 +62,15 @@ function Types ({ location, dispatch, users }) {
 
 
   return (
-    <Layouts>
-      <Search {...userSearchProps} />
-      <List/>
-      <Modal {...userModalProps} />
-    </Layouts>
-    );
+    <div>
+      <Helmet title="分类"/>
+      <Layouts>
+        <Search {...userSearchProps} />
+        <List/>
+        <Modal {...userModalProps} />
+      </Layouts>
+    </div>
+  );
 };
 
 // 参数验证

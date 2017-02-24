@@ -67,11 +67,14 @@ function Activity({location, dispatch, users}) {
   }
 
   return (
-    <Layouts>
-      <Search {...userSearchProps}/>
-      <List/>
-      <Modal {...userModalProps}/>
-    </Layouts>
+    <div>
+      <Helmet title="活动"/>
+      <Layouts>
+        <Search {...userSearchProps}/>
+        <List/>
+        <Modal {...userModalProps}/>
+      </Layouts>
+    </div>
   );
 };
 
