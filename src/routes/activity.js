@@ -12,7 +12,7 @@ import Helmet from "react-helmet";
 import Modal from '../components/activity/modal';
 import Search from '../components/activity/search';
 import List from '../components/activity/list';
-// 引入 阿里的antd视觉组件
+// 引入 antd视觉组件
 import {Table, Icon} from 'antd';
 // 引入 样式
 import styles from './activity.less';
@@ -69,7 +69,7 @@ function Activity({location, dispatch, users}) {
 
   return (
     <div>
-      <Helmet title="活动"/>
+      <Helmet title="活动管理"/>
       <Layouts>
         <Search {...userSearchProps}/>
         <List/>

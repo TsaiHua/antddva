@@ -12,7 +12,7 @@ import Layouts from '../components/layouts';
 import Modal from '../components/auth/modal';
 import Search from '../components/auth/search';
 import List from '../components/auth/list';
-// 引入 阿里的antd视觉组件
+// 引入 antd视觉组件
 import {Table, Icon} from 'antd';
 // 引入 样式
 import styles from './auth.less';
@@ -70,7 +70,7 @@ function Auth({location, dispatch, users}) {
 
   return (
     <div>
-      <Helmet title="权限"/>
+      <Helmet title="权限管理"/>
       <Layouts>
         <Search {...userSearchProps}/>
         <List/>

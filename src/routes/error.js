@@ -1,6 +1,6 @@
 // 引入 React，参数
 import React from 'react'
-// 引入 阿里的antd视觉组件
+// 引入 antd视觉组件
 import {Icon} from 'antd'
 // 引入 样式
 import styles from './error.less'
