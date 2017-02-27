@@ -6,8 +6,6 @@ import {connect} from 'dva';
 import {Link} from 'dva/router';
 // 引入 头管理组件
 import Helmet from "react-helmet";
-// 引入 布局视图
-import Layouts from '../components/layouts';
 // 引入 自定义模块
 import Modal from '../components/auth/modal';
 import Search from '../components/auth/search';
@@ -18,78 +16,22 @@ import {Table, Icon} from 'antd';
 import styles from './auth.less';
 
 // 方法
-function Auth({location, dispatch, auth}) {
-
-  const {
-    loading,
-    list,
-    pagination,
-    currentItem,
-    modalVisible,
-    modalType
-  } = auth;
-  const {field, keyword} = location.query;
-
-  const userModalProps = {
-    item: modalType === 'create'
-      ? {}
-      : currentItem,
-    type: modalType,
-    visible: modalVisible,
-    onOk(data) {
-      dispatch({type: `auth/${modalType}`, payload: data})
-    },
-    onCancel() {
-      dispatch({type: 'auth/hideModal'})
-    }
-  }
-
-  const userSearchProps = {
-    field,
-    keyword,
-    // onSearch (fieldsValue) {
-    //   fieldsValue.keyword.length ? dispatch(routerRedux.push({
-    //     pathname: '/users',
-    //     query: {
-    //       field: fieldsValue.field,
-    //       keyword: fieldsValue.keyword
-    //     }
-    //   })) : dispatch(routerRedux.push({
-    //     pathname: '/users'
-    //   }))
-    // },
-    onAdd() {
-      dispatch({
-        type: 'users/showModal',
-        payload: {
-          modalType: 'create'
-        }
-      })
-    }
-  }
-
+const Auth = ({location}) => {
   return (
     <div>
-      <Helmet title="权限管理"/>
-      <Layouts>
-        <Search {...userSearchProps}/>
+        <Helmet title="权限管理"/>
         <List/>
-        <Modal {...userModalProps}/>
-      </Layouts>
     </div>
-  );
-};
-
-// 参数验证
-Auth.propTypes = {
-  auth: PropTypes.object,
-  location: PropTypes.object,
-  dispatch: PropTypes.func
-};
-
-function mapStateToProps({ auth }) {
-  return { auth }
+  )
 }
 
+// 参数验证
+// Auth.propTypes = {
+//   auth: PropTypes.object,
+//   location: PropTypes.object,
+//   dispatch: PropTypes.func
+// };
+
+
 // 暴露方法
-export default connect(mapStateToProps)(Auth)
+export default Auth
