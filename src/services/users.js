@@ -1,29 +1,33 @@
-import { request } from '../utils'
+//引入 请求组件
+import request from '../utils/request'
 
-export async function query (params) {
-  return request('/api/users', {
-    method: 'get',
-    data: params
+//引入 配置文件
+import {api_host, page_size} from '../utils/config'
+
+//增加
+export function create(values) {
+  return request(`${api_host}user`, {
+    method: 'POST',
+    body: JSON.stringify(values)
   })
 }
 
-export async function create (params) {
-  return request('/api/users', {
-    method: 'post',
-    data: params
+//删除
+export function remove(id) {
+  return request(`${api_host}user/${id}`, {method: 'DELETE'})
+}
+
+//修改
+export function patch(id, values) {
+  return request(`${api_host}user/${id}`, {
+    method: 'PATCH',
+    body: JSON.stringify(values)
   })
 }
 
-export async function remove (params) {
-  return request('/api/users', {
-    method: 'delete',
-    data: params
-  })
-}
-
-export async function update (params) {
-  return request('/api/users', {
-    method: 'put',
-    data: params
-  })
+//查询
+export function fetch({
+  page = 1
+}) {
+  return request(`${api_host}user?_page=${page}&_limit=${page_size}`)
 }

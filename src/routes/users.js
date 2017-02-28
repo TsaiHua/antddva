@@ -5,7 +5,7 @@ import React, {Component, PropTypes} from 'react'
 import {connect} from 'dva'
 
 // 引入 路由链接组件
-import {Link} from 'dva/router'
+import {routerRedux} from 'dva/router'
 
 // 引入 头管理组件
 import Helmet from "react-helmet"
