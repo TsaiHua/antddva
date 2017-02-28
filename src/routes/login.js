@@ -1,11 +1,15 @@
 // 引入 React，参数
-import React, {PropTypes} from 'react';
+import React, {PropTypes} from 'react'
+
 // 引入 菜单配置文件
 import {config} from '../utils/config'
+
 // 引入 antd视觉组件
-import {Button, Row, Form, Input} from 'antd';
+import {Button, Row, Form, Input} from 'antd'
+
 // 引入 样式
-import styles from './login.less';
+import styles from './login.less'
+
 // 表单组件
 const FormItem = Form.Item
 

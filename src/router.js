@@ -1,42 +1,40 @@
-import React, {PropTypes} from 'react'
-import {Router, Route, browserHistory} from 'react-router'
-import app from './routes/app'
-import home from './routes/home'
-import error from './routes/error'
-import users from './routes/users'
-import orders from './routes/orders'
-import system from './routes/system'
-import adsense from './routes/adsense'
-import types from './routes/types'
-import brands from './routes/brands'
-import activity from './routes/activity'
-import goods from './routes/goods'
-import finance from './routes/finance'
-import statistics from './routes/statistics'
-import role from './routes/role'
-import auth from './routes/auth'
-
-const Root = ({history}) => {
-  return (
-    <Router history={browserHistory}>
-      <Route path="/" component={app}>
-         <Route path="auth" component={auth}/>
-         <Route path="users" component={users}/>
-      </Route>
-      {/* <Route path="users" component={users}/>
-      <Route path="orders" component={orders}/>
-      <Route path="system" component={system}/>
-      <Route path="adsense" component={adsense}/>
-      <Route path="types" component={types}/>
-      <Route path="brands" component={brands}/>
-      <Route path="activity" component={activity}/>
-      <Route path="goods" component={goods}/>
-      <Route path="finance" component={finance}/>
-      <Route path="statistics" component={statistics}/>
-      <Route path="role" component={role}/> */}
-
-    </Router>
-  )
-}
-
+import React from 'react'
+import {Router, Route, Link, IndexRoute, hashHistory} from 'react-router'
+// 公用部分
+import App from './routes/app'
+import Home from './routes/home'
+import Error from './routes/error'
+// 组件部分
+import Role from './routes/role'
+import Auth from './routes/auth'
+import Users from './routes/users'
+import Orders from './routes/orders'
+import System from './routes/system'
+import Adsense from './routes/adsense'
+import Types from './routes/types'
+import Brands from './routes/brands'
+import Activity from './routes/activity'
+import Goods from './routes/goods'
+import Finance from './routes/finance'
+import Statistics from './routes/statistics'
+// 方法
+const Root = () => (
+  <Router history={hashHistory}>
+    <Route path="/" component={App}>
+      <Route path="role" component={Role}/>
+      <Route path="auth" component={Auth}/>
+      <Route path="users" component={Users}/>
+      <Route path="orders" component={Orders}/>
+      <Route path="system" component={System}/>
+      <Route path="adsense" component={Adsense}/>
+      <Route path="types" component={Types}/>
+      <Route path="brands" component={Brands}/>
+      <Route path="activity" component={Activity}/>
+      <Route path="goods" component={Goods}/>
+      <Route path="finance" component={Finance}/>
+      <Route path="statistics" component={Statistics}/>
+    </Route>
+  </Router>
+)
+// 暴露方法
 export default Root

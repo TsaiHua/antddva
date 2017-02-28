@@ -1,24 +1,29 @@
 // 引入 React，组件，参数
-import React, {Component, PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react'
+
 // 引入 dva链接模型组件
-import {connect} from 'dva';
+import {connect} from 'dva'
+
 // 引入 路由链接组件
-import {Link} from 'dva/router';
-// 引入 布局视图
-import Layouts from '../components/layouts';
+import {Link} from 'dva/router'
+
 // 引入 头管理组件
-import Helmet from "react-helmet";
+import Helmet from "react-helmet"
+
 // 引入 自定义模块
-import Modal from '../components/activity/modal';
-import Search from '../components/activity/search';
-import List from '../components/activity/list';
+import Modal from '../components/activity/modal'
+import Search from '../components/activity/search'
+import List from '../components/activity/list'
+
 // 引入 antd视觉组件
-import {Table, Icon} from 'antd';
+import {Table, Icon} from 'antd'
+
 // 引入 样式
-import styles from './activity.less';
+import styles from './activity.less'
 
 // 方法
-function Activity({location, dispatch, users}) {
+function Activity({location, dispatch, activity}) {
+
   const {
     loading,
     list,
@@ -26,40 +31,43 @@ function Activity({location, dispatch, users}) {
     currentItem,
     modalVisible,
     modalType
-  } = users;
+  } = activity;
+
   const {field, keyword} = location.query;
 
-  const userModalProps = {
+  // 弹窗属性
+  const modalProps = {
     item: modalType === 'create'
       ? {}
       : currentItem,
     type: modalType,
     visible: modalVisible,
     onOk(data) {
-      dispatch({type: `users/${modalType}`, payload: data})
+      dispatch({type: `activity/${modalType}`, payload: data})
     },
     onCancel() {
-      dispatch({type: 'users/hideModal'})
+      dispatch({type: 'activity/hideModal'})
     }
   }
 
-  const userSearchProps = {
+  // 搜索属性
+  const searchProps = {
     field,
     keyword,
-    // onSearch (fieldsValue) {
-    //   fieldsValue.keyword.length ? dispatch(routerRedux.push({
-    //     pathname: '/users',
-    //     query: {
-    //       field: fieldsValue.field,
-    //       keyword: fieldsValue.keyword
-    //     }
-    //   })) : dispatch(routerRedux.push({
-    //     pathname: '/users'
-    //   }))
-    // },
+    onSearch(fieldsValue) {
+      fieldsValue.keyword.length
+        ? dispatch(routerRedux.push({
+          pathname: '/activity',
+          query: {
+            field: fieldsValue.field,
+            keyword: fieldsValue.keyword
+          }
+        }))
+        : dispatch(routerRedux.push({pathname: '/activity'}))
+    },
     onAdd() {
       dispatch({
-        type: 'users/showModal',
+        type: 'activity/showModal',
         payload: {
           modalType: 'create'
         }
@@ -70,24 +78,23 @@ function Activity({location, dispatch, users}) {
   return (
     <div>
       <Helmet title="活动管理"/>
-      <Layouts>
-        <Search {...userSearchProps}/>
-        <List/>
-        <Modal {...userModalProps}/>
-      </Layouts>
+      <Search {...searchProps}/>
+      <List/>
+      <Modal {...modalProps}/>
     </div>
   );
 };
 
 // 参数验证
 Activity.propTypes = {
-  users: PropTypes.object,
+  activity: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
 };
 
-function mapStateToProps({users}) {
-  return {users}
+// 模型状态转到属性
+function mapStateToProps({activity}) {
+  return {activity}
 }
 
 // 暴露方法

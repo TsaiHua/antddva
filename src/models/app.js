@@ -2,9 +2,9 @@ import {login, userInfo, logout} from '../services/app'
 import {parse} from 'qs'
 export default {
   //命名空间
-  namespace: 'app',
+  namespace : 'app',
   //状态
-  state: {
+  state : {
     login: false,
     loading: false,
     user: {
@@ -19,19 +19,19 @@ export default {
   },
 
   //订阅
-  subscriptions: {
-    setup ({dispatch}) {
+  subscriptions : {
+    setup({dispatch}) {
       dispatch({type: 'queryUser'})
-      window.onresize = function () {
+      window.onresize = function() {
         dispatch({type: 'changeNavbar'})
       }
     }
   },
 
   //异步处理
-  effects: {
+  effects : {
     //登录
-    *login ({
+    *login({
       payload
     }, {call, put}) {
       yield put({type: 'showLoginButtonLoading'})
@@ -43,16 +43,15 @@ export default {
             user: {
               name: payload.username
             }
-          }})
-      } else {
-        yield put({
-          type: 'loginFail'
+          }
         })
+      } else {
+        yield put({type: 'loginFail'})
       }
     },
 
     //同步处理
-    *queryUser ({
+    *queryUser({
       payload
     }, {call, put}) {
       yield put({type: 'showLoading'})
@@ -71,34 +70,28 @@ export default {
       yield put({type: 'hideLoading'})
     },
     //退出
-    *logout ({
+    *logout({
       payload
     }, {call, put}) {
       const data = yield call(logout, parse(payload))
       if (data.success) {
-        yield put({
-          type: 'logoutSuccess'
-        })
+        yield put({type: 'logoutSuccess'})
       }
     },
 
-    *switchSider ({
+    *switchSider({
       payload
     }, {put}) {
-      yield put({
-        type: 'handleSwitchSider'
-      })
+      yield put({type: 'handleSwitchSider'})
     },
 
-    *changeTheme ({
+    *changeTheme({
       payload
     }, {put}) {
-      yield put({
-        type: 'handleChangeTheme'
-      })
+      yield put({type: 'handleChangeTheme'})
     },
 
-    *changeNavbar ({
+    *changeNavbar({
       payload
     }, {put}) {
       if (document.body.clientWidth < 769) {
@@ -108,18 +101,16 @@ export default {
       }
     },
 
-    *switchMenuPopver ({
+    *switchMenuPopver({
       payload
     }, {put}) {
-      yield put({
-        type: 'handleSwitchMenuPopver'
-      })
+      yield put({type: 'handleSwitchMenuPopver'})
     }
   },
 
   //同步处理
-  reducers: {
-    loginSuccess (state, action) {//登录成功
+  reducers : {
+    loginSuccess(state, action) { //登录成功
       return {
         ...state,
         ...action.payload,
@@ -127,70 +118,70 @@ export default {
         loginButtonLoading: false
       }
     },
-    logoutSuccess (state) {//退出成功
+    logoutSuccess(state) { //退出成功
       return {
         ...state,
         login: false
       }
     },
-    loginFail (state) {//退出失败
+    loginFail(state) { //退出失败
       return {
         ...state,
         login: false,
         loginButtonLoading: false
       }
     },
-    showLoginButtonLoading (state) {//显示登录按钮载入状态
+    showLoginButtonLoading(state) { //显示登录按钮载入状态
       return {
         ...state,
         loginButtonLoading: true
       }
     },
-    showLoading (state) {//显示载入效果
+    showLoading(state) { //显示载入效果
       return {
         ...state,
         loading: true
       }
     },
-    hideLoading (state) {//隐藏载入效果
+    hideLoading(state) { //隐藏载入效果
       return {
         ...state,
         loading: false
       }
     },
-    handleSwitchSider (state) {//选择侧边栏
+    handleSwitchSider(state) { //选择侧边栏
       localStorage.setItem('antdAdminSiderFold', !state.siderFold)
       return {
         ...state,
         siderFold: !state.siderFold
       }
     },
-    handleChangeTheme (state) {//更换主题
+    handleChangeTheme(state) { //更换主题
       localStorage.setItem('antdAdminDarkTheme', !state.darkTheme)
       return {
         ...state,
         darkTheme: !state.darkTheme
       }
     },
-    showNavbar (state) {//显示导航
+    showNavbar(state) { //显示导航
       return {
         ...state,
         isNavbar: true
       }
     },
-    hideNavbar (state) {//隐藏导航
+    hideNavbar(state) { //隐藏导航
       return {
         ...state,
         isNavbar: false
       }
     },
-    handleSwitchMenuPopver (state) {//选择菜单属性
+    handleSwitchMenuPopver(state) { //选择菜单属性
       return {
         ...state,
         menuPopoverVisible: !state.menuPopoverVisible
       }
     },
-    handleNavOpenKeys(state, action) {//已打开菜单Key
+    handleNavOpenKeys(state, action) { //已打开菜单Key
       return {
         ...state,
         ...action.payload

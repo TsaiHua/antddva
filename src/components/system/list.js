@@ -2,7 +2,7 @@
 import React from 'react'
 
 // 引入布局样式
-import styles from './statistics.less'
+import styles from './system.less'
 
 // 引入阿里的antd视觉组件
 import { Table, Icon } from 'antd'
