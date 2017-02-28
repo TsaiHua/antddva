@@ -24,9 +24,9 @@ const search = ({
     keyword,
     size: 'large',
     select: true,
-    selectOptions: [{ value: 'name', name: '姓名' }, { value: 'address', name: '地址' }],
+    selectOptions: [{ value: 'Rulename', name: '规则名称' }],
     selectProps: {
-      defaultValue: field || 'name'
+      defaultValue: field || 'Rulename'
     },
     onSearch: (value) => {
       onSearch(value)

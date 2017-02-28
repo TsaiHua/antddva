@@ -25,9 +25,9 @@ const search = ({
     keyword,
     size: 'large',
     select: true,
-    selectOptions: [{ value: 'name', name: '姓名' }, { value: 'address', name: '地址' }],
+    selectOptions: [{ value: 'Ordernumber', name: '订单编号' }, { value: 'Consignee', name: '收货人' },{ value: 'Undersingle', name: '下单人' }, { value: 'Contactnumber', name: '联系电话' }],
     selectProps: {
-      defaultValue: field || 'name'
+      defaultValue: field || 'Ordernumber'
     },
     onSearch: (value) => {
       onSearch(value)
