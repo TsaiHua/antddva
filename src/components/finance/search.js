@@ -25,9 +25,9 @@ const search = ({
     keyword,
     size: 'large',
     select: true,
-    selectOptions: [{ value: 'name', name: '姓名' }, { value: 'address', name: '地址' }],
+    selectOptions: [{ value: 'client', name: '客户名' }],
     selectProps: {
-      defaultValue: field || 'name'
+      defaultValue: field || 'client'
     },
     onSearch: (value) => {
       onSearch(value)
@@ -40,7 +40,7 @@ const search = ({
         <SearchGroup {...searchGroupProps} />
       </Col>
       <Col lg={{offset: 8, span: 8}} md={12} sm={8} xs={24} style={{marginBottom: 16, textAlign: 'right'}}>
-  
+
       </Col>
     </Row>
   )

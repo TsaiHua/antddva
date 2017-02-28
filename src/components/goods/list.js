@@ -59,7 +59,7 @@ const columns = [{
       dataIndex: 'classification',
       key: 'classification',
   },{
-    title: '分类',
+    title: '品牌',
     dataIndex: 'brand',
     key: 'brand',
   },{
