@@ -21,6 +21,7 @@ import Statistics from './routes/statistics'
 const Root = () => (
   <Router history={hashHistory}>
     <Route path="/" component={App}>
+      <IndexRoute component={Home}/>
       <Route path="role" component={Role}/>
       <Route path="auth" component={Auth}/>
       <Route path="users" component={Users}/>
@@ -34,6 +35,7 @@ const Root = () => (
       <Route path="finance" component={Finance}/>
       <Route path="statistics" component={Statistics}/>
     </Route>
+    <Route path="*" component={Error}/>
   </Router>
 )
 // 暴露方法

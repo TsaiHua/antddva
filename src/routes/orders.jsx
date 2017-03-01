@@ -1,7 +1,7 @@
 // 引入 React，组件，参数
 import React, {Component, PropTypes} from 'react'
 
-// 引入 dva链接模型组件
+// 引入 容器组件
 import {connect} from 'dva'
 
 // 引入 路由链接组件
@@ -15,7 +15,7 @@ import Modal from '../components/orders/modal'
 import Search from '../components/orders/search'
 import List from '../components/orders/list'
 
-// 引入 antd视觉组件
+// 引入 视觉组件
 import {Table, Icon} from 'antd'
 
 // 引入 样式

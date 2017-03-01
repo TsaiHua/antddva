@@ -4,7 +4,7 @@ import React, {PropTypes} from 'react'
 // 引入 菜单配置文件
 import {config} from '../utils/config'
 
-// 引入 antd视觉组件
+// 引入 视觉组件
 import {Button, Row, Form, Input} from 'antd'
 
 // 引入 样式
