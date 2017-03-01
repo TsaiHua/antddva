@@ -73,8 +73,8 @@ function Users({location, loading, dispatch, users}) {
       <List/>
       <Modal {...modalProps}/>
     </div>
-  );
-};
+  )
+}
 
 // 参数验证
 Users.propTypes = {
