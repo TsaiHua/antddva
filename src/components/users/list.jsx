@@ -1,9 +1,16 @@
 // 引入 React
-import React from 'react';
-// 引入布局样式
-import styles from './users.less';
+import React from 'react'
+
+// 引入 dva链接模型组件
+import {connect} from 'dva'
+
+import { routerRedux } from 'dva/router';
+
 // 引入阿里的antd视觉组件
-import { Table, Icon } from 'antd';
+import { Table, Icon,Pagination, Popconfirm, Button } from 'antd'
+
+// 引入布局样式
+import styles from './users.less'
 
 //列表数据来源
 const data = [{
@@ -78,6 +85,36 @@ const columns = [{
 
 // 方法
 const List = (props) => {
+
+  function deleteHandler(id) {
+    dispatch({
+      type: 'users/remove',
+      payload: id,
+    });
+  }
+
+  function pageChangeHandler(page) {
+    dispatch(routerRedux.push({
+      pathname: '/users',
+      query: { page },
+    }));
+  }
+
+  function editHandler(id, values) {
+    dispatch({
+      type: 'users/patch',
+      payload: { id, values },
+    });
+  }
+
+  function createHandler(values) {
+    dispatch({
+      type: 'users/create',
+      payload: values,
+    });
+  }
+
+
   return (
     <div>
       <Table columns={columns} dataSource={data} />

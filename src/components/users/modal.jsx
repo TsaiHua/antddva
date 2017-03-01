@@ -1,11 +1,21 @@
 // 引入 React，组件
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react'
+
 // 引入阿里的antd视觉组件
-import {Form, Input, InputNumber, Radio, Modal,Select} from 'antd';
+import {
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Modal,
+  Select
+} from 'antd'
+
 // 引入布局样式
-import styles from './users.less';
+import styles from './users.less'
+
 //定义FormItem标签
-const FormItem = Form.Item;
+const FormItem = Form.Item
 
 //定义FormItem标签的布局样式
 const formItemLayout = {
@@ -31,7 +41,7 @@ const Modals = ({
   }
 }) => {
 
-  function handleOk () {
+  function handleOk() {
     validateFields((errors) => {
       if (errors) {
         return
@@ -45,7 +55,9 @@ const Modals = ({
   }
 
   const modalOpts = {
-    title: `${type === 'create' ? '新增用户' : '修改用户'}`,
+    title: `${type === 'create'
+      ? '新增用户'
+      : '修改用户'}`,
     visible,
     onOk: handleOk,
     onCancel,
@@ -64,7 +76,7 @@ const Modals = ({
                 message: '用户名未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
         <FormItem label='密码：' hasFeedback {...formItemLayout}>
           {getFieldDecorator('name1', {
@@ -75,7 +87,7 @@ const Modals = ({
                 message: '密码未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='手机号：' hasFeedback {...formItemLayout}>
@@ -87,7 +99,7 @@ const Modals = ({
                 message: '手机号未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='邮箱：' hasFeedback {...formItemLayout}>
@@ -99,7 +111,7 @@ const Modals = ({
                 message: '邮箱未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='昵称：' hasFeedback {...formItemLayout}>
@@ -111,7 +123,7 @@ const Modals = ({
                 message: '昵称未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='角色' hasFeedback {...formItemLayout}>
@@ -132,20 +144,22 @@ const Modals = ({
           )}
         </FormItem>
 
-        <FormItem label="状态" hasFeedback {...formItemLayout} >
-            {getFieldDecorator('name7', {
-              initialValue: item.name7,
-              rules: [
-                {
-                  required: true,
-                  message: '状态未填写'
-                }
-              ]
-            })(<Select>
+        <FormItem label="状态" hasFeedback {...formItemLayout}>
+          {getFieldDecorator('name7', {
+            initialValue: item.name7,
+            rules: [
+              {
+                required: true,
+                message: '状态未填写'
+              }
+            ]
+          })(
+            <Select>
               <Select.Option value="one">one</Select.Option>
               <Select.Option value="two">two</Select.Option>
               <Select.Option value="three">three</Select.Option>
-            </Select>)}
+            </Select>
+          )}
         </FormItem>
       </Form>
     </Modal>
