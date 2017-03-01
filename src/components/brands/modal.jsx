@@ -55,7 +55,7 @@ const Modals = ({
   return (
     <Modal {...modalOpts}>
       <Form horizontal>
-        <FormItem label='品牌名称：' hasFeedback {...formItemLayout}>
+        <FormItem label='品牌名：' hasFeedback {...formItemLayout}>
           {getFieldDecorator('name', {
             initialValue: item.name,
             rules: [
@@ -67,63 +67,65 @@ const Modals = ({
           })(<Input />)}
         </FormItem>
 
-        <FormItem label="品牌分类" hasFeedback {...formItemLayout} >
-            {getFieldDecorator('name1', {
-              initialValue: item.name1,
-              rules: [
-                {
-                  required: true,
-                  message: '品牌分类未填写'
-                }
-              ]
-            })(<Select>
-              <Select.Option value="one">one</Select.Option>
-              <Select.Option value="two">two</Select.Option>
-              <Select.Option value="three">three</Select.Option>
-            </Select>)}
-        </FormItem>
-
-        <FormItem label="品牌系列" hasFeedback {...formItemLayout} >
-            {getFieldDecorator('name2', {
-              initialValue: item.name2,
-              rules: [
-                {
-                  required: true,
-                  message: '品牌系列未填写'
-                }
-              ]
-            })(<Select>
-              <Select.Option value="one">one</Select.Option>
-              <Select.Option value="two">two</Select.Option>
-              <Select.Option value="three">three</Select.Option>
-            </Select>)}
-        </FormItem>
-
-        <FormItem label='品牌描述：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('name3', {
-            initialValue: item.name3,
+        <FormItem label='网站' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('site', {
+            initialValue: item.site,
             rules: [
               {
                 required: true,
-                message: '品牌描述未填写'
+                message: '网站未填写'
+              }
+            ]
+          })(<Input />)}
+        </FormItem>
+
+        <FormItem label='logo' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('logo', {
+            initialValue: item.logo,
+            rules: [
+              {
+                required: false,
+                message: 'logo未填写'
+              }
+            ]
+          })(<Input />)}
+        </FormItem>
+
+        <FormItem label='描述：' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('desc', {
+            initialValue: item.desc,
+            rules: [
+              {
+                required: false,
+                message: '描述未填写'
               }
             ]
           })(<Input type="textarea"/>)}
         </FormItem>
 
+        <FormItem label='排序' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('sort', {
+            initialValue: item.sort,
+            rules: [
+              {
+                required: false,
+                message: '排序未填写'
+              }
+            ]
+          })(<Input />)}
+        </FormItem>
+
         <FormItem label="状态" hasFeedback {...formItemLayout} >
-            {getFieldDecorator('name4', {
-              initialValue: item.name4,
+            {getFieldDecorator('status', {
+              initialValue: item.status,
               rules: [
                 {
-                  required: true,
                   message: '状态未填写'
                 }
               ]
-            })(<Select>
-              <Select.Option value="one">one</Select.Option>
-              <Select.Option value="two">two</Select.Option>
-              <Select.Option value="three">three</Select.Option>
+            })(<Select placeholder="false">
+              <Select.Option value="false">false</Select.Option>
+              <Select.Option value="true">true</Select.Option>
             </Select>)}
         </FormItem>
       </Form>

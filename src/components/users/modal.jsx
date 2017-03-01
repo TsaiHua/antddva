@@ -67,20 +67,67 @@ const Modals = ({
   return (
     <Modal {...modalOpts}>
       <Form horizontal>
-        <FormItem label='用户名：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('name', {
-            initialValue: item.name,
+        <FormItem label='名称：' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('real_name', {
+            initialValue: item.real_name,
             rules: [
               {
                 required: true,
-                message: '用户名未填写'
+                message: '名称未填写'
               }
             ]
           })(<Input/>)}
         </FormItem>
+
+        <FormItem label='手机号码：' hasFeedback {...formItemLayout}>
+        {getFieldDecorator('mobile', {
+          initialValue: item.mobile,
+          rules: [
+            {
+              required: true,
+              message: '手机号码未填写'
+            }
+          ]
+        })(<Input />)}
+        </FormItem>
+
+        <FormItem label='昵称：' hasFeedback {...formItemLayout}>
+        {getFieldDecorator('weixin_nickname', {
+          initialValue: item.weixin_nickname,
+          rules: [
+            {
+              required: true,
+              message: '昵称未填写'
+            }
+          ]
+        })(<Input />)}
+        </FormItem>
+
+        <FormItem label='最后登录ip地址：' hasFeedback {...formItemLayout}>
+        {getFieldDecorator('login_ip', {
+          initialValue: item.login_ip,
+          rules: [
+            {
+              message: '最后登录ip地址未填写'
+            }
+          ]
+        })(<Input />)}
+        </FormItem>
+
+        <FormItem label='最后登录时间：' hasFeedback {...formItemLayout}>
+        {getFieldDecorator('login_time', {
+          initialValue: item.login_time,
+          rules: [
+            {
+              message: '最后登录时间未填写'
+            }
+          ]
+        })(<Input />)}
+        </FormItem>
+
         <FormItem label='密码：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('name1', {
-            initialValue: item.name1,
+          {getFieldDecorator('password', {
+            initialValue: item.password,
             rules: [
               {
                 required: true,
@@ -90,17 +137,31 @@ const Modals = ({
           })(<Input/>)}
         </FormItem>
 
-        <FormItem label='手机号：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('name2', {
-            initialValue: item.name2,
+        <FormItem label="状态" hasFeedback {...formItemLayout} >
+            {getFieldDecorator('status', {
+              initialValue: item.status,
+              rules: [
+                {
+                  message: '状态未填写'
+                }
+              ]
+            })(<Select placeholder="false">
+              <Select.Option value="false">false</Select.Option>
+              <Select.Option value="true">true</Select.Option>
+            </Select>)}
+        </FormItem>
+
+        <FormItem label='角色：' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('role', {
+            initialValue: item.role,
             rules: [
               {
-                required: true,
-                message: '手机号未填写'
+                message: '角色未填写'
               }
             ]
           })(<Input/>)}
         </FormItem>
+
 
         <FormItem label='邮箱：' hasFeedback {...formItemLayout}>
           {getFieldDecorator('name3', {

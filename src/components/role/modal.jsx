@@ -98,8 +98,8 @@ const Modals = ({
           })(<Input />)}
         </FormItem>
         <FormItem label='角色描述：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('address', {
-            initialValue: item.address,
+          {getFieldDecorator('description', {
+            initialValue: item.description,
             rules: [
               {
                 required: true,
