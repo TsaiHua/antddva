@@ -13,4 +13,4 @@ const Footer = () => <div className={styles.footer}>
 </div>
 
 // 暴露方法
-export default Footer;
+export default Footer

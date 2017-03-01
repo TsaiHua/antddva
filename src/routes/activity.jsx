@@ -31,9 +31,9 @@ function Activity({location, dispatch, activity}) {
     currentItem,
     modalVisible,
     modalType
-  } = activity;
+  } = activity
 
-  const {field, keyword} = location.query;
+  const {field, keyword} = location.query
 
   // 弹窗属性
   const modalProps = {
@@ -98,4 +98,4 @@ function mapStateToProps({activity}) {
 }
 
 // 暴露方法
-export default connect(mapStateToProps)(Activity);
+export default connect(mapStateToProps)(Activity)
