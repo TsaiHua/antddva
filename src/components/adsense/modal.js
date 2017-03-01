@@ -82,8 +82,8 @@ const Modals = ({
     <Modal {...modalOpts}>
       <Form horizontal>
         <FormItem label='广告标题：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('name', {
-            initialValue: item.name,
+          {getFieldDecorator('title', {
+            initialValue: item.title,
             rules: [
               {
                 required: true,
