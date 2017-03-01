@@ -117,7 +117,7 @@ const Modals = ({
 
         <FormItem label="状态" hasFeedback {...formItemLayout} >
             {getFieldDecorator('status', {
-              initialValue: item.status,
+              initialValue: 'false',
               rules: [
                 {
                   message: '状态未填写'

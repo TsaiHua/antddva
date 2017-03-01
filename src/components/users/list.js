@@ -8,7 +8,7 @@ import { Table, Icon } from 'antd';
 //列表数据来源
 const data = [{
   key: '1',
-  username: '何晓亮',
+  real_name: '何晓亮',
   mobile: '13133339998',
   role: '超管',
   nickname: '小何',
@@ -18,7 +18,7 @@ const data = [{
   status:'正常'
   }, {
   key: '2',
-  username: '何晓亮',
+  real_name: '何晓亮',
   mobile: '15533339998',
   role: '超管',
   nickname: '小何',
@@ -31,8 +31,8 @@ const data = [{
 //列表字段
 const columns = [{
     title: '用户名',
-    dataIndex: 'username',
-    key: 'username',
+    dataIndex: 'real_name',
+    key: 'real_name',
     render: text => <a href="#">{text}</a>,
   },{
     title: '手机号',
