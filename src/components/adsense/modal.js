@@ -121,25 +121,13 @@ const Modals = ({
           </Upload>)}
         </FormItem>
 
-        <FormItem label='广告简介：' hasFeedback {...formItemLayout}>
+        <FormItem label='链接：' hasFeedback {...formItemLayout}>
           {getFieldDecorator('nickName', {
             initialValue: item.nickName,
             rules: [
               {
                 required: true,
-                message: '广告简介未填写'
-              }
-            ]
-          })(<Input/>)}
-        </FormItem>
-
-        <FormItem label='广告链接：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('nickName', {
-            initialValue: item.nickName,
-            rules: [
-              {
-                required: true,
-                message: '广告链接未填写'
+                message: '链接未填写'
               }
             ]
           })(<Input/>)}

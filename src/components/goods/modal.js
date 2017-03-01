@@ -175,94 +175,9 @@ const Modals = ({
           <Select.Option value="false">true</Select.Option>
           <Select.Option value="true">false</Select.Option>
         </Select>)}
-    </FormItem>
-
-      <FormItem label='商品单位' hasFeedback {...formItemLayout}>
-        {getFieldDecorator('nickName', {
-          initialValue: item.nickName,
-          rules: [
-            {
-              required: true,
-              message: '商品单位未填写'
-            }
-          ]
-        })(<Input />)}
-      </FormItem>
-
-        <FormItem label="所属商品" hasFeedback {...formItemLayout} >
-            {getFieldDecorator('status', {
-              initialValue: item.status,
-              rules: [
-                {
-                  message: '所属商品未填写'
-                }
-              ]
-            })(<Select style={{ width: 130 }} placeholder="烽火源">
-              <Select.Option value="false">牛匹选</Select.Option>
-              <Select.Option value="true">烽火源</Select.Option>
-            </Select>)}
-
-
-            {getFieldDecorator('status', {
-              initialValue: item.status,
-              rules: [
-                {
-                  message: '所属商品未填写'
-                }
-              ]
-            })(<Select style={{ width: 130,marginLeft:22 }} placeholder="烽火源">
-              <Select.Option value="false">牛匹选</Select.Option>
-              <Select.Option value="true">烽火源</Select.Option>
-            </Select>)}
-        </FormItem>
-
-        <FormItem label='商品分类' hasFeedback {...formItemLayout}>
-
-          {getFieldDecorator('status', {
-            initialValue: item.status,
-            rules: [
-              {
-                message: '所属商品未填写'
-              }
-            ]
-          })(<Select style={{ width: 88 }} placeholder="请选择父级分类">
-                <Option value="china">股票</Option>
-                <Option value="use">食物</Option>
-              </Select>)}
-
-            {getFieldDecorator('status', {
-              initialValue: item.status,
-              rules: [
-                {
-                  message: '所属商品未填写'
-                }
-              ]
-            })(<Select style={{ width: 88,marginLeft:10 }} placeholder="请选择分类">
-              <Option value="china">股票</Option>
-              <Option value="use">食物</Option>
-            </Select>)}
-
-            {getFieldDecorator('status', {
-              initialValue: item.status,
-              rules: [
-                {
-                  message: '所属商品未填写'
-                }
-              ]
-            })(<Select style={{ width: 88,marginLeft:10 }} placeholder="请选择规格">
-                <Option value="china">股票</Option>
-                <Option value="use">食物</Option>
-              </Select>)}
-        </FormItem>
-
-        <FormItem label='退货规则' hasFeedback {...formItemLayout}>
-          <Select placeholder="允许退货">
-              <Option value="china">允许退货</Option>
-              <Option value="use">不允许退货</Option>
-            </Select>
-        </FormItem>
-      </Form>
-    </Modal>
+      </FormItem> 
+    </Form>
+  </Modal>
   );
 };
 

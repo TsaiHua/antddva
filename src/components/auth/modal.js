@@ -73,22 +73,6 @@ const Modals = ({
             ]
           })(<Input />)}
         </FormItem>
-        <FormItem label='父级节点' hasFeedback {...formItemLayout}>
-
-          <Select placeholder="管理员">
-              <Option value="admin">管理员</Option>
-              <Option value="users">用户</Option>
-              <Option value="service">客服</Option>
-            </Select>
-        </FormItem>
-
-        <FormItem label='状态' hasFeedback {...formItemLayout}>
-          <Select placeholder="正常">
-              <Option value="china">正常</Option>
-              <Option value="use">禁用</Option>
-            </Select>
-        </FormItem>
-
       </Form>
     </Modal>
   );
