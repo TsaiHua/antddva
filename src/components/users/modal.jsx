@@ -1,11 +1,21 @@
 // 引入 React，组件
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react'
+
 // 引入阿里的antd视觉组件
-import {Form, Input, InputNumber, Radio, Modal,Select} from 'antd';
+import {
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Modal,
+  Select
+} from 'antd'
+
 // 引入布局样式
-import styles from './users.less';
+import styles from './users.less'
+
 //定义FormItem标签
-const FormItem = Form.Item;
+const FormItem = Form.Item
 
 //定义FormItem标签的布局样式
 const formItemLayout = {
@@ -31,7 +41,7 @@ const Modals = ({
   }
 }) => {
 
-  function handleOk () {
+  function handleOk() {
     validateFields((errors) => {
       if (errors) {
         return
@@ -45,7 +55,9 @@ const Modals = ({
   }
 
   const modalOpts = {
-    title: `${type === 'create' ? '新增用户' : '修改用户'}`,
+    title: `${type === 'create'
+      ? '新增用户'
+      : '修改用户'}`,
     visible,
     onOk: handleOk,
     onCancel,
@@ -64,7 +76,7 @@ const Modals = ({
                 message: '名称未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='手机号码：' hasFeedback {...formItemLayout}>
@@ -122,7 +134,7 @@ const Modals = ({
                 message: '密码未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label="状态" hasFeedback {...formItemLayout} >
@@ -147,7 +159,7 @@ const Modals = ({
                 message: '角色未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
       </Form>
     </Modal>

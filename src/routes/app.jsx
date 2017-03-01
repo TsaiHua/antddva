@@ -11,10 +11,10 @@ import Layouts from '../components/layouts'
 import styles from './app.less'
 
 // 方法
-const App = ({children}) => {
+const App = ({children,location}) => {
 
   return (
-    <Layouts>
+    <Layouts location={location}>
       {children}
     </Layouts>
   )
