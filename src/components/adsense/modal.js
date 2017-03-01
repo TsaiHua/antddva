@@ -93,13 +93,32 @@ const Modals = ({
           })(<Input/>)}
         </FormItem>
 
+        <FormItem label='广告位置：' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('position', {
+            initialValue: item.position,
+            rules: [
+              {
+                required: true,
+                message: '广告位置未填写'
+              }
+            ]
+          })(<Input/>)}
+        </FormItem>
+
         <FormItem label='广告图片：' hasFeedback {...formItemLayout}>
-          <Upload {...props}>
+          {getFieldDecorator('img', {
+            initialValue: item.img,
+            rules: [
+              {
+                required: true,
+                message: '图片未上传'
+              }
+            ]
+          })(<Upload name="logo" action="/upload.do" listType="picture" >
             <Button>
-              <Icon type="upload"/>
-              上传图片
+              <Icon type="upload" /> 点击上传
             </Button>
-          </Upload>
+          </Upload>)}
         </FormItem>
 
         <FormItem label='广告简介：' hasFeedback {...formItemLayout}>
@@ -114,14 +133,32 @@ const Modals = ({
           })(<Input/>)}
         </FormItem>
 
-        <FormItem label='状态' hasFeedback {...formItemLayout}>
-
-          <Select placeholder="服装">
-            <Option value="china">股票</Option>
-            <Option value="use">食物</Option>
-          </Select>
+        <FormItem label='广告链接：' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('nickName', {
+            initialValue: item.nickName,
+            rules: [
+              {
+                required: true,
+                message: '广告链接未填写'
+              }
+            ]
+          })(<Input/>)}
         </FormItem>
 
+
+        <FormItem label="状态" hasFeedback {...formItemLayout} >
+            {getFieldDecorator('status', {
+              initialValue: item.status,
+              rules: [
+                {
+                  message: '状态未填写'
+                }
+              ]
+            })(<Select placeholder="false">
+              <Select.Option value="false">false</Select.Option>
+              <Select.Option value="true">true</Select.Option>
+            </Select>)}
+        </FormItem>
       </Form>
     </Modal>
   );
