@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 // 引入阿里的antd视觉组件
 import { Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select } from 'antd';
 // 引入布局样式
-import styles from './brands.less';
+import styles from './types.less';
 //定义FormItem标签
 const FormItem = Form.Item;
 
@@ -45,7 +45,7 @@ const Modals = ({
   }
 
   const modalOpts = {
-    title: `${type === 'create' ? '新增品牌' : '修改品牌'}`,
+    title: `${type === 'create' ? '新增分类' : '修改分类'}`,
     visible,
     onOk: handleOk,
     onCancel,
@@ -55,61 +55,36 @@ const Modals = ({
   return (
     <Modal {...modalOpts}>
       <Form horizontal>
-        <FormItem label='品牌名：' hasFeedback {...formItemLayout}>
+        <FormItem label='名称：' hasFeedback {...formItemLayout}>
           {getFieldDecorator('name', {
             initialValue: item.name,
             rules: [
               {
                 required: true,
-                message: '品牌名称未填写'
+                message: '名称未填写'
               }
             ]
           })(<Input />)}
         </FormItem>
 
-        <FormItem label='网站' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('site', {
-            initialValue: item.site,
+        <FormItem label='单位：' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('unit', {
+            initialValue: item.unit,
             rules: [
               {
                 required: true,
-                message: '网站未填写'
+                message: '单位未填写'
               }
             ]
           })(<Input />)}
         </FormItem>
 
-        <FormItem label='logo' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('logo', {
-            initialValue: item.logo,
+        <FormItem label='父级id：' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('parent_id', {
+            initialValue: item.parent_id,
             rules: [
               {
-                required: false,
-                message: 'logo未填写'
-              }
-            ]
-          })(<Input />)}
-        </FormItem>
-
-        <FormItem label='描述：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('desc', {
-            initialValue: item.desc,
-            rules: [
-              {
-                required: false,
-                message: '描述未填写'
-              }
-            ]
-          })(<Input type="textarea"/>)}
-        </FormItem>
-
-        <FormItem label='排序' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('sort', {
-            initialValue: item.sort,
-            rules: [
-              {
-                required: false,
-                message: '排序未填写'
+                message: '父级id未填写'
               }
             ]
           })(<Input />)}
@@ -117,7 +92,7 @@ const Modals = ({
 
         <FormItem label="状态" hasFeedback {...formItemLayout} >
             {getFieldDecorator('status', {
-              initialValue: item.status,
+              initialValue: 'false',
               rules: [
                 {
                   message: '状态未填写'

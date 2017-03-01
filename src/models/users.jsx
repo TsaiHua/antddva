@@ -1,5 +1,4 @@
-//import { create, remove, update, query } from '../services/users'
-import {parse} from 'qs'
+import * as usersService from '../services/users';
 
 export default {
   //命名空间
@@ -46,6 +45,19 @@ export default {
         })
       }
     },
+
+    *remove({ payload: id }, { call, put, select }) {
+      yield call(usersService.remove, id);
+      const page = yield select(state => state.users.page);
+      yield put({ type: 'fetch', payload: { page } });
+    },
+
+    *patch({ payload: { id, values } }, { call, put, select }) {
+      yield call(usersService.patch, id, values);
+      const page = yield select(state => state.users.page);
+      yield put({ type: 'fetch', payload: { page } });
+    },
+
     //删除
     * 'delete' ({
       payload
@@ -86,6 +98,7 @@ export default {
         })
       }
     },
+
     //更新
     *update({
       payload

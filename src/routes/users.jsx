@@ -5,15 +5,15 @@ import React, {Component, PropTypes} from 'react'
 import {connect} from 'dva'
 
 // 引入 路由链接组件
-import {Link} from 'dva/router'
+import {routerRedux} from 'dva/router'
 
 // 引入 头管理组件
 import Helmet from "react-helmet"
 
 // 引入 自定义模块
-import Modal from '../components/users/modal'
 import Search from '../components/users/search'
 import List from '../components/users/list'
+import Modal from '../components/users/modal'
 
 // 引入 antd视觉组件
 import {Table, Icon} from 'antd'
@@ -89,9 +89,15 @@ Users.propTypes = {
   dispatch: PropTypes.func
 };
 
-function mapStateToProps({users}) {
+// 输入逻辑（将外部state属性转进来当参数用）
+const mapStateToProps = ({users}) => {
   return {users}
 }
+
+// 输出逻辑（把动作传出去）
+// const mapDispatchToProps = ({users}) =>{
+//   return {users}
+// }
 
 // 暴露方法
 export default connect(mapStateToProps)(Users)
