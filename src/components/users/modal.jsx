@@ -139,7 +139,7 @@ const Modals = ({
 
         <FormItem label="状态" hasFeedback {...formItemLayout} >
             {getFieldDecorator('status', {
-              initialValue: item.status,
+              initialValue: 'false',
               rules: [
                 {
                   message: '状态未填写'
@@ -160,67 +160,6 @@ const Modals = ({
               }
             ]
           })(<Input/>)}
-        </FormItem>
-
-
-        <FormItem label='邮箱：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('name3', {
-            initialValue: item.name3,
-            rules: [
-              {
-                required: true,
-                message: '邮箱未填写'
-              }
-            ]
-          })(<Input/>)}
-        </FormItem>
-
-        <FormItem label='昵称：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('name4', {
-            initialValue: item.name4,
-            rules: [
-              {
-                required: true,
-                message: '昵称未填写'
-              }
-            ]
-          })(<Input/>)}
-        </FormItem>
-
-        <FormItem label='角色' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('name6', {
-            initialValue: item.name6,
-            rules: [
-              {
-                required: true,
-                type: 'boolean',
-                message: '请选择角色'
-              }
-            ]
-          })(
-            <Radio.Group>
-              <Radio value>管理员</Radio>
-              <Radio value={false}>用户</Radio>
-            </Radio.Group>
-          )}
-        </FormItem>
-
-        <FormItem label="状态" hasFeedback {...formItemLayout}>
-          {getFieldDecorator('name7', {
-            initialValue: item.name7,
-            rules: [
-              {
-                required: true,
-                message: '状态未填写'
-              }
-            ]
-          })(
-            <Select>
-              <Select.Option value="one">one</Select.Option>
-              <Select.Option value="two">two</Select.Option>
-              <Select.Option value="three">three</Select.Option>
-            </Select>
-          )}
         </FormItem>
       </Form>
     </Modal>

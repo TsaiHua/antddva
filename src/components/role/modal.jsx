@@ -62,41 +62,7 @@ const Modals = ({
             ]
           })(<Input />)}
         </FormItem>
-        <FormItem label='模块名称：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('nickName', {
-            initialValue: item.nickName,
-            rules: [
-              {
-                required: true,
-                message: '模块名称未填写'
-              }
-            ]
-          })(<Input />)}
-        </FormItem>
 
-
-        <FormItem label='控制器名称：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('phone', {
-            initialValue: item.phone,
-            rules: [
-              {
-                required: true,
-                message: '控制器名称未填写'
-              }
-            ]
-          })(<Input />)}
-        </FormItem>
-        <FormItem label='节点名称：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('email', {
-            initialValue: item.email,
-            rules: [
-              {
-                required: true,
-                message: '节点名称未填写'
-              }
-            ]
-          })(<Input />)}
-        </FormItem>
         <FormItem label='角色描述：' hasFeedback {...formItemLayout}>
           {getFieldDecorator('description', {
             initialValue: item.description,
@@ -108,14 +74,6 @@ const Modals = ({
             ]
           })(<Input />)}
         </FormItem>
-
-        <FormItem label='状态' hasFeedback {...formItemLayout}>
-          <Select placeholder="正常">
-              <Option value="china">正常</Option>
-              <Option value="use">禁用</Option>
-            </Select>
-        </FormItem>
-
       </Form>
     </Modal>
   );

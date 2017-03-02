@@ -22,9 +22,17 @@ import {Table, Icon} from 'antd'
 import styles from './users.less'
 
 // 方法
-function Users({location, loading, dispatch, users}) {
+function Users({
+  location,
+  loading,
+  dispatch,
+  list: dataSource,
+  total,
+  page: current,
+  users
+}) {
 
-  const {list, pagination, currentItem, modalVisible, modalType} = users
+  const {pagination, currentItem, modalVisible, modalType} = users
 
   const {field, keyword} = location.query
 
@@ -85,7 +93,10 @@ Users.propTypes = {
 
 // 输入逻辑（将外部state属性转进来当参数用）
 const mapStateToProps = (state) => {
-  return {users: state.users}
+  return {
+    users: state.users,
+    loading: state.loading.models.users
+  }
 }
 
 // 输出逻辑（把动作传出去）

@@ -4,6 +4,9 @@ import React from 'react'
 // 引入 视觉组件
 import {Table, Icon, Pagination, Popconfirm, Button} from 'antd'
 
+//引入 配置文件
+import {page_size} from '../../utils/config'
+
 // 引入 样式
 import styles from './users.less'
 
@@ -11,7 +14,7 @@ import styles from './users.less'
 const data = [
   {
     key: '1',
-    username: '何晓亮',
+    real_name: '何晓亮',
     mobile: '13133339998',
     role: '超管',
     nickname: '小何',
@@ -21,7 +24,7 @@ const data = [
     status: '正常'
   }, {
     key: '2',
-    username: '何晓亮',
+    real_name: '何晓亮',
     mobile: '15533339998',
     role: '超管',
     nickname: '小何',
@@ -36,8 +39,8 @@ const data = [
 const columns = [
   {
     title: '用户名',
-    dataIndex: 'username',
-    key: 'username',
+    dataIndex: 'real_name',
+    key: 'real_name',
     render: text => <a href="#">{text}</a>
   }, {
     title: '手机号',
@@ -71,6 +74,7 @@ const columns = [
   }, {
     title: '操作',
     key: 'action',
+    className:styles['right'],
     render: (text, record) => (
       <span>
         <a href="#">授权</a>
@@ -82,39 +86,7 @@ const columns = [
 ];
 
 // 方法
-const List = (props) => {
-
-  function deleteHandler(id) {
-    dispatch({type: 'users/remove', payload: id});
-  }
-
-  function pageChangeHandler(page) {
-    dispatch(routerRedux.push({pathname: '/users', query: {
-        page
-      }}));
-  }
-
-  function editHandler(id, values) {
-    dispatch({
-      type: 'users/patch',
-      payload: {
-        id,
-        values
-      }
-    });
-  }
-
-  function createHandler(values) {
-    dispatch({type: 'users/create', payload: values});
-  }
-
-  return (
-    <div>
-      <Table columns={columns} dataSource={data} loading={loading} rowKey={record => record.id} pagination={false}/>
-      <Pagination total={total} current={current} pageSize={PAGE_SIZE} onChange={pageChangeHandler}/>
-    </div>
-  )
-}
+const List = (props) => <Table columns={columns} dataSource={data} rowKey={record => record.id} pagination={true}/>
 
 // 参数验证
 List.propTypes = {}

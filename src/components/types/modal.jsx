@@ -92,7 +92,7 @@ const Modals = ({
 
         <FormItem label="状态" hasFeedback {...formItemLayout} >
             {getFieldDecorator('status', {
-              initialValue: item.status,
+              initialValue: 'false',
               rules: [
                 {
                   message: '状态未填写'
@@ -103,134 +103,6 @@ const Modals = ({
               <Select.Option value="true">true</Select.Option>
             </Select>)}
         </FormItem>
-
-        <FormItem label="分类级别" hasFeedback {...formItemLayout} >
-            {getFieldDecorator('name1', {
-              initialValue: item.name1,
-              rules: [
-                {
-                  required: true,
-                  message: '分类级别未填写'
-                }
-              ]
-            })(<Select>
-              <Select.Option value="one">一级分类</Select.Option>
-            </Select>)}
-        </FormItem>
-
-        <FormItem label='分类描述：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('name2', {
-            initialValue: item.name2,
-            rules: [
-              {
-                required: true,
-                message: '分类描述未填写'
-              }
-            ]
-          })(<Input type="textarea"/>)}
-        </FormItem>
-
-        <FormItem label="状态" hasFeedback {...formItemLayout} >
-            {getFieldDecorator('name3', {
-              initialValue: item.name3,
-              rules: [
-                {
-                  required: true,
-                  message: '状态未填写'
-                }
-              ]
-            })(<Select>
-              <Select.Option value="one">one</Select.Option>
-              <Select.Option value="two">two</Select.Option>
-              <Select.Option value="three">three</Select.Option>
-            </Select>)}
-        </FormItem>
-
-        <FormItem label='分类名称：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('name4', {
-            initialValue: item.name4,
-            rules: [
-              {
-                required: true,
-                message: '分类名称未填写'
-              }
-            ]
-          })(<Input />)}
-        </FormItem>
-
-        <FormItem label="分类级别" hasFeedback {...formItemLayout} >
-            {getFieldDecorator('name5', {
-              initialValue: item.name5,
-              rules: [
-                {
-                  required: true,
-                  message: '分类级别未填写'
-                }
-              ]
-            })(<Select>
-              <Select.Option value="one">二级分类</Select.Option>
-            </Select>)}
-        </FormItem>
-
-        <FormItem label="父级分类" hasFeedback {...formItemLayout} >
-            {getFieldDecorator('name6', {
-              initialValue: item.name6,
-              rules: [
-                {
-                  required: true,
-                  message: '父级分类未填写'
-                }
-              ]
-            })(<Select>
-              <Select.Option value="one">牛匹选</Select.Option>
-            </Select>)}
-        </FormItem>
-
-        <FormItem label='规格：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('name7', {
-            initialValue: item.name7,
-            rules: [
-              {
-                required: true,
-                message: '规格未填写'
-              }
-            ]
-          })(<Input />)}
-        </FormItem>
-
-        <FormItem label='描述：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('name8', {
-            initialValue: item.name8,
-            rules: [
-              {
-                required: true,
-                message: '描述未填写'
-              }
-            ]
-          })(<Input />)}
-        </FormItem>
-
-        <FormItem label="状态" hasFeedback {...formItemLayout} >
-            {getFieldDecorator('name9', {
-              initialValue: item.name9,
-              rules: [
-                {
-                  required: true,
-                  message: '状态未填写'
-                }
-              ]
-            })(<Select>
-              <Select.Option value="one">one</Select.Option>
-              <Select.Option value="two">two</Select.Option>
-              <Select.Option value="three">three</Select.Option>
-            </Select>)}
-        </FormItem>
-
-
-
-
-
-
       </Form>
     </Modal>
   );

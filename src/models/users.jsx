@@ -1,15 +1,18 @@
 import * as usersService from '../services/users';
 
 export default {
+
   //命名空间
   namespace : 'users',
+
   //状态
   state : {
-    list: [],
-    loading: false,
+    loading: true,
+    list: [], //数据列表
     currentItem: {},
-    modalVisible: false,
-    modalType: 'create',
+    modalVisible: false, //弹窗是否可见
+    modalType: 'create', //弹窗类型
+    //分页配置
     pagination: {
       showSizeChanger: true,
       showQuickJumper: true,
@@ -18,145 +21,80 @@ export default {
       total: null
     }
   },
+
   //数据订阅
   subscriptions : {
     setup({dispatch, history}) {
-      history.listen(location => {
-        if (location.pathname === '/users') {
-          dispatch({type: 'query', payload: location.query})
+      return history.listen(({pathname, query}) => {
+        if (pathname === '/users') {
+          dispatch({type: 'fetch', payload: query});
         }
       })
     }
   },
+
   //异步处理
   effects : {
-    *query({
-      payload
-    }, {call, put}) {
-      yield put({type: 'showLoading'})
-      const data = yield call(query, parse(payload))
-      if (data) {
-        yield put({
-          type: 'querySuccess',
-          payload: {
-            list: data.data,
-            pagination: data.page
-          }
-        })
+
+    *fetch({
+      payload: {
+        page = 1
       }
+    }, {call, put}) {
+      const {data, headers} = yield call(usersService.fetch, {page});
+      yield put({
+        type: 'save',
+        payload: {
+          data,
+          total: parseInt(headers['x-total-count'], 10),
+          page: parseInt(page, 10)
+        }
+      });
     },
 
-    *remove({ payload: id }, { call, put, select }) {
+    *remove({
+      payload: id
+    }, {call, put}) {
       yield call(usersService.remove, id);
-      const page = yield select(state => state.users.page);
-      yield put({ type: 'fetch', payload: { page } });
+      yield put({type: 'reload'});
     },
-
-    *patch({ payload: { id, values } }, { call, put, select }) {
+    *patch({
+      payload: {
+        id,
+        values
+      }
+    }, {call, put}) {
       yield call(usersService.patch, id, values);
-      const page = yield select(state => state.users.page);
-      yield put({ type: 'fetch', payload: { page } });
+      yield put({type: 'reload'});
     },
-
-    //删除
-    * 'delete' ({
-      payload
-    }, {call, put}) {
-      yield put({type: 'showLoading'})
-      const data = yield call(remove, {id: payload})
-      if (data && data.success) {
-        yield put({
-          type: 'querySuccess',
-          payload: {
-            list: data.data,
-            pagination: {
-              total: data.page.total,
-              current: data.page.current
-            }
-          }
-        })
-      }
-    },
-
-    //创建
     *create({
-      payload
+      payload: values
     }, {call, put}) {
-      yield put({type: 'hideModal'})
-      yield put({type: 'showLoading'})
-      const data = yield call(create, payload)
-      if (data && data.success) {
-        yield put({
-          type: 'querySuccess',
-          payload: {
-            list: data.data,
-            pagination: {
-              total: data.page.total,
-              current: data.page.current
-            }
-          }
-        })
-      }
+      yield call(usersService.create, values);
+      yield put({type: 'reload'});
     },
-
-    //更新
-    *update({
-      payload
-    }, {select, call, put}) {
-      yield put({type: 'hideModal'})
-      yield put({type: 'showLoading'})
-      const id = yield select(({users}) => users.currentItem.id)
-      const newUser = {
-        ...payload,
-        id
-      }
-      const data = yield call(update, newUser)
-      if (data && data.success) {
-        yield put({
-          type: 'querySuccess',
-          payload: {
-            list: data.data,
-            pagination: {
-              total: data.page.total,
-              current: data.page.current
-            }
-          }
-        })
-      }
+    *reload(action, {put, select}) {
+      const page = yield select(state => state.users.page);
+      yield put({type: 'fetch', payload: {
+          page
+        }});
     }
   },
 
   reducers : {
-    showLoading(state) {
-      return {
-        ...state,
-        loading: true
+    save(state, {
+      payload: {
+        data: list,
+        total,
+        page
       }
-    },
-    querySuccess(state, action) {
-      const {list, pagination} = action.payload
+    }) {
       return {
         ...state,
         list,
-        loading: false,
-        pagination: {
-          ...state.pagination,
-          ...pagination
-        }
-      }
-    },
-    showModal(state, action) {
-      return {
-        ...state,
-        ...action.payload,
-        modalVisible: true
-      }
-    },
-    hideModal(state) {
-      return {
-        ...state,
-        modalVisible: false
-      }
+        total,
+        page
+      };
     }
   }
 }
