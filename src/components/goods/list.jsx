@@ -89,6 +89,7 @@ const columns = [{
   }, {
     title: '操作',
     key: 'action',
+    className:styles['right'],
     render: (text, record) => (
       <span>
       <a href="">删除</a>

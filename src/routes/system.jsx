@@ -1,7 +1,7 @@
 // 引入 React，组件，参数
 import React, {Component, PropTypes} from 'react'
 
-// 引入 dva链接模型组件
+// 引入 容器组件
 import {connect} from 'dva'
 
 // 引入 链接组件

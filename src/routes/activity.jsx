@@ -1,7 +1,7 @@
 // 引入 React，组件，参数
 import React, {Component, PropTypes} from 'react'
 
-// 引入 dva链接模型组件
+// 引入 容器组件
 import {connect} from 'dva'
 
 // 引入 路由链接组件
@@ -15,7 +15,7 @@ import Modal from '../components/activity/modal'
 import Search from '../components/activity/search'
 import List from '../components/activity/list'
 
-// 引入 antd视觉组件
+// 引入 视觉组件
 import {Table, Icon} from 'antd'
 
 // 引入 样式
@@ -31,9 +31,9 @@ function Activity({location, dispatch, activity}) {
     currentItem,
     modalVisible,
     modalType
-  } = activity;
+  } = activity
 
-  const {field, keyword} = location.query;
+  const {field, keyword} = location.query
 
   // 弹窗属性
   const modalProps = {
@@ -98,4 +98,4 @@ function mapStateToProps({activity}) {
 }
 
 // 暴露方法
-export default connect(mapStateToProps)(Activity);
+export default connect(mapStateToProps)(Activity)

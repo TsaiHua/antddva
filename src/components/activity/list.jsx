@@ -51,6 +51,7 @@ const columns = [
     title: '操作',
     dataIndex: 'operation',
     key: 'operation',
+    className:styles['right'],
     render: (text, record) => (
       <span>
         <a href="#" className="ant-dropdown-link">查看</a>

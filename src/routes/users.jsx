@@ -1,7 +1,7 @@
 // 引入 React，组件，参数
 import React, {Component, PropTypes} from 'react'
 
-// 引入 dva链接模型组件
+// 引入 容器组件
 import {connect} from 'dva'
 
 // 引入 路由链接组件
@@ -15,23 +15,25 @@ import Search from '../components/users/search'
 import List from '../components/users/list'
 import Modal from '../components/users/modal'
 
-// 引入 antd视觉组件
+// 引入 视觉组件
 import {Table, Icon} from 'antd'
 
 // 引入 样式
 import styles from './users.less'
 
 // 方法
-function Users({location, dispatch, users}) {
+function Users({
+  location,
+  loading,
+  dispatch,
+  list: dataSource,
+  total,
+  page: current,
+  users
+}) {
 
-  const {
-    loading,
-    list,
-    pagination,
-    currentItem,
-    modalVisible,
-    modalType
-  } = users
+  const {pagination, currentItem, modalVisible, modalType} = users
+
   const {field, keyword} = location.query
 
   const modalProps = {
@@ -79,19 +81,22 @@ function Users({location, dispatch, users}) {
       <List/>
       <Modal {...modalProps}/>
     </div>
-  );
-};
+  )
+}
 
 // 参数验证
 Users.propTypes = {
   users: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
-};
+}
 
 // 输入逻辑（将外部state属性转进来当参数用）
-const mapStateToProps = ({users}) => {
-  return {users}
+const mapStateToProps = (state) => {
+  return {
+    users: state.users,
+    loading: state.loading.models.users
+  }
 }
 
 // 输出逻辑（把动作传出去）
