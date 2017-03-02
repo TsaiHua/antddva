@@ -37,17 +37,17 @@ function Users({
   const {field, keyword} = location.query
 
   const modalProps = {
-    item: modalType === 'create'
-      ? {}
-      : currentItem,
-    type: modalType,
-    visible: modalVisible,
-    onOk(data) {
-      dispatch({type: `users/${modalType}`, payload: data})
-    },
-    onCancel() {
-      dispatch({type: 'users/hideModal'})
-    }
+    // item: modalType === 'create'
+    //   ? {}
+    //   : currentItem,
+    // type: modalType,
+    // visible: modalVisible,
+    // onOk(data) {
+    //   dispatch({type: `users/${modalType}`, payload: data})
+    // },
+    // onCancel() {
+    //   dispatch({type: 'users/hideModal'})
+    // }
   }
 
   const searchProps = {
@@ -64,14 +64,14 @@ function Users({
     //     pathname: '/users'
     //   }))
     // },
-    onAdd() {
-      dispatch({
-        type: 'users/showModal',
-        payload: {
-          modalType: 'create'
-        }
-      })
-    }
+    // onAdd() {
+    //   dispatch({
+    //     type: 'users/showModal',
+    //     payload: {
+    //       modalType: 'create'
+    //     }
+    //   })
+    // }
   }
 
   return (
@@ -99,7 +99,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-// 输出逻辑（把动作传出去）
+// 输出逻辑（把动作dispatch传出去）
 // const mapDispatchToProps = ({users}) =>{
 //   return {users}
 // }

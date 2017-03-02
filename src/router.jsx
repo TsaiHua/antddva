@@ -1,6 +1,6 @@
 import React from 'react'
 import {Router, Route, Link, IndexRoute, hashHistory} from 'react-router'
-// 公用部分
+// 公用组件
 import App from './routes/app'
 import Home from './routes/home'
 import Error from './routes/error'

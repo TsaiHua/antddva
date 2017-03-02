@@ -1,5 +1,7 @@
-import * as usersService from '../services/users';
+// 引入 用户接口
+import * as usersService from '../services/users'
 
+// 暴露方法
 export default {
 
   //命名空间
@@ -7,7 +9,7 @@ export default {
 
   //状态
   state : {
-    loading: true,
+    loading: true, //载入状态
     list: [], //数据列表
     currentItem: {},
     modalVisible: false, //弹窗是否可见
@@ -30,6 +32,24 @@ export default {
           dispatch({type: 'fetch', payload: query});
         }
       })
+    }
+  },
+
+  //同步操作
+  reducers : {
+    save(state, {
+      payload: {
+        data: list,
+        total,
+        page
+      }
+    }) {
+      return {
+        ...state,
+        list,
+        total,
+        page
+      };
     }
   },
 
@@ -78,23 +98,6 @@ export default {
       yield put({type: 'fetch', payload: {
           page
         }});
-    }
-  },
-
-  reducers : {
-    save(state, {
-      payload: {
-        data: list,
-        total,
-        page
-      }
-    }) {
-      return {
-        ...state,
-        list,
-        total,
-        page
-      };
     }
   }
 }
