@@ -11,7 +11,7 @@ import {Link} from 'dva/router'
 import Helmet from "react-helmet"
 
 // 引入 自定义模块
-import List from '../components/system/list'
+import Forms from '../components/system/form'
 
 // 引入 样式
 import styles from './system.less'
@@ -21,7 +21,8 @@ function System() {
   return (
     <div>
       <Helmet title="系统配置"/>
-      system
+      <Forms/>
+      <hr/>
     </div>
   );
 }

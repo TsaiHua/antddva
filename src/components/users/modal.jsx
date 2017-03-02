@@ -76,7 +76,7 @@ const Modals = ({
                 message: '名称未填写'
               }
             ]
-          })(<Input/>)}
+          })(<Input placeholder='张三'/>)}
         </FormItem>
 
         <FormItem label='手机号码：' hasFeedback {...formItemLayout}>
@@ -85,7 +85,8 @@ const Modals = ({
           rules: [
             {
               required: true,
-              message: '手机号码未填写'
+              type:'number',
+              message: '请填写手机号码'
             }
           ]
         })(<Input />)}

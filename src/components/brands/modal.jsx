@@ -61,7 +61,7 @@ const Modals = ({
             rules: [
               {
                 required: true,
-                message: '品牌名称未填写'
+                message: '品牌名未填写'
               }
             ]
           })(<Input />)}
@@ -76,54 +76,31 @@ const Modals = ({
                 message: '网站未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input placeholder='www.example.com'/>)}
         </FormItem>
 
         <FormItem label='logo' hasFeedback {...formItemLayout}>
           {getFieldDecorator('logo', {
-            initialValue: item.logo,
-            rules: [
-              {
-                required: false,
-                message: 'logo未填写'
-              }
-            ]
+            initialValue: item.logo
           })(<Input />)}
         </FormItem>
 
         <FormItem label='描述：' hasFeedback {...formItemLayout}>
           {getFieldDecorator('desc', {
-            initialValue: item.desc,
-            rules: [
-              {
-                required: false,
-                message: '描述未填写'
-              }
-            ]
+            initialValue: item.desc
           })(<Input type="textarea"/>)}
         </FormItem>
 
         <FormItem label='排序' hasFeedback {...formItemLayout}>
           {getFieldDecorator('sort', {
-            initialValue: item.sort,
-            rules: [
-              {
-                required: false,
-                message: '排序未填写'
-              }
-            ]
+            initialValue: item.sort
           })(<Input />)}
         </FormItem>
 
         <FormItem label="状态" hasFeedback {...formItemLayout} >
             {getFieldDecorator('status', {
-              initialValue: 'false',
-              rules: [
-                {
-                  message: '状态未填写'
-                }
-              ]
-            })(<Select placeholder="false">
+              initialValue: 'false'
+            })(<Select>
               <Select.Option value="false">false</Select.Option>
               <Select.Option value="true">true</Select.Option>
             </Select>)}
