@@ -1,7 +1,7 @@
 // 引入 React，组件
 import React, { PropTypes } from 'react';
 // 引入阿里的antd视觉组件
-import { Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select } from 'antd';
+import { Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select,Switch } from 'antd';
 // 引入布局样式
 import styles from './types.less';
 //定义FormItem标签
@@ -90,18 +90,10 @@ const Modals = ({
           })(<Input />)}
         </FormItem>
 
-        <FormItem label="状态" {...formItemLayout} >
-            {getFieldDecorator('status', {
-              initialValue: 'false',
-              rules: [
-                {
-                  message: '状态未填写'
-                }
-              ]
-            })(<Select style={{ width: '50%'}}>
-              <Select.Option value="false">false</Select.Option>
-              <Select.Option value="true">true</Select.Option>
-            </Select>)}
+        <FormItem {...formItemLayout} label="状态">
+          {getFieldDecorator('status', { valuePropName: 'unchecked' })(
+            <Switch />
+          )}
         </FormItem>
       </Form>
     </Modal>
