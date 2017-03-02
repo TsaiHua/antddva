@@ -39,10 +39,10 @@ const Forms = ({
           {getFieldDecorator('dayclass', {
             initialValue:'day'
           })(<Select style={{ width: '10%' }}>
-            <Option value="day">天</Option>
-            <Option value="week">周</Option>
-            <Option value="month">月</Option>
-            <Option value="year">年</Option>
+            <Select.Option value="day">天</Select.Option>
+            <Select.Option value="week">周</Select.Option>
+            <Select.Option value="month">月</Select.Option>
+            <Select.Option value="year">年</Select.Option>
           </Select>)}
 
 
