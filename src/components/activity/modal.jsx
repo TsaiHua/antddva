@@ -55,7 +55,7 @@ const Modals = ({
   return (
     <Modal {...modalOpts}>
       <Form horizontal>
-        <FormItem label='活动名称：' hasFeedback {...formItemLayout}>
+        <FormItem label='活动名称：' {...formItemLayout}>
           {getFieldDecorator('name', {
             initialValue: item.name,
             rules: [
@@ -67,7 +67,7 @@ const Modals = ({
           })(<Input />)}
         </FormItem>
 
-        <FormItem label='活动图片：' hasFeedback {...formItemLayout}>
+        <FormItem label='活动图片：' {...formItemLayout}>
           {getFieldDecorator('name1', {
             initialValue: item.name1,
             rules: [
@@ -83,35 +83,32 @@ const Modals = ({
           </Upload>)}
         </FormItem>
 
-        <FormItem label='活动简介：' hasFeedback {...formItemLayout}>
+        <FormItem label='活动简介：' {...formItemLayout}>
           {getFieldDecorator('name2', {
             initialValue: item.name2,
             rules: [
               {
-                required: true,
                 message: '活动简介未填写'
               }
             ]
           })(<Input type="textarea"/>)}
         </FormItem>
 
-        <FormItem label="状态" hasFeedback {...formItemLayout} >
-            {getFieldDecorator('name3', {
-              initialValue: item.name3,
+        <FormItem label="状态" {...formItemLayout} >
+            {getFieldDecorator('status', {
+              initialValue: 'false',
               rules: [
                 {
-                  required: true,
                   message: '状态未填写'
                 }
               ]
-            })(<Select>
-              <Select.Option value="one">one</Select.Option>
-              <Select.Option value="two">two</Select.Option>
-              <Select.Option value="three">three</Select.Option>
+            })(<Select style={{ width: '50%'}}>
+              <Select.Option value="false">false</Select.Option>
+              <Select.Option value="true">true</Select.Option>
             </Select>)}
         </FormItem>
 
-        <FormItem label='活动时间：' hasFeedback {...formItemLayout}>
+        <FormItem label='活动时间：' {...formItemLayout}>
           {getFieldDecorator('name4', {
             initialValue: item.name4,
             rules: [

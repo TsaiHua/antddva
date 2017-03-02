@@ -67,7 +67,7 @@ const Modals = ({
   return (
     <Modal {...modalOpts}>
       <Form horizontal>
-        <FormItem label='名称：' hasFeedback {...formItemLayout}>
+        <FormItem label='名称：' {...formItemLayout}>
           {getFieldDecorator('real_name', {
             initialValue: item.real_name,
             rules: [
@@ -79,7 +79,7 @@ const Modals = ({
           })(<Input placeholder='张三'/>)}
         </FormItem>
 
-        <FormItem label='手机号码：' hasFeedback {...formItemLayout}>
+        <FormItem label='手机号码：' {...formItemLayout}>
         {getFieldDecorator('mobile', {
           initialValue: item.mobile,
           rules: [
@@ -92,7 +92,7 @@ const Modals = ({
         })(<Input />)}
         </FormItem>
 
-        <FormItem label='昵称：' hasFeedback {...formItemLayout}>
+        <FormItem label='昵称：' {...formItemLayout}>
         {getFieldDecorator('weixin_nickname', {
           initialValue: item.weixin_nickname,
           rules: [
@@ -104,7 +104,7 @@ const Modals = ({
         })(<Input />)}
         </FormItem>
 
-        <FormItem label='最后登录ip地址：' hasFeedback {...formItemLayout}>
+        <FormItem label='最后登录ip地址：' {...formItemLayout}>
         {getFieldDecorator('login_ip', {
           initialValue: item.login_ip,
           rules: [
@@ -115,7 +115,7 @@ const Modals = ({
         })(<Input />)}
         </FormItem>
 
-        <FormItem label='最后登录时间：' hasFeedback {...formItemLayout}>
+        <FormItem label='最后登录时间：' {...formItemLayout}>
         {getFieldDecorator('login_time', {
           initialValue: item.login_time,
           rules: [
@@ -126,7 +126,7 @@ const Modals = ({
         })(<Input />)}
         </FormItem>
 
-        <FormItem label='密码：' hasFeedback {...formItemLayout}>
+        <FormItem label='密码：' {...formItemLayout}>
           {getFieldDecorator('password', {
             initialValue: item.password,
             rules: [
@@ -138,7 +138,7 @@ const Modals = ({
           })(<Input/>)}
         </FormItem>
 
-        <FormItem label="状态" hasFeedback {...formItemLayout} >
+        <FormItem label="状态" {...formItemLayout} >
             {getFieldDecorator('status', {
               initialValue: 'false',
               rules: [
@@ -146,13 +146,13 @@ const Modals = ({
                   message: '状态未填写'
                 }
               ]
-            })(<Select placeholder="false">
+            })(<Select style={{ width: '50%'}}>
               <Select.Option value="false">false</Select.Option>
               <Select.Option value="true">true</Select.Option>
             </Select>)}
         </FormItem>
 
-        <FormItem label='角色：' hasFeedback {...formItemLayout}>
+        <FormItem label='角色：' {...formItemLayout}>
           {getFieldDecorator('role', {
             initialValue: item.role,
             rules: [
@@ -160,7 +160,7 @@ const Modals = ({
                 message: '角色未填写'
               }
             ]
-          })(<Input/>)}
+          })(<Input style={{ width: '50%'}}/>)}
         </FormItem>
       </Form>
     </Modal>

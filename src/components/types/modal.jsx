@@ -55,7 +55,7 @@ const Modals = ({
   return (
     <Modal {...modalOpts}>
       <Form horizontal>
-        <FormItem label='名称：' hasFeedback {...formItemLayout}>
+        <FormItem label='名称：' {...formItemLayout}>
           {getFieldDecorator('name', {
             initialValue: item.name,
             rules: [
@@ -67,7 +67,7 @@ const Modals = ({
           })(<Input />)}
         </FormItem>
 
-        <FormItem label='单位：' hasFeedback {...formItemLayout}>
+        <FormItem label='单位：' {...formItemLayout}>
           {getFieldDecorator('unit', {
             initialValue: item.unit,
             rules: [
@@ -79,7 +79,7 @@ const Modals = ({
           })(<Input />)}
         </FormItem>
 
-        <FormItem label='父级id：' hasFeedback {...formItemLayout}>
+        <FormItem label='父级id：' {...formItemLayout}>
           {getFieldDecorator('parent_id', {
             initialValue: item.parent_id,
             rules: [
@@ -90,7 +90,7 @@ const Modals = ({
           })(<Input />)}
         </FormItem>
 
-        <FormItem label="状态" hasFeedback {...formItemLayout} >
+        <FormItem label="状态" {...formItemLayout} >
             {getFieldDecorator('status', {
               initialValue: 'false',
               rules: [
@@ -98,7 +98,7 @@ const Modals = ({
                   message: '状态未填写'
                 }
               ]
-            })(<Select placeholder="false">
+            })(<Select style={{ width: '50%'}}>
               <Select.Option value="false">false</Select.Option>
               <Select.Option value="true">true</Select.Option>
             </Select>)}
