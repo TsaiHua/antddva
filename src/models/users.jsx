@@ -9,13 +9,13 @@ export default {
 
   // 状态
   state : {
-    list: [], //数据列表
-    total: 0, //总条数
-    page: 0, //总页数
+    list: [], // 数据列表
+    total: 0, // 总条数
+    page: 0, // 总页数
     currentItem: {},
-    modalVisible: false, //弹窗是否可见
-    modalType: 'create', //弹窗类型
-    pagination: { //分页配置
+    modalVisible: false, // 弹窗是否可见
+    modalType: 'create', // 弹窗类型
+    pagination: { // 分页配置
       showSizeChanger: true,
       showQuickJumper: true,
       showTotal: total => `共 ${total} 条`,
@@ -29,7 +29,7 @@ export default {
     setup({dispatch, history}) {
       return history.listen(({pathname, query}) => {
         if (pathname === '/users') {
-          dispatch({type: 'fetch', payload: query});
+          dispatch({type: 'fetch', payload: query})
         }
       })
     }
@@ -51,7 +51,7 @@ export default {
         list,
         total,
         page
-      };
+      }
     },
 
     // 显示弹窗
@@ -88,17 +88,17 @@ export default {
           total: data['_meta'].totalCount,
           page: data['_meta'].currentPage
         }
-      });
+      })
     },
 
     *remove({
       payload: id
     }, {call, put, select}) {
       yield call(usersService.remove, id);
-      const page = yield select(state => state.users.page);
+      const page = yield select(state => state.users.page)
       yield put({type: 'fetch', payload: {
           page
-        }});
+        }})
     },
 
     *patch({
@@ -108,24 +108,24 @@ export default {
       }
     }, {call, put, select}) {
       yield call(usersService.patch, id, values);
-      const page = yield select(state => state.users.page);
+      const page = yield select(state => state.users.page)
       yield put({type: 'fetch', payload: {
           page
-        }});
+        }})
     },
 
     *create({
       payload: values
     }, {call, put}) {
-      yield call(usersService.create, values);
-      yield put({type: 'reload'});
+      yield call(usersService.create, values)
+      yield put({type: 'reload'})
     },
 
     *reload(action, {put, select}) {
-      const page = yield select(state => state.users.page);
+      const page = yield select(state => state.users.page)
       yield put({type: 'fetch', payload: {
           page
-        }});
+        }})
     }
   }
 }

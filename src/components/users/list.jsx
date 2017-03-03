@@ -29,14 +29,14 @@ const columns = [
     title: '昵称',
     dataIndex: 'nickname',
     key: 'nickname'
-  }, {
-    title: '最后登录IP',
-    dataIndex: 'login_ip',
-    key: 'login_ip'
-  }, {
+  },{
     title: '积分',
     dataIndex: 'jifen',
     key: 'jifen'
+  }, {
+    title: '最后登录',
+    dataIndex: 'login_ip',
+    key: 'login_ip'
   }, {
     title: '最后登录时间',
     dataIndex: 'login_time',
@@ -63,7 +63,13 @@ const columns = [
 const List = (props) => {
   return (
     <div>
-      <Table columns={columns} dataSource={props.dataSource} loading={props.loading} rowKey={record => record.id} pagination={true}/>
+      <Table
+        columns={columns}
+        dataSource={props.dataSource}
+        loading={props.loading}
+        rowKey={record => record.id} 
+        pagination={true}
+      />
     </div>
   )
 }
