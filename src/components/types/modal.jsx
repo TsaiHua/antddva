@@ -1,7 +1,7 @@
 // 引入 React，组件
 import React, { PropTypes } from 'react';
 // 引入阿里的antd视觉组件
-import { Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select } from 'antd';
+import { Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select,Switch } from 'antd';
 // 引入布局样式
 import styles from './types.less';
 //定义FormItem标签
@@ -55,7 +55,7 @@ const Modals = ({
   return (
     <Modal {...modalOpts}>
       <Form horizontal>
-        <FormItem label='名称：' hasFeedback {...formItemLayout}>
+        <FormItem label='名称：' {...formItemLayout}>
           {getFieldDecorator('name', {
             initialValue: item.name,
             rules: [
@@ -67,7 +67,7 @@ const Modals = ({
           })(<Input />)}
         </FormItem>
 
-        <FormItem label='单位：' hasFeedback {...formItemLayout}>
+        <FormItem label='单位：' {...formItemLayout}>
           {getFieldDecorator('unit', {
             initialValue: item.unit,
             rules: [
@@ -79,7 +79,7 @@ const Modals = ({
           })(<Input />)}
         </FormItem>
 
-        <FormItem label='父级id：' hasFeedback {...formItemLayout}>
+        <FormItem label='父级id：' {...formItemLayout}>
           {getFieldDecorator('parent_id', {
             initialValue: item.parent_id,
             rules: [
@@ -90,18 +90,10 @@ const Modals = ({
           })(<Input />)}
         </FormItem>
 
-        <FormItem label="状态" hasFeedback {...formItemLayout} >
-            {getFieldDecorator('status', {
-              initialValue: 'false',
-              rules: [
-                {
-                  message: '状态未填写'
-                }
-              ]
-            })(<Select placeholder="false">
-              <Select.Option value="false">false</Select.Option>
-              <Select.Option value="true">true</Select.Option>
-            </Select>)}
+        <FormItem {...formItemLayout} label="状态">
+          {getFieldDecorator('status', { valuePropName: 'unchecked' })(
+            <Switch />
+          )}
         </FormItem>
       </Form>
     </Modal>

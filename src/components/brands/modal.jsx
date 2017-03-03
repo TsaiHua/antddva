@@ -1,7 +1,7 @@
 // 引入 React，组件
 import React, { PropTypes } from 'react';
 // 引入阿里的antd视觉组件
-import { Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select } from 'antd';
+import { Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select ,Switch} from 'antd';
 // 引入布局样式
 import styles from './brands.less';
 //定义FormItem标签
@@ -55,7 +55,7 @@ const Modals = ({
   return (
     <Modal {...modalOpts}>
       <Form horizontal>
-        <FormItem label='品牌名：' hasFeedback {...formItemLayout}>
+        <FormItem label='品牌名：' {...formItemLayout}>
           {getFieldDecorator('name', {
             initialValue: item.name,
             rules: [
@@ -67,7 +67,7 @@ const Modals = ({
           })(<Input />)}
         </FormItem>
 
-        <FormItem label='网站' hasFeedback {...formItemLayout}>
+        <FormItem label='网站'  {...formItemLayout}>
           {getFieldDecorator('site', {
             initialValue: item.site,
             rules: [
@@ -79,31 +79,28 @@ const Modals = ({
           })(<Input placeholder='www.example.com'/>)}
         </FormItem>
 
-        <FormItem label='logo' hasFeedback {...formItemLayout}>
+        <FormItem label='logo' {...formItemLayout}>
           {getFieldDecorator('logo', {
             initialValue: item.logo
           })(<Input />)}
         </FormItem>
 
-        <FormItem label='描述：' hasFeedback {...formItemLayout}>
+        <FormItem label='描述：' {...formItemLayout}>
           {getFieldDecorator('desc', {
             initialValue: item.desc
           })(<Input type="textarea"/>)}
         </FormItem>
 
-        <FormItem label='排序' hasFeedback {...formItemLayout}>
+        <FormItem label='排序' {...formItemLayout}>
           {getFieldDecorator('sort', {
             initialValue: item.sort
-          })(<Input />)}
+          })(<Input style={{ width: '60%'}} />)}
         </FormItem>
 
-        <FormItem label="状态" hasFeedback {...formItemLayout} >
-            {getFieldDecorator('status', {
-              initialValue: 'false'
-            })(<Select>
-              <Select.Option value="false">false</Select.Option>
-              <Select.Option value="true">true</Select.Option>
-            </Select>)}
+        <FormItem {...formItemLayout} label="状态">
+          {getFieldDecorator('status', { valuePropName: 'unchecked' })(
+            <Switch />
+          )}
         </FormItem>
       </Form>
     </Modal>

@@ -22,9 +22,9 @@ const Forms = ({
   }
 }) => {
   return (
-      <Form horizontal>
-        <FormItem>
-          <p>计费规则：</p>
+      <Form inline>
+        <p>计费规则：</p>
+        <FormItem style={{width:'80px' ,marginRight:'1%'}}>
           {getFieldDecorator('day', {
             initialValue:5,
             rules: [
@@ -34,19 +34,19 @@ const Forms = ({
                 message: '数字'
               }
             ]
-          })(<InputNumber style={{ width: '10%' }} min={1}/>)}
-
+          })(<InputNumber min={1}/>)}
+        </FormItem>
+        <FormItem style={{width:'40px',marginRight:'1.5%'}}>
           {getFieldDecorator('dayclass', {
             initialValue:'day'
-          })(<Select style={{ width: '10%' }}>
+          })(<Select >
             <Select.Option value="day">天</Select.Option>
             <Select.Option value="week">周</Select.Option>
             <Select.Option value="month">月</Select.Option>
             <Select.Option value="year">年</Select.Option>
           </Select>)}
-
-
-
+        </FormItem>
+        <FormItem>
           {getFieldDecorator('money', {
             initialValue:6,
             rules: [
@@ -56,7 +56,7 @@ const Forms = ({
                 message: '数字'
               }
             ]
-          })(<InputNumber style={{ width: '10%' }} min={1}/>)}
+          })(<InputNumber min={1}/>)}
           <span>元钱</span>
         </FormItem>
       </Form>

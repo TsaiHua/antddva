@@ -35,6 +35,7 @@ const Role = ({location, dispatch, role}) => {
 
   const {field, keyword} = location.query;
 
+  // 弹窗属性
   const modalProps = {
     item: modalType === 'create'
       ? {}
@@ -49,6 +50,7 @@ const Role = ({location, dispatch, role}) => {
     }
   }
 
+  // 搜索属性
   const searchProps = {
     field,
     keyword,
@@ -90,6 +92,7 @@ Role.propTypes = {
   dispatch: PropTypes.func
 };
 
+// 模型状态转到属性
 function mapStateToProps({role}) {
   return {role}
 }

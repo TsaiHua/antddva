@@ -34,6 +34,7 @@ function Orders({location, dispatch, orders}) {
   } = orders
   const {field, keyword} = location.query
 
+  // 弹窗属性
   const modalProps = {
     item: modalType === 'create'
       ? {}
@@ -48,6 +49,7 @@ function Orders({location, dispatch, orders}) {
     }
   }
 
+  // 搜索属性
   const searchProps = {
     field,
     keyword,
@@ -89,6 +91,7 @@ Orders.propTypes = {
   dispatch: PropTypes.func
 };
 
+// 模型状态转到属性
 function mapStateToProps({orders}) {
   return {orders}
 }
