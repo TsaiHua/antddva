@@ -68,11 +68,26 @@ const Modals = ({
             initialValue: item.description,
             rules: [
               {
-                required: true,
+                required: false,
                 message: '角色描述未填写'
               }
             ]
           })(<Input />)}
+        </FormItem>
+
+        <FormItem label="状态" hasFeedback {...formItemLayout} >
+            {getFieldDecorator('status', {
+              initialValue: item.status,
+              rules: [
+                {
+                  required: true,
+                  message: '状态未填写'
+                }
+              ]
+            })(<Select placeholder="false">
+              <Select.Option value="false">false</Select.Option>
+              <Select.Option value="true">true</Select.Option>
+            </Select>)}
         </FormItem>
       </Form>
     </Modal>

@@ -11,9 +11,9 @@ import {Link} from 'dva/router';
 import Helmet from "react-helmet";
 
 // 引入 自定义模块
-import Modal from '../components/goods/modal';
 import Search from '../components/goods/search';
 import List from '../components/goods/list';
+import Modal from '../components/goods/modal';
 
 // 引入 视觉组件
 import {Table, Icon} from 'antd';
@@ -22,10 +22,10 @@ import {Table, Icon} from 'antd';
 import styles from './goods.less';
 
 // 方法
-function Goods({location, dispatch, goods}) {
+function Goods({loading,location, dispatch, goods}) {
 
+  // 从模型带参数到路由
   const {
-    loading,
     list,
     pagination,
     currentItem,
@@ -34,7 +34,7 @@ function Goods({location, dispatch, goods}) {
   } = goods;
   const {field, keyword} = location.query;
 
-  // 弹窗属性
+    // 弹窗参数
   const modalProps = {
     item: modalType === 'create'
       ? {}
@@ -47,6 +47,16 @@ function Goods({location, dispatch, goods}) {
     onCancel() {
       dispatch({type: 'goods/hideModal'})
     }
+  }
+
+  // 数据列参数
+  const listProps = {
+    // dispatch,
+    loading: loading,
+    dataSource: list,
+    // pagination:
+    // total,
+    //page: pagination.current,
   }
 
   // 搜索属性
@@ -64,21 +74,21 @@ function Goods({location, dispatch, goods}) {
     //     pathname: '/users'
     //   }))
     // },
-    onAdd() {
-      dispatch({
-        type: 'goods/showModal',
-        payload: {
-          modalType: 'create'
-        }
-      })
-    }
+    //onAdd() {
+      //dispatch({
+        //type: 'goods/showModal',
+        //payload: {
+          //modalType: 'create'
+        //}
+      //})
+    //}
   }
 
   return (
     <div>
       <Helmet title="商品管理"/>
       <Search {...searchProps}/>
-      <List/>
+      <List {...listProps}/>
       <Modal {...modalProps}/>
     </div>
   );
@@ -91,10 +101,15 @@ Goods.propTypes = {
   dispatch: PropTypes.func
 };
 
-// 模型状态转到属性
-function mapStateToProps({goods}) {
-  return {goods}
+// 输入逻辑（将外部state属性转进来当参数用）
+const mapStateToProps = (state) => {
+  return {loading: state.loading.models.goods, goods: state.goods}
 }
+
+// 输出逻辑（把动作dispatch传出去）
+// const mapDispatchToProps = ({goods}) =>{
+//   return {goods}
+// }
 
 // 暴露方法
 export default connect(mapStateToProps)(Goods)

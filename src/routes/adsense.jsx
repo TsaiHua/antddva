@@ -11,9 +11,9 @@ import {Link} from 'dva/router'
 import Helmet from "react-helmet"
 
 // 引入 自定义模块
-import Modal from '../components/adsense/modal'
 import Search from '../components/adsense/search'
 import List from '../components/adsense/list'
+import Modal from '../components/adsense/modal'
 
 // 引入 视觉组件
 import {Table, Icon} from 'antd'
@@ -22,19 +22,21 @@ import {Table, Icon} from 'antd'
 import styles from './adsense.less'
 
 // 方法
-function Adsense({location, dispatch, adsense}) {
+function Adsense({loading,location, dispatch, adsense}) {
 
+  // 从模型带参数到路由
   const {
-    loading,
     list,
     pagination,
     currentItem,
     modalVisible,
     modalType
   } = adsense;
+
+    // 搜索关键字
   const {field, keyword} = location.query;
 
-  // 弹窗属性
+  // 弹窗参数
   const modalProps = {
     item: modalType === 'create'
       ? {}
@@ -49,36 +51,30 @@ function Adsense({location, dispatch, adsense}) {
     }
   }
 
+    // 数据列参数
+    const listProps = {
+      // dispatch,
+      loading: loading,
+      dataSource: list,
+      // pagination:
+      // total,
+      //page: pagination.current,
+    }
+
+
   // 搜索属性
   const searchProps = {
     field,
     keyword,
-    onSearch(fieldsValue) {
-      fieldsValue.keyword.length
-        ? dispatch(routerRedux.push({
-          pathname: '/adsense',
-          query: {
-            field: fieldsValue.field,
-            keyword: fieldsValue.keyword
-          }
-        }))
-        : dispatch(routerRedux.push({pathname: '/adsense'}))
-    },
-    onAdd() {
-      dispatch({
-        type: 'adsense/showModal',
-        payload: {
-          modalType: 'create'
-        }
-      })
-    }
+
+
   }
 
   return (
     <div>
       <Helmet title="广告管理"/>
       <Search {...searchProps}/>
-      <List/>
+      <List  {...listProps}/>
       <Modal {...modalProps}/>
     </div>
   );
@@ -91,10 +87,16 @@ Adsense.propTypes = {
   dispatch: PropTypes.func
 };
 
-// 模型状态转到属性
-function mapStateToProps({adsense}) {
-  return {adsense}
+// 输入逻辑（将外部state属性转进来当参数用）
+const mapStateToProps = (state) => {
+  return {loading: state.loading.models.adsense, adsense: state.adsense}
 }
+
+// 输出逻辑（把动作dispatch传出去）
+// const mapDispatchToProps = ({adsense}) =>{
+//   return {adsense}
+// }
+
 
 // 暴露方法
 export default connect(mapStateToProps)(Adsense)

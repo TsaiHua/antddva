@@ -5,28 +5,15 @@ import styles from './auth.less';
 // 引入阿里的antd视觉组件
 import { Table, Icon } from 'antd';
 
-//列表数据来源
-const data = [{
-  key: '1',
-  Rulename: 'user/admin',
-  Ruledescription: '后台管理员，用户名',
-  state: '正常'
-},{
-  key: '2',
-  Rulename: 'user/admin',
-  Ruledescription: '后台管理员，用户名',
-  state: '禁用'
-}];
-
 //列表字段
 const columns = [{
     title: '规则名称',
-    dataIndex: 'Rulename',
-    key: 'Rulename',
+    dataIndex: 'name',
+    key: 'name',
   },{
     title: '规则描述',
-    dataIndex: 'Ruledescription',
-    key: 'Ruledescription',
+    dataIndex: 'desc',
+    key: 'desc',
   },{
     title: '状态',
     dataIndex: 'state',
@@ -47,7 +34,7 @@ const columns = [{
 const List = (props) => {
   return (
     <div>
-      <Table columns={columns} dataSource={data} />
+    <Table columns={columns} dataSource={props.dataSource} loading={props.loading} rowKey={record => record.id} pagination={true}/>
     </div>
   );
 };

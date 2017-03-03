@@ -11,9 +11,9 @@ import {Link} from 'dva/router'
 import Helmet from "react-helmet"
 
 // 引入 自定义模块
-import Modal from '../components/orders/modal'
 import Search from '../components/orders/search'
 import List from '../components/orders/list'
+import Modal from '../components/orders/modal'
 
 // 引入 视觉组件
 import {Table, Icon} from 'antd'
@@ -22,10 +22,10 @@ import {Table, Icon} from 'antd'
 import styles from './orders.less'
 
 // 方法
-function Orders({location, dispatch, orders}) {
+function Orders({loading,location, dispatch, orders}) {
 
+  // 从模型带参数到路由
   const {
-    loading,
     list,
     pagination,
     currentItem,
@@ -49,6 +49,16 @@ function Orders({location, dispatch, orders}) {
     }
   }
 
+  // 数据列参数
+  const listProps = {
+    // dispatch,
+    loading: loading,
+    dataSource: list,
+    // pagination:
+    // total,
+    //page: pagination.current,
+  }
+
   // 搜索属性
   const searchProps = {
     field,
@@ -64,21 +74,21 @@ function Orders({location, dispatch, orders}) {
     //     pathname: '/users'
     //   }))
     // },
-    onAdd() {
-      dispatch({
-        type: 'orders/showModal',
-        payload: {
-          modalType: 'create'
-        }
-      })
-    }
+    //onAdd() {
+      //dispatch({
+        //type: 'orders/showModal',
+        //payload: {
+          //modalType: 'create'
+        //}
+      //})
+    //}
   }
 
   return (
     <div>
       <Helmet title="订单管理"/>
       <Search {...searchProps}/>
-      <List/>
+      <List  {...listProps}/>
       <Modal {...modalProps}/>
     </div>
   );
@@ -91,10 +101,15 @@ Orders.propTypes = {
   dispatch: PropTypes.func
 };
 
-// 模型状态转到属性
-function mapStateToProps({orders}) {
-  return {orders}
+// 输入逻辑（将外部state属性转进来当参数用）
+const mapStateToProps = (state) => {
+  return {loading: state.loading.models.orders, orders: state.orders}
 }
+
+// 输出逻辑（把动作dispatch传出去）
+// const mapDispatchToProps = ({orders}) =>{
+//   return {orders}
+// }
 
 // 暴露方法
 export default connect(mapStateToProps)(Orders)

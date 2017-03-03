@@ -5,22 +5,7 @@ import styles from './adsense.less';
 // 引入阿里的antd视觉组件
 import { Table, Icon } from 'antd';
 
-//列表数据来源
-const data = [{
-  key: '1',
-  ID:'1',
-  Advertisingtitle: '圈圈红包就是好',
-  Advertisingpicture: '图片',
-  Createtime: '2017-02-16 09：30：00',
-  status:'正常'
-}, {
-  key: '2',
-  ID:'2',
-  Advertisingtitle: '圈圈红包就是好',
-  Advertisingpicture: '图片',
-  Createtime: '2017-02-16 09：30：00',
-  status:'禁用'
-}];
+
 
 //列表字段
 const columns = [{
@@ -29,8 +14,12 @@ const columns = [{
   key: 'ID',
 },{
     title: '广告标题',
-    dataIndex: 'Advertisingtitle',
-    key: 'Advertisingtitle'
+    dataIndex: 'title',
+    key: 'title'
+  },{
+    title: '广告位置',
+    dataIndex: 'position',
+    key: 'position',
   },{
     title: '广告图片',
     dataIndex: 'Advertisingpicture',
@@ -59,9 +48,9 @@ const columns = [{
 const List = (props) => {
   return (
     <div>
-      <Table columns={columns} dataSource={data} />
+    <Table columns={columns} dataSource={props.dataSource} loading={props.loading} rowKey={record => record.id} pagination={true}/>
     </div>
-  );
+    )
 };
 
 // 参数验证

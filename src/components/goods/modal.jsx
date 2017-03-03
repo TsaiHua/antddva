@@ -104,7 +104,7 @@ const Modals = ({
             initialValue: item.city_id,
             rules: [
               {
-                required: true,
+                required: false,
                 message: '城市id未填写'
               }
             ]
@@ -116,7 +116,7 @@ const Modals = ({
             initialValue: item.brand_id,
             rules: [
               {
-                required: true,
+                required: false,
                 message: '品牌id未填写'
               }
             ]
@@ -128,7 +128,7 @@ const Modals = ({
             initialValue: item.supplier_id,
             rules: [
               {
-                required: true,
+                required: false,
                 message: '应商id未填写'
               }
             ]
@@ -140,7 +140,7 @@ const Modals = ({
             initialValue: item.good_desc,
             rules: [
               {
-                required: true,
+                required: false,
                 message: '商品描述未填写'
               }
             ]
@@ -152,7 +152,7 @@ const Modals = ({
             initialValue: item.img,
             rules: [
               {
-                required: true,
+                required: false,
                 message: '图片未上传'
               }
             ]
@@ -175,7 +175,7 @@ const Modals = ({
           <Select.Option value="false">true</Select.Option>
           <Select.Option value="true">false</Select.Option>
         </Select>)}
-      </FormItem> 
+      </FormItem>
     </Form>
   </Modal>
   );

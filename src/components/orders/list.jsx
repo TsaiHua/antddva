@@ -5,33 +5,6 @@ import styles from './orders.less';
 // 引入阿里的antd视觉组件
 import { Table, Icon } from 'antd';
 
-//列表数据来源
-const data = [{
-  key: '1',
-  ID:'1',
-  Ordernumber: '123888',
-  Consignee: '王某某',
-  Undersingle: '哈佛李',
-  Contactnumber: '18872603358',
-  Deliveryaddress: '枫林路，102号',
-  freight: '8.8',
-  Orderprice: '960.00',
-  Createtime:'2017-02-16：18：31：36',
-  status:'已支付'
-}, {
-  key: '2',
-  ID:'2',
-  Ordernumber: '123888',
-  Consignee: '王某某',
-  Undersingle: '哈佛李',
-  Contactnumber: '18872603358',
-  Deliveryaddress: '枫林路，102号',
-  freight: '8.8',
-  Orderprice: '960.00',
-  Createtime:'2017-02-16：18：31：36',
-  status:'已支付'
-}];
-
 
 //列表字段
 const columns = [{
@@ -40,8 +13,8 @@ const columns = [{
   key: 'ID',
 },{
     title: '订单编号',
-    dataIndex: 'Ordernumber',
-    key: 'Ordernumber',
+    dataIndex: 'sn',
+    key: 'sn',
     render: text => <a href="#">{text}</a>
   },{
     title: '收货人',
@@ -53,8 +26,8 @@ const columns = [{
     key: 'Undersingle',
   },{
     title: '联系电话',
-    dataIndex: 'Contactnumber',
-    key: 'Contactnumber',
+    dataIndex: 'mobile',
+    key: 'mobile',
   },{
       title: '送货地址',
       dataIndex: 'Deliveryaddress',
@@ -73,8 +46,8 @@ const columns = [{
     key: 'Createtime',
   },{
     title: '状态',
-    dataIndex: 'status',
-    key: 'status',
+    dataIndex: 'pay_status',
+    key: 'pay_status',
   }, {
     title: '操作',
     key: 'action',
@@ -92,7 +65,7 @@ const columns = [{
 const List = (props) => {
   return (
     <div>
-      <Table columns={columns} dataSource={data} />
+    <Table columns={columns} dataSource={props.dataSource} loading={props.loading} rowKey={record => record.id} pagination={true}/>
     </div>
   );
 };

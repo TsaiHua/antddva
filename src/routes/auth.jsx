@@ -11,9 +11,9 @@ import {Link} from 'dva/router'
 import Helmet from "react-helmet"
 
 // 引入 自定义模块
-import Modal from '../components/auth/modal'
 import Search from '../components/auth/search'
 import List from '../components/auth/list'
+import Modal from '../components/auth/modal'
 
 // 引入 视觉组件
 import {Table, Icon} from 'antd'
@@ -22,20 +22,22 @@ import {Table, Icon} from 'antd'
 import styles from './auth.less'
 
 // 方法
-const Auth = ({location, dispatch, auth}) => {
+const Auth = ({loading, location, dispatch, auth}) => {
 
+  // 从模型带参数到路由
   const {
-    loading,
     list,
     pagination,
     currentItem,
     modalVisible,
     modalType
-  } = auth;
+  } = auth
 
+  // 搜索关键字
   const {field, keyword} = location.query;
 
-  // 弹窗属性
+
+  // 弹窗参数
   const modalProps = {
     item: modalType === 'create'
       ? {}
@@ -50,36 +52,29 @@ const Auth = ({location, dispatch, auth}) => {
     }
   }
 
+  // 数据列参数
+  const listProps = {
+    // dispatch,
+    loading: loading,
+    dataSource: list,
+    // pagination:
+    // total,
+    //page: pagination.current,
+  }
+
+
   // 搜索属性
   const searchProps = {
     field,
     keyword,
-    onSearch(fieldsValue) {
-      fieldsValue.keyword.length
-        ? dispatch(routerRedux.push({
-          pathname: '/auth',
-          query: {
-            field: fieldsValue.field,
-            keyword: fieldsValue.keyword
-          }
-        }))
-        : dispatch(routerRedux.push({pathname: '/auth'}))
-    },
-    onAdd() {
-      dispatch({
-        type: 'auth/showModal',
-        payload: {
-          modalType: 'create'
-        }
-      })
-    }
+
   }
 
   return (
     <div>
       <Helmet title="权限管理"/>
       <Search {...searchProps}/>
-      <List/>
+      <List {...listProps} />
       <Modal {...modalProps}/>
     </div>
   )
@@ -90,12 +85,17 @@ Auth.propTypes = {
   auth: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
-};
-
-// 模型状态转到属性
-function mapStateToProps({auth}) {
-  return {auth}
 }
 
+// 输入逻辑（将外部state属性转进来当参数用）
+const mapStateToProps = (state) => {
+  return {loading: state.loading.models.auth, auth: state.auth}
+}
+
+// 输出逻辑（把动作dispatch传出去）
+// const mapDispatchToProps = ({auth}) =>{
+//   return {auth}
+// }
+
 // 暴露方法
-export default connect(mapStateToProps)(Auth);
+export default connect(mapStateToProps)(Auth)

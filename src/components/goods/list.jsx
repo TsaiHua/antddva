@@ -5,36 +5,6 @@ import styles from './goods.less';
 // 引入阿里的antd视觉组件
 import { Table, Icon } from 'antd';
 
-//列表数据来源
-const data = [{
-  key: '1',
-  ID:'1',
-  Commodityname: '王小牙',
-  Commodityquantity: 'cs0843',
-  Company: '包',
-  classification: '股票',
-  brand: '牛匹选',
-  Returnrule: '允许退货',
-  Factory: '56.00',
-  buyingprice:'58.00',
-  Sellingprice: '62.8',
-  integra: '56',
-  status:'上架'
-}, {
-  key: '2',
-  ID:'2',
-  Commodityname: '王小牙',
-  Commodityquantity: 'cs0843',
-  Company: '箱',
-  classification: '股票',
-  brand: '牛匹选',
-  Returnrule: '允许退货',
-  Factory: '56.00',
-  buyingprice:'58.00',
-  Sellingprice: '62.8',
-  integra: '56',
-  status:'下架'
-}];
 
 //列表字段
 const columns = [{
@@ -43,11 +13,11 @@ const columns = [{
   key: 'ID',
 },{
     title: '商品名',
-    dataIndex: 'Commodityname',
-    key: 'Commodityname',
+    dataIndex: 'name',
+    key: 'name',
    render: text => <a href="#">{text}</a>
   },{
-    title: '商品编号',
+    title: '商品号',
     dataIndex: 'Commodityquantity',
     key: 'Commodityquantity',
   },{
@@ -105,7 +75,7 @@ const columns = [{
 const List = (props) => {
   return (
     <div>
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={props.dataSource} loading={props.loading} rowKey={record => record.id} pagination={true}/>
     </div>
   );
 };
