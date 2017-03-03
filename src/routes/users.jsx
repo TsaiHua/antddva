@@ -16,7 +16,7 @@ import List from '../components/users/list'
 import Modal from '../components/users/modal'
 
 // 引入 视觉组件
-import {Table, Icon} from 'antd'
+//import {Table, Icon} from 'antd'
 
 // 引入 样式
 import styles from './users.less'
@@ -63,7 +63,7 @@ function Users({loading, location, dispatch, users}) {
     // total,
     //page: pagination.current,
   }
-  
+
   // 搜索参数
   const searchProps = {
     field,

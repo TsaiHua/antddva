@@ -1,13 +1,13 @@
-//import { create, remove, update, query } from '../services/users'
-import {parse} from 'qs'
+// 引入 角色接口
+import * as roleService from '../services/role'
 
+// 暴露方法
 export default {
 
   namespace : 'role',
 
   state : {
     list: [],
-    loading: false,
     currentItem: {},
     modalVisible: false,
     modalType: 'create',
@@ -20,128 +20,94 @@ export default {
     }
   },
 
-  subscriptions : {
-    setup({dispatch, history}) {
-      history.listen(location => {
-        if (location.pathname === '/users') {
-          dispatch({type: 'query', payload: location.query})
+    //数据订阅
+    subscriptions : {
+      setup({dispatch, history}) {
+        return history.listen(({pathname, query}) => {
+          if (pathname === '/role') {
+            console.log('到了 subscriptions');
+            dispatch({type: 'fetch', payload: query});
+          }
+        })
+      }
+    },
+
+    //同步操作
+    reducers : {
+      save(state, {
+        payload: {
+          list,
+          total,
+          page
         }
-      })
-    }
-  },
-
-  effects : {
-    *query({
-      payload
-    }, {call, put}) {
-      yield put({type: 'showLoading'})
-      const data = yield call(query, parse(payload))
-      if (data) {
-        yield put({
-          type: 'querySuccess',
-          payload: {
-            list: data.data,
-            pagination: data.page
-          }
-        })
+      }) {
+        return {
+          ...state,
+          list,
+          total,
+          page
+        };
       }
     },
 
-    * 'delete' ({
-      payload
-    }, {call, put}) {
-      yield put({type: 'showLoading'})
-      const data = yield call(remove, {id: payload})
-       if (data && data.success) {
-        yield put({
-          type: 'querySuccess',
-          payload: {
-            list: data.data,
-            pagination: {
-              total: data.page.total,
-              current: data.page.current
-            }
-          }
-        })
-      }
-    },
+    //异步处理
+    effects : {
 
-    *create({
-      payload
-    }, {call, put}) {
-      yield put({type: 'hideModal'})
-      yield put({type: 'showLoading'})
-      const data = yield call(create, payload)
-      if (data && data.success) {
-        yield put({
-          type: 'querySuccess',
-          payload: {
-            list: data.data,
-            pagination: {
-              total: data.page.total,
-              current: data.page.current
-            }
-          }
-        })
-      }
-    },
-    *update({
-      payload
-    }, {select, call, put}) {
-      yield put({type: 'hideModal'})
-      yield put({type: 'showLoading'})
-      const id = yield select(({users}) => users.currentItem.id)
-      const newUser = {
-        ...payload,
-        id
-      }
-      const data = yield call(update, newUser)
-      if (data && data.success) {
-        yield put({
-          type: 'querySuccess',
-          payload: {
-            list: data.data,
-            pagination: {
-              total: data.page.total,
-              current: data.page.current
-            }
-          }
-        })
-      }
-    }
-  },
-
-  reducers : {
-    showLoading(state) {
-      return {
-        ...state,
-        loading: true
-      }
-    },
-    querySuccess(state, action) {
-      const {list, pagination} = action.payload
-      return {
-        ...state,
-        list,
-        loading: false,
-        pagination: {
-          ...state.pagination,
-          ...pagination
+      *fetch({
+        payload: {
+          page = 1
         }
-      }
-    },
-    showModal(state, action) {
-      return {
-        ...state,
-        ...action.payload,
-        modalVisible: true
-      }
-    },
-    hideModal(state) {
-      return {
-        ...state,
-        modalVisible: false
+      }, {call, put}) {
+        console.log('到了 fetch');
+        const {data} = yield call(roleService.fetch, {page})
+        console.log(data);
+        yield put({
+          type: 'save',
+          payload: {
+            list: data['data'],
+            total: data['_meta'].totalCount,
+            page: data['_meta'].currentPage,
+            //total: parseInt(headers['x-total-count'], 10),
+            //page: parseInt(page, 10)
+          }
+        });
+      },
+
+      *remove({
+        payload: id
+      }, {call, put, select}) {
+        yield call(usersService.remove, id);
+        const page = yield select(state => state.users.page);
+        yield put({type: 'fetch', payload: {
+            page
+          }});
+      },
+
+      *patch({
+        payload: {
+          id,
+          values
+        }
+      }, {call, put, select}) {
+        yield call(usersService.patch, id, values);
+        const page = yield select(state => state.users.page);
+        yield put({type: 'fetch', payload: {
+            page
+          }});
+      },
+
+      *create({
+        payload: values
+      }, {call, put}) {
+        yield call(usersService.create, values);
+        yield put({type: 'reload'});
+      },
+
+      *reload(action, {put, select}) {
+        const page = yield select(state => state.users.page);
+        yield put({type: 'fetch', payload: {
+            page
+          }});
       }
     }
   }
-}

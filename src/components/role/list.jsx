@@ -5,30 +5,15 @@ import styles from './role.less';
 // 引入阿里的antd视觉组件
 import { Table, Icon } from 'antd';
 
-//列表数据来源
-const data = [{
-  key: '1',
-  rolename: 'admin',
-  describe: '平台管理员',
-  Numder: '64',
-  state: '正常'
-},{
-  key: '2',
-  rolename: 'admin',
-  describe: '平台管理员',
-  Numder: '86',
-  state: '禁用'
-}];
-
 //列表字段
 const columns = [{
     title: '角色名',
-    dataIndex: 'rolename',
-    key: 'rolename'
+    dataIndex: 'name',
+    key: 'name'
   },{
     title: '描述',
-    dataIndex: 'describe',
-    key: 'describe',
+    dataIndex: 'description',
+    key: 'description',
   },{
       title: '数量',
       dataIndex: 'Numder',
@@ -56,7 +41,7 @@ const columns = [{
 const List = (props) => {
   return (
     <div>
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={props.dataSource} loading={props.loading} rowKey={record => record.id} pagination={true}/>
     </div>
   );
 };
