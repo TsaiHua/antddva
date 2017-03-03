@@ -4,7 +4,7 @@ import React, {Component, PropTypes} from 'react'
 // 引入 容器组件
 import {connect} from 'dva'
 
-// 引入 路由链接组件
+// 引入 链接组件
 import {routerRedux} from 'dva/router'
 
 // 引入 头管理组件
@@ -22,34 +22,49 @@ import {Table, Icon} from 'antd'
 import styles from './users.less'
 
 // 方法
-function Users({
-  location,
-  loading,
-  dispatch,
-  list: dataSource,
-  total,
-  page: current,
-  users
-}) {
+function Users({loading, location, dispatch, users}) {
 
-  const {pagination, currentItem, modalVisible, modalType} = users
+  // 从模型带参数到路由
+  const {
+    list,
+    total,
+    pagination,
+    currentItem,
+    modalVisible,
+    modalType
+  } = users
 
+  console.log(users);
+
+  // 搜索关键字
   const {field, keyword} = location.query
 
+  // 弹窗参数
   const modalProps = {
-    // item: modalType === 'create'
-    //   ? {}
-    //   : currentItem,
-    // type: modalType,
-    // visible: modalVisible,
-    // onOk(data) {
-    //   dispatch({type: `users/${modalType}`, payload: data})
-    // },
-    // onCancel() {
-    //   dispatch({type: 'users/hideModal'})
-    // }
+    item: modalType === 'create'
+      ? {}
+      : currentItem,
+    type: modalType,
+    visible: modalVisible,
+    onOk(data) {
+      dispatch({type: `users/${modalType}`, payload: data})
+    },
+    onCancel() {
+      dispatch({type: 'users/hideModal'})
+    }
   }
 
+  // 数据列参数
+  const listProps = {
+    // dispatch,
+    loading: loading,
+    dataSource: list,
+    // pagination:
+    // total,
+    //page: pagination.current,
+  }
+  
+  // 搜索参数
   const searchProps = {
     field,
     keyword,
@@ -78,7 +93,7 @@ function Users({
     <div>
       <Helmet title="用户管理"/>
       <Search {...searchProps}/>
-      <List/>
+      <List {...listProps}/>
       <Modal {...modalProps}/>
     </div>
   )
@@ -93,10 +108,7 @@ Users.propTypes = {
 
 // 输入逻辑（将外部state属性转进来当参数用）
 const mapStateToProps = (state) => {
-  return {
-    users: state.users,
-    loading: state.loading.models.users
-  }
+  return {loading: state.loading.models.users, users: state.users}
 }
 
 // 输出逻辑（把动作dispatch传出去）

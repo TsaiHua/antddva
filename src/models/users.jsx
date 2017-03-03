@@ -9,8 +9,9 @@ export default {
 
   //状态
   state : {
-    loading: true, //载入状态
     list: [], //数据列表
+    total: 0, //总条数
+    page: 0, //总页数
     currentItem: {},
     modalVisible: false, //弹窗是否可见
     modalType: 'create', //弹窗类型
@@ -29,6 +30,7 @@ export default {
     setup({dispatch, history}) {
       return history.listen(({pathname, query}) => {
         if (pathname === '/users') {
+          console.log('到了 subscriptions');
           dispatch({type: 'fetch', payload: query});
         }
       })
@@ -39,7 +41,7 @@ export default {
   reducers : {
     save(state, {
       payload: {
-        data: list,
+        list,
         total,
         page
       }
@@ -61,38 +63,49 @@ export default {
         page = 1
       }
     }, {call, put}) {
-      const {data, headers} = yield call(usersService.fetch, {page});
+      const {data} = yield call(usersService.fetch, {page})
       yield put({
         type: 'save',
         payload: {
-          data,
-          total: parseInt(headers['x-total-count'], 10),
-          page: parseInt(page, 10)
+          list: data['data'],
+          total: data['_meta'].totalCount,
+          page: data['_meta'].currentPage,
+          //total: parseInt(headers['x-total-count'], 10),
+          //page: parseInt(page, 10)
         }
       });
     },
 
     *remove({
       payload: id
-    }, {call, put}) {
+    }, {call, put, select}) {
       yield call(usersService.remove, id);
-      yield put({type: 'reload'});
+      const page = yield select(state => state.users.page);
+      yield put({type: 'fetch', payload: {
+          page
+        }});
     },
+
     *patch({
       payload: {
         id,
         values
       }
-    }, {call, put}) {
+    }, {call, put, select}) {
       yield call(usersService.patch, id, values);
-      yield put({type: 'reload'});
+      const page = yield select(state => state.users.page);
+      yield put({type: 'fetch', payload: {
+          page
+        }});
     },
+
     *create({
       payload: values
     }, {call, put}) {
       yield call(usersService.create, values);
       yield put({type: 'reload'});
     },
+
     *reload(action, {put, select}) {
       const page = yield select(state => state.users.page);
       yield put({type: 'fetch', payload: {

@@ -29,5 +29,9 @@ export function patch(id, values) {
 export function fetch({
   page = 1
 }) {
-  return request(`${api_host}user?_page=${page}&_limit=${page_size}`)
+  // const hhh = request(`${api_host}user?page=${page}&per-page=${page_size}`)
+  // console.log(hhh);
+  // return hhh
+  return request(`${api_host}user?page=${page}&per-page=${page_size}`)
+
 }
