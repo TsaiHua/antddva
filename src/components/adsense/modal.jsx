@@ -98,7 +98,7 @@ const Modals = ({
             initialValue: item.position,
             rules: [
               {
-                required: true,
+                required: false,
                 message: '广告位置未填写'
               }
             ]
@@ -110,7 +110,7 @@ const Modals = ({
             initialValue: item.img,
             rules: [
               {
-                required: true,
+                required: false,
                 message: '图片未上传'
               }
             ]
@@ -126,7 +126,7 @@ const Modals = ({
             initialValue: item.nickName,
             rules: [
               {
-                required: true,
+                required: false,
                 message: '链接未填写'
               }
             ]
