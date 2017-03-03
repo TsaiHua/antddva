@@ -6,7 +6,7 @@ import {api_host, page_size} from '../utils/config'
 
 //增加
 export function create(values) {
-  return request(`${api_host}types`, {
+  return request(`${api_host}categors`, {
     method: 'POST',
     body: JSON.stringify(values)
   })
@@ -14,12 +14,12 @@ export function create(values) {
 
 //删除
 export function remove(id) {
-  return request(`${api_host}types/${id}`, {method: 'DELETE'})
+  return request(`${api_host}categors/${id}`, {method: 'DELETE'})
 }
 
 //修改
 export function patch(id, values) {
-  return request(`${api_host}types/${id}`, {
+  return request(`${api_host}categors/${id}`, {
     method: 'PATCH',
     body: JSON.stringify(values)
   })
@@ -29,9 +29,9 @@ export function patch(id, values) {
 export function fetch({
   page = 1
 }) {
-  // const hhh = request(`${api_host}types?page=${page}&per-page=${page_size}`)
+  // const hhh = request(`${api_host}categors?page=${page}&per-page=${page_size}`)
   // console.log(hhh);
   // return hhh
-  return request(`${api_host}types?page=${page}&per-page=${page_size}`)
+  return request(`${api_host}categors?page=${page}&per-page=${page_size}`)
 
 }
