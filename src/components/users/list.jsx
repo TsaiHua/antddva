@@ -53,7 +53,7 @@ const columns = [
       <span>
         <Link to={'/auth/' + record.id}>授权</Link>
         <span className="ant-divider"/>
-        <Link to={'/users/' + record.id} className="ant-dropdown-link">详情</Link>
+        <Link to={'/users/' + record.id}>详情</Link>
       </span>
     )
   }

@@ -14,10 +14,10 @@ import {
 // 引入 样式
 import styles from './users.less'
 
-//定义FormItem标签
+// 定义 FormItem标签
 const FormItem = Form.Item
 
-//定义FormItem标签的布局样式
+// 定义 FormItem标签的布局样式
 const formItemLayout = {
   labelCol: {
     span: 6
@@ -29,11 +29,11 @@ const formItemLayout = {
 
 // 方法
 const Modals = ({
-  visible,
-  type,
+  visible, //是否可见
+  type, //窗口类型
   item = {},
-  onOk,
-  onCancel,
+  onOk, //确定方法
+  onCancel, //关闭方法
   form: {
     getFieldDecorator,
     validateFields,
@@ -104,28 +104,6 @@ const Modals = ({
           })(<Input/>)}
         </FormItem>
 
-        <FormItem label='最后登录ip地址：' {...formItemLayout}>
-          {getFieldDecorator('login_ip', {
-            initialValue: item.login_ip,
-            rules: [
-              {
-                message: '最后登录ip地址未填写'
-              }
-            ]
-          })(<Input/>)}
-        </FormItem>
-
-        <FormItem label='最后登录时间：' {...formItemLayout}>
-          {getFieldDecorator('login_time', {
-            initialValue: item.login_time,
-            rules: [
-              {
-                message: '最后登录时间未填写'
-              }
-            ]
-          })(<Input/>)}
-        </FormItem>
-
         <FormItem label='密码：' {...formItemLayout}>
           {getFieldDecorator('password', {
             initialValue: item.password,
@@ -183,4 +161,4 @@ Modals.propTypes = {
 };
 
 // 暴露方法
-export default Form.create()(Modals);
+export default Form.create()(Modals)
