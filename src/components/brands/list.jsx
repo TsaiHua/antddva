@@ -5,25 +5,6 @@ import styles from './brands.less';
 // 引入阿里的antd视觉组件
 import { Table, Icon } from 'antd';
 
-//列表数据来源
-const data = [{
-    key: '1',
-    id: '1',
-    brand: '特能赢',
-    classification: '一级特供',
-    brandseries: '白色黑色',
-    quantity: '59',
-    condition: '禁用',
-  },{
-      key: '2',
-      id: '2',
-      brand: '宝宝乐',
-      classification: '特供',
-      brandseries: '白色',
-      quantity: '233',
-      condition: '正常',
-    }];
-
 //列表字段
 const columns = [{
     title: 'ID',
@@ -31,8 +12,8 @@ const columns = [{
     key: 'id',
   },{
     title: '品牌名',
-    dataIndex: 'brand',
-    key: 'brand',
+    dataIndex: 'name',
+    key: 'name',
   },{
     title: '品牌分类',
     dataIndex: 'classification',
@@ -47,8 +28,8 @@ const columns = [{
     key: 'quantity',
   },{
     title: '状态',
-    dataIndex: 'condition',
-    key: 'condition',
+    dataIndex: 'status',
+    key: 'status',
   },{
     title: '操作',
     dataIndex: 'operation',
@@ -65,7 +46,7 @@ const columns = [{
 const List = (props) => {
   return (
     <div>
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={props.dataSource} loading={props.loading} rowKey={record => record.id} pagination={true}/>
     </div>
   );
 };
