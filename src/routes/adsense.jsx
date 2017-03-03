@@ -34,6 +34,7 @@ function Adsense({location, dispatch, adsense}) {
   } = adsense;
   const {field, keyword} = location.query;
 
+  // 弹窗属性
   const modalProps = {
     item: modalType === 'create'
       ? {}
@@ -48,6 +49,7 @@ function Adsense({location, dispatch, adsense}) {
     }
   }
 
+  // 搜索属性
   const searchProps = {
     field,
     keyword,
@@ -89,6 +91,7 @@ Adsense.propTypes = {
   dispatch: PropTypes.func
 };
 
+// 模型状态转到属性
 function mapStateToProps({adsense}) {
   return {adsense}
 }

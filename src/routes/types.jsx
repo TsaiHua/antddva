@@ -34,6 +34,7 @@ function Types({location, dispatch, types}) {
   } = types
   const {field, keyword} = location.query
 
+  // 弹窗属性
   const modalProps = {
     item: modalType === 'create'
       ? {}
@@ -48,6 +49,7 @@ function Types({location, dispatch, types}) {
     }
   }
 
+  // 搜索属性
   const searchProps = {
     field,
     keyword,
@@ -89,6 +91,7 @@ Types.propTypes = {
   dispatch: PropTypes.func
 };
 
+// 模型状态转到属性
 function mapStateToProps({types}) {
   return {types}
 }

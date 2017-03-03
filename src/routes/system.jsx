@@ -21,7 +21,7 @@ function System() {
   return (
     <div>
       <Helmet title="系统配置"/>
-      <Forms/>
+      <Forms/><br/>
       <hr/>
     </div>
   );
