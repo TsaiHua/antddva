@@ -34,8 +34,6 @@ function Users({loading, location, dispatch, users}) {
     modalType
   } = users
 
-  console.log(users);
-
   // 搜索关键字
   const {field, keyword} = location.query
 
@@ -56,37 +54,33 @@ function Users({loading, location, dispatch, users}) {
 
   // 数据列参数
   const listProps = {
-    // dispatch,
     loading: loading,
-    dataSource: list,
-    // pagination:
-    // total,
-    //page: pagination.current,
+    dataSource: list
   }
 
   // 搜索参数
   const searchProps = {
     field,
     keyword,
-    // onSearch (fieldsValue) {
-    //   fieldsValue.keyword.length ? dispatch(routerRedux.push({
-    //     pathname: '/users',
-    //     query: {
-    //       field: fieldsValue.field,
-    //       keyword: fieldsValue.keyword
-    //     }
-    //   })) : dispatch(routerRedux.push({
-    //     pathname: '/users'
-    //   }))
-    // },
-    // onAdd() {
-    //   dispatch({
-    //     type: 'users/showModal',
-    //     payload: {
-    //       modalType: 'create'
-    //     }
-    //   })
-    // }
+    onSearch(fieldsValue) {
+      fieldsValue.keyword.length
+        ? dispatch(routerRedux.push({
+          pathname: '/users',
+          query: {
+            field: fieldsValue.field,
+            keyword: fieldsValue.keyword
+          }
+        }))
+        : dispatch(routerRedux.push({pathname: '/users'}))
+    },
+    onAdd() {
+      dispatch({
+        type: 'users/showModal',
+        payload: {
+          modalType: 'create'
+        }
+      })
+    }
   }
 
   return (
