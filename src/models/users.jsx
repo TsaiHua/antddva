@@ -4,10 +4,10 @@ import * as usersService from '../services/users'
 // 暴露方法
 export default {
 
-  //命名空间
+  // 命名空间
   namespace : 'users',
 
-  //状态
+  // 状态
   state : {
     list: [], //数据列表
     total: 0, //总条数
@@ -15,8 +15,7 @@ export default {
     currentItem: {},
     modalVisible: false, //弹窗是否可见
     modalType: 'create', //弹窗类型
-    //分页配置
-    pagination: {
+    pagination: { //分页配置
       showSizeChanger: true,
       showQuickJumper: true,
       showTotal: total => `共 ${total} 条`,
@@ -25,20 +24,21 @@ export default {
     }
   },
 
-  //数据订阅
+  // 数据订阅
   subscriptions : {
     setup({dispatch, history}) {
       return history.listen(({pathname, query}) => {
         if (pathname === '/users') {
-          console.log('到了 subscriptions');
           dispatch({type: 'fetch', payload: query});
         }
       })
     }
   },
 
-  //同步操作
+  // 同步操作
   reducers : {
+
+    // 保存状态
     save(state, {
       payload: {
         list,
@@ -52,10 +52,27 @@ export default {
         total,
         page
       };
+    },
+
+    // 显示弹窗
+    showModal(state, action) {
+      return {
+        ...state,
+        ...action.payload,
+        modalVisible: true
+      }
+    },
+
+    // 隐藏弹窗
+    hideModal(state) {
+      return {
+        ...state,
+        modalVisible: false
+      }
     }
   },
 
-  //异步处理
+  // 异步处理
   effects : {
 
     *fetch({
@@ -69,9 +86,7 @@ export default {
         payload: {
           list: data['data'],
           total: data['_meta'].totalCount,
-          page: data['_meta'].currentPage,
-          //total: parseInt(headers['x-total-count'], 10),
-          //page: parseInt(page, 10)
+          page: data['_meta'].currentPage
         }
       });
     },
