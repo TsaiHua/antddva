@@ -62,25 +62,25 @@ function Users({loading, location, dispatch, users}) {
   const searchProps = {
     field,
     keyword,
-    // onSearch (fieldsValue) {
-    //   fieldsValue.keyword.length ? dispatch(routerRedux.push({
-    //     pathname: '/users',
-    //     query: {
-    //       field: fieldsValue.field,
-    //       keyword: fieldsValue.keyword
-    //     }
-    //   })) : dispatch(routerRedux.push({
-    //     pathname: '/users'
-    //   }))
-    // },
-    // onAdd() {
-    //   dispatch({
-    //     type: 'users/showModal',
-    //     payload: {
-    //       modalType: 'create'
-    //     }
-    //   })
-    // }
+    onSearch(fieldsValue) {
+      fieldsValue.keyword.length
+        ? dispatch(routerRedux.push({
+          pathname: '/users',
+          query: {
+            field: fieldsValue.field,
+            keyword: fieldsValue.keyword
+          }
+        }))
+        : dispatch(routerRedux.push({pathname: '/users'}))
+    },
+    onAdd() {
+      dispatch({
+        type: 'users/showModal',
+        payload: {
+          modalType: 'create'
+        }
+      })
+    }
   }
 
   return (

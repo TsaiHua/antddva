@@ -1,7 +1,7 @@
 // 引入 React，组件
 import React, {PropTypes} from 'react'
 
-// 引入阿里的antd视觉组件
+// 引入 视觉组件
 import {
   Form,
   Input,
@@ -11,7 +11,7 @@ import {
   Select
 } from 'antd'
 
-// 引入布局样式
+// 引入 样式
 import styles from './users.less'
 
 //定义FormItem标签
@@ -57,7 +57,7 @@ const Modals = ({
   const modalOpts = {
     title: `${type === 'create'
       ? '新增用户'
-      : '修改用户'}`,
+      : '编辑用户'}`,
     visible,
     onOk: handleOk,
     onCancel,
@@ -80,50 +80,50 @@ const Modals = ({
         </FormItem>
 
         <FormItem label='手机号码：' {...formItemLayout}>
-        {getFieldDecorator('mobile', {
-          initialValue: item.mobile,
-          rules: [
-            {
-              required: true,
-              type:'number',
-              message: '请填写手机号码'
-            }
-          ]
-        })(<Input />)}
+          {getFieldDecorator('mobile', {
+            initialValue: item.mobile,
+            rules: [
+              {
+                required: true,
+                type: 'number',
+                message: '请填写手机号码'
+              }
+            ]
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='昵称：' {...formItemLayout}>
-        {getFieldDecorator('weixin_nickname', {
-          initialValue: item.weixin_nickname,
-          rules: [
-            {
-              required: true,
-              message: '昵称未填写'
-            }
-          ]
-        })(<Input />)}
+          {getFieldDecorator('weixin_nickname', {
+            initialValue: item.weixin_nickname,
+            rules: [
+              {
+                required: true,
+                message: '昵称未填写'
+              }
+            ]
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='最后登录ip地址：' {...formItemLayout}>
-        {getFieldDecorator('login_ip', {
-          initialValue: item.login_ip,
-          rules: [
-            {
-              message: '最后登录ip地址未填写'
-            }
-          ]
-        })(<Input />)}
+          {getFieldDecorator('login_ip', {
+            initialValue: item.login_ip,
+            rules: [
+              {
+                message: '最后登录ip地址未填写'
+              }
+            ]
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='最后登录时间：' {...formItemLayout}>
-        {getFieldDecorator('login_time', {
-          initialValue: item.login_time,
-          rules: [
-            {
-              message: '最后登录时间未填写'
-            }
-          ]
-        })(<Input />)}
+          {getFieldDecorator('login_time', {
+            initialValue: item.login_time,
+            rules: [
+              {
+                message: '最后登录时间未填写'
+              }
+            ]
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='密码：' {...formItemLayout}>
@@ -138,18 +138,22 @@ const Modals = ({
           })(<Input/>)}
         </FormItem>
 
-        <FormItem label="状态" {...formItemLayout} >
-            {getFieldDecorator('status', {
-              initialValue: 'false',
-              rules: [
-                {
-                  message: '状态未填写'
-                }
-              ]
-            })(<Select style={{ width: '50%'}}>
+        <FormItem label="状态" {...formItemLayout}>
+          {getFieldDecorator('status', {
+            initialValue: 'false',
+            rules: [
+              {
+                message: '状态未填写'
+              }
+            ]
+          })(
+            <Select style={{
+              width: '50%'
+            }}>
               <Select.Option value="false">false</Select.Option>
               <Select.Option value="true">true</Select.Option>
-            </Select>)}
+            </Select>
+          )}
         </FormItem>
 
         <FormItem label='角色：' {...formItemLayout}>
@@ -160,7 +164,9 @@ const Modals = ({
                 message: '角色未填写'
               }
             ]
-          })(<Input style={{ width: '50%'}}/>)}
+          })(<Input style={{
+            width: '50%'
+          }}/>)}
         </FormItem>
       </Form>
     </Modal>
