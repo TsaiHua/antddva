@@ -1,13 +1,17 @@
 // 引入 React
-import React from 'react';
+import React from 'react'
+
 // 引入 链接组件
 import {Link} from 'dva/router'
+
 // 引入 菜单配置文件
 import {MenuNav} from '../../utils/menu'
-// 引入 阿里的antd视觉组件
-import {Menu, Icon} from 'antd';
-// 引入 布局样式
-import styles from '../layouts.less';
+
+// 引入 视觉组件
+import {Menu, Icon} from 'antd'
+
+// 引入 样式
+import styles from '../layouts.less'
 
 // 遍历 获取菜单配置列表
 const topMenus = MenuNav.map(item => item.key);

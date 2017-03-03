@@ -1,19 +1,21 @@
 // 引入 React
 import React from 'react'
 
+// 引入 链接组件
+import {Link} from 'dva/router'
+
 // 引入 视觉组件
 import {Table, Icon, Popconfirm, Button} from 'antd'
 
 // 引入 样式
 import styles from './users.less'
 
-//列表字段
+// 列表 字段格式
 const columns = [
   {
     title: '用户名',
     dataIndex: 'real_name',
     key: 'real_name',
-    render: text => <a href="#">{text}</a>
   }, {
     title: '手机号',
     dataIndex: 'mobile',
@@ -22,7 +24,7 @@ const columns = [
     title: '角色',
     dataIndex: 'role',
     key: 'role',
-    render: text => <a href="#">{text}</a>
+    render: (text, record) => <Link to={'/role/' + record.id}>{text}</Link>
   }, {
     title: '昵称',
     dataIndex: 'nickname',
@@ -49,9 +51,9 @@ const columns = [
     className: styles['right'],
     render: (text, record) => (
       <span>
-        <a href="#">授权</a>
+        <Link to={'/auth/' + record.id}>授权</Link>
         <span className="ant-divider"/>
-        <a href="/#users/" className="ant-dropdown-link">查看</a>
+        <Link to={'/users/' + record.id} className="ant-dropdown-link">详情</Link>
       </span>
     )
   }
