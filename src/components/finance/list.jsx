@@ -36,8 +36,8 @@ const columns = [{
     key: 'expenditure',
   },{
     title: '状态',
-    dataIndex: 'condition',
-    key: 'condition',
+    dataIndex: 'status',
+    key: 'status',
   },{
     title: '操作',
     dataIndex: 'operation',
