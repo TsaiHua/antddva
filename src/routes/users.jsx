@@ -34,8 +34,6 @@ function Users({loading, location, dispatch, users}) {
     modalType
   } = users
 
-  console.log(users);
-
   // 搜索关键字
   const {field, keyword} = location.query
 
@@ -56,12 +54,8 @@ function Users({loading, location, dispatch, users}) {
 
   // 数据列参数
   const listProps = {
-    // dispatch,
     loading: loading,
-    dataSource: list,
-    // pagination:
-    // total,
-    //page: pagination.current,
+    dataSource: list
   }
 
   // 搜索参数
