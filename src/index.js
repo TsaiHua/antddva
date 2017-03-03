@@ -1,11 +1,17 @@
+// 载入模板
 import './index.html'
+
+// 载入样式
 import './index.css'
+
+// 载入框架
 import dva from 'dva'
+
+// 载入loading组件
 import createLoading from 'dva-loading'
 
 // 1. Initialize
 const app = dva()
-
 
 // 2. Plugins
 app.use(createLoading())
