@@ -67,7 +67,7 @@ const List = (props) => {
         columns={columns}
         dataSource={props.dataSource}
         loading={props.loading}
-        rowKey={record => record.id} 
+        rowKey={record => record.id}
         pagination={true}
       />
     </div>

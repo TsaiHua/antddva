@@ -1,4 +1,7 @@
+// 引入 React，组件
 import React, {PropTypes} from 'react'
+
+// 引入 视觉组件
 import {
   Upload,
   message,
@@ -11,8 +14,13 @@ import {
   Modal,
   Select
 } from 'antd'
+
+// 定义 FormItem标签
 const FormItem = Form.Item
+
+// 引入 样式
 import styles from './adsense.less';
+
 
 const props = {
   name: 'file',
@@ -31,7 +39,7 @@ const props = {
     }
   }
 };
-
+// 定义 FormItem标签的布局样式
 const formItemLayout = {
   labelCol: {
     span: 6
@@ -43,11 +51,11 @@ const formItemLayout = {
 
 // 方法
 const Modals = ({
-  visible,
-  type,
+  visible, //是否可见
+  type, //窗口类型
   item = {},
-  onOk,
-  onCancel,
+  onOk, //确定方法
+  onCancel, //关闭方法
   form: {
     getFieldDecorator,
     validateFields,
@@ -105,6 +113,18 @@ const Modals = ({
           })(<Input/>)}
         </FormItem>
 
+        <FormItem label='链接：' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('nickName', {
+            initialValue: item.nickName,
+            rules: [
+              {
+                required: false,
+                message: '链接未填写'
+              }
+            ]
+          })(<Input/>)}
+        </FormItem>
+
         <FormItem label='广告图片：' hasFeedback {...formItemLayout}>
           {getFieldDecorator('img', {
             initialValue: item.img,
@@ -120,20 +140,7 @@ const Modals = ({
             </Button>
           </Upload>)}
         </FormItem>
-
-        <FormItem label='链接：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('nickName', {
-            initialValue: item.nickName,
-            rules: [
-              {
-                required: false,
-                message: '链接未填写'
-              }
-            ]
-          })(<Input/>)}
-        </FormItem>
-
-
+        
         <FormItem label="状态" hasFeedback {...formItemLayout} >
             {getFieldDecorator('status', {
               initialValue: item.status,
@@ -142,7 +149,9 @@ const Modals = ({
                   message: '状态未填写'
                 }
               ]
-            })(<Select placeholder="false">
+            })(<Select placeholder="false" style={{
+              width: '50%'
+            }}>
               <Select.Option value="false">false</Select.Option>
               <Select.Option value="true">true</Select.Option>
             </Select>)}

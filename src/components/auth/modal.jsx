@@ -1,9 +1,16 @@
+// 引入 React，组件
 import React, { PropTypes } from 'react'
+
+// 引入 视觉组件
 import {Form, Input, InputNumber, Radio, Modal ,Select} from 'antd'
+
+// 定义 FormItem标签
 const FormItem = Form.Item
 
+// 引入 样式
 import styles from './auth.less';
 
+// 定义 FormItem标签的布局样式
 const formItemLayout = {
   labelCol: {
     span: 6

@@ -1,10 +1,14 @@
 // 引入 React
-import React from 'react';
-// 引入布局样式
-import styles from './orders.less';
-// 引入阿里的antd视觉组件
-import { Table, Icon } from 'antd';
+import React from 'react'
 
+// 引入布局样式
+import styles from './orders.less'
+
+// 引入 链接组件
+import {Link} from 'dva/router'
+
+// 引入阿里的antd视觉组件
+import { Table, Icon } from 'antd'
 
 //列表字段
 const columns = [{
@@ -15,7 +19,7 @@ const columns = [{
     title: '订单编号',
     dataIndex: 'sn',
     key: 'sn',
-    render: text => <a href="#">{text}</a>
+    render: (text, record) => <Link to={'/sn/' + record.id}>{text}</Link>
   },{
     title: '收货人',
     dataIndex: 'Consignee',
@@ -54,10 +58,10 @@ const columns = [{
     className:styles['right'],
     render: (text, record) => (
       <span>
-        <a href="" className="ant-dropdown-link">查看</a>
+        <Link className="ant-dropdown-link" to={'/users/' + record.id}>查看</Link>
       </span>
     ),
-  }];
+  }]
 
 
 
@@ -67,12 +71,12 @@ const List = (props) => {
     <div>
     <Table columns={columns} dataSource={props.dataSource} loading={props.loading} rowKey={record => record.id} pagination={true}/>
     </div>
-  );
-};
+  )
+}
 
 // 参数验证
 List.propTypes = {
-};
+}
 
 // 暴露方法
-export default List;
+export default List

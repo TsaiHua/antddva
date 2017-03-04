@@ -1,9 +1,16 @@
+// 引入 React，组件
 import React, { PropTypes } from 'react'
+
+// 引入 视觉组件
 import { Form, Input, InputNumber, Radio, Modal,Select } from 'antd'
+
+// 定义 FormItem标签
 const FormItem = Form.Item
 
+// 引入 样式
 import styles from './orders.less';
 
+// 定义 FormItem标签的布局样式
 const formItemLayout = {
   labelCol: {
     span: 6
@@ -15,11 +22,11 @@ const formItemLayout = {
 
 // 方法
 const Modals = ({
-  visible,
-  type,
+  visible, //是否可见
+  type, //窗口类型
   item = {},
-  onOk,
-  onCancel,
+  onOk, //确定方法
+  onCancel, //关闭方法
   form: {
     getFieldDecorator,
     validateFields,
@@ -72,48 +79,6 @@ const Modals = ({
               }
             ]
           })(<Input />)}
-        </FormItem>
-
-
-        <FormItem label='控制器名称：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('phone', {
-            initialValue: item.phone,
-            rules: [
-              {
-                required: true,
-                message: '不能为空'
-              }
-            ]
-          })(<Input />)}
-        </FormItem>
-        <FormItem label='节点名称：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('email', {
-            initialValue: item.email,
-            rules: [
-              {
-                required: true,
-                message: '不能为空'
-              }
-            ]
-          })(<Input />)}
-        </FormItem>
-        <FormItem label='角色描述：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('address', {
-            initialValue: item.address,
-            rules: [
-              {
-                required: true,
-                message: '不能为空'
-              }
-            ]
-          })(<Input />)}
-        </FormItem>
-
-        <FormItem label='状态' hasFeedback {...formItemLayout}>
-          <Select placeholder="Please select a country">
-              <Option value="china">正常</Option>
-              <Option value="use">禁用</Option>
-            </Select>
         </FormItem>
 
       </Form>

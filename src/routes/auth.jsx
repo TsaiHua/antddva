@@ -4,7 +4,7 @@ import React, {Component, PropTypes} from 'react'
 // 引入 容器组件
 import {connect} from 'dva'
 
-// 引入 路由链接组件
+// 引入 链接组件
 import {Link} from 'dva/router'
 
 // 引入 头管理组件
@@ -34,7 +34,7 @@ const Auth = ({loading, location, dispatch, auth}) => {
   } = auth
 
   // 搜索关键字
-  const {field, keyword} = location.query;
+  const {field, keyword} = location.query
 
 
   // 弹窗参数
@@ -63,11 +63,29 @@ const Auth = ({loading, location, dispatch, auth}) => {
   }
 
 
-  // 搜索属性
+  // 搜索参数
   const searchProps = {
     field,
     keyword,
-
+    onSearch(fieldsValue) {
+      fieldsValue.keyword.length
+        ? dispatch(routerRedux.push({
+          pathname: '/auth',
+          query: {
+            field: fieldsValue.field,
+            keyword: fieldsValue.keyword
+          }
+        }))
+        : dispatch(routerRedux.push({pathname: '/auth'}))
+    },
+    onAdd() {
+      dispatch({
+        type: 'auth/showModal',
+        payload: {
+          modalType: 'create'
+        }
+      })
+    }
   }
 
   return (

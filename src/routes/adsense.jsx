@@ -4,7 +4,7 @@ import React, {Component, PropTypes} from 'react'
 // 引入 容器组件
 import {connect} from 'dva'
 
-// 引入 路由链接组件
+// 引入 链接组件
 import {Link} from 'dva/router'
 
 // 引入 头管理组件
@@ -31,7 +31,7 @@ function Adsense({loading,location, dispatch, adsense}) {
     currentItem,
     modalVisible,
     modalType
-  } = adsense;
+  } = adsense
 
     // 搜索关键字
   const {field, keyword} = location.query;
@@ -51,23 +51,36 @@ function Adsense({loading,location, dispatch, adsense}) {
     }
   }
 
-    // 数据列参数
-    const listProps = {
-      // dispatch,
-      loading: loading,
-      dataSource: list,
-      // pagination:
-      // total,
-      //page: pagination.current,
-    }
+  // 数据列参数
+  const listProps = {
+    loading: loading,
+    dataSource: list
+  }
 
 
   // 搜索属性
   const searchProps = {
     field,
     keyword,
-
-
+    onSearch(fieldsValue) {
+      fieldsValue.keyword.length
+        ? dispatch(routerRedux.push({
+          pathname: '/adsense',
+          query: {
+            field: fieldsValue.field,
+            keyword: fieldsValue.keyword
+          }
+        }))
+        : dispatch(routerRedux.push({pathname: '/adsense'}))
+    },
+    onAdd() {
+      dispatch({
+        type: 'adsense/showModal',
+        payload: {
+          modalType: 'create'
+        }
+      })
+    }
   }
 
   return (
@@ -77,15 +90,15 @@ function Adsense({loading,location, dispatch, adsense}) {
       <List  {...listProps}/>
       <Modal {...modalProps}/>
     </div>
-  );
-};
+  )
+}
 
 // 参数验证
 Adsense.propTypes = {
   adsense: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
-};
+}
 
 // 输入逻辑（将外部state属性转进来当参数用）
 const mapStateToProps = (state) => {

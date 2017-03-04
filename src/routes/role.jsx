@@ -4,7 +4,7 @@ import React, {Component, PropTypes} from 'react'
 // 引入 容器组件
 import {connect} from 'dva'
 
-// 引入 路由链接组件
+// 引入 链接组件
 import {Link} from 'dva/router'
 
 // 引入 头管理组件
@@ -34,56 +34,52 @@ const Role = ({loading, location, dispatch, role}) => {
   } = role
 
   // 搜索关键字
-  const {field, keyword} = location.query;
+  const {field, keyword} = location.query
 
   // 弹窗参数
   const modalProps = {
-    // item: modalType === 'create'
-    //   ? {}
-    //   : currentItem,
-    // type: modalType,
-    // visible: modalVisible,
-    // onOk(data) {
-    //   dispatch({type: `role/${modalType}`, payload: data})
-    // },
-    // onCancel() {
-    //   dispatch({type: 'role/hideModal'})
-    // }
+    item: modalType === 'create'
+      ? {}
+      : currentItem,
+    type: modalType,
+    visible: modalVisible,
+    onOk(data) {
+      dispatch({type: `role/${modalType}`, payload: data})
+    },
+    onCancel() {
+      dispatch({type: 'role/hideModal'})
+    }
   }
 
   // 数据列参数
   const listProps = {
-    // dispatch,
     loading: loading,
-    dataSource: list,
-    // pagination:
-    // total,
-    //page: pagination.current,
+    dataSource: list
   }
 
   // 搜索属性
   const searchProps = {
-    // field,
-    // keyword,
-    // onSearch(fieldsValue) {
-    //   fieldsValue.keyword.length
-    //     ? dispatch(routerRedux.push({
-    //       pathname: '/role',
-    //       query: {
-    //         field: fieldsValue.field,
-    //         keyword: fieldsValue.keyword
-    //       }
-    //     }))
-    //     : dispatch(routerRedux.push({pathname: '/role'}))
-    // },
-    // onAdd() {
-    //   dispatch({
-    //     type: 'role/showModal',
-    //     payload: {
-    //       modalType: 'create'
-    //     }
-    //   })
-    // }
+    field,
+     keyword,
+     onSearch(fieldsValue) {
+       fieldsValue.keyword.length
+        ? dispatch(routerRedux.push({
+           pathname: '/role',
+           query: {
+             field: fieldsValue.field,
+             keyword: fieldsValue.keyword
+           }
+         }))
+         : dispatch(routerRedux.push({pathname: '/role'}))
+     },
+     onAdd() {
+       dispatch({
+         type: 'role/showModal',
+         payload: {
+           modalType: 'create'
+         }
+       })
+     }
   }
 
   return (
@@ -101,7 +97,7 @@ Role.propTypes = {
   role: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
-};
+}
 
 
 // 输入逻辑（将外部state属性转进来当参数用）

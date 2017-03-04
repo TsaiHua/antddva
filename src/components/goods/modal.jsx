@@ -1,9 +1,16 @@
+// 引入 React，组件
 import React, { PropTypes } from 'react'
+
+// 引入 视觉组件
 import {Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select} from 'antd'
+
+// 定义 FormItem标签
 const FormItem = Form.Item
 
+// 引入 样式
 import styles from './goods.less';
 
+// 定义 FormItem标签的布局样式
 const formItemLayout = {
   labelCol: {
     span: 6
@@ -15,11 +22,11 @@ const formItemLayout = {
 
 // 方法
 const Modals = ({
-  visible,
-  type,
+  visible, //是否可见
+  type, //窗口类型
   item = {},
-  onOk,
-  onCancel,
+  onOk, //确定方法
+  onCancel, //关闭方法
   form: {
     getFieldDecorator,
     validateFields,
@@ -171,7 +178,9 @@ const Modals = ({
               message: '状态未填写'
             }
           ]
-        })(<Select placeholder="true">
+        })(<Select placeholder="true" style={{
+          width: '50%'
+        }}>
           <Select.Option value="false">true</Select.Option>
           <Select.Option value="true">false</Select.Option>
         </Select>)}

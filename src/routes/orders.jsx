@@ -4,7 +4,7 @@ import React, {Component, PropTypes} from 'react'
 // 引入 容器组件
 import {connect} from 'dva'
 
-// 引入 路由链接组件
+// 引入 链接组件
 import {Link} from 'dva/router'
 
 // 引入 头管理组件

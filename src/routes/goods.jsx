@@ -1,25 +1,25 @@
 // 引入 React，组件，参数
-import React, {Component, PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react'
 
 // 引入 容器组件
-import {connect} from 'dva';
+import {connect} from 'dva'
 
-// 引入 路由链接组件
-import {Link} from 'dva/router';
+// 引入 链接组件
+import {Link} from 'dva/router'
 
 // 引入 头管理组件
-import Helmet from "react-helmet";
+import Helmet from "react-helmet"
 
 // 引入 自定义模块
-import Search from '../components/goods/search';
-import List from '../components/goods/list';
-import Modal from '../components/goods/modal';
+import Search from '../components/goods/search'
+import List from '../components/goods/list'
+import Modal from '../components/goods/modal'
 
 // 引入 视觉组件
-import {Table, Icon} from 'antd';
+import {Table, Icon} from 'antd'
 
 // 引入 样式
-import styles from './goods.less';
+import styles from './goods.less'
 
 // 方法
 function Goods({loading,location, dispatch, goods}) {
@@ -34,7 +34,7 @@ function Goods({loading,location, dispatch, goods}) {
   } = goods;
   const {field, keyword} = location.query;
 
-    // 弹窗参数
+  // 弹窗参数
   const modalProps = {
     item: modalType === 'create'
       ? {}
@@ -51,37 +51,33 @@ function Goods({loading,location, dispatch, goods}) {
 
   // 数据列参数
   const listProps = {
-    // dispatch,
     loading: loading,
-    dataSource: list,
-    // pagination:
-    // total,
-    //page: pagination.current,
+    dataSource: list
   }
 
   // 搜索属性
   const searchProps = {
     field,
     keyword,
-    // onSearch (fieldsValue) {
-    //   fieldsValue.keyword.length ? dispatch(routerRedux.push({
-    //     pathname: '/users',
-    //     query: {
-    //       field: fieldsValue.field,
-    //       keyword: fieldsValue.keyword
-    //     }
-    //   })) : dispatch(routerRedux.push({
-    //     pathname: '/users'
-    //   }))
-    // },
-    //onAdd() {
-      //dispatch({
-        //type: 'goods/showModal',
-        //payload: {
-          //modalType: 'create'
-        //}
-      //})
-    //}
+     onSearch (fieldsValue) {
+       fieldsValue.keyword.length ? dispatch(routerRedux.push({
+         pathname: '/goods',
+         query: {
+           field: fieldsValue.field,
+           keyword: fieldsValue.keyword
+        }
+       })) : dispatch(routerRedux.push({
+         pathname: '/goods'
+       }))
+     },
+    onAdd() {
+      dispatch({
+        type: 'goods/showModal',
+        payload: {
+          modalType: 'create'
+        }
+      })
+    }
   }
 
   return (
@@ -91,15 +87,15 @@ function Goods({loading,location, dispatch, goods}) {
       <List {...listProps}/>
       <Modal {...modalProps}/>
     </div>
-  );
-};
+  )
+}
 
 // 参数验证
 Goods.propTypes = {
   goods: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
-};
+}
 
 // 输入逻辑（将外部state属性转进来当参数用）
 const mapStateToProps = (state) => {

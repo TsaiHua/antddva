@@ -1,7 +1,12 @@
 // 引入 React
 import React from 'react';
+
 // 引入布局样式
 import styles from './role.less';
+
+// 引入 链接组件
+import {Link} from 'dva/router'
+
 // 引入阿里的antd视觉组件
 import { Table, Icon } from 'antd';
 
@@ -18,7 +23,7 @@ const columns = [{
       title: '数量',
       dataIndex: 'Numder',
       key: 'Numder',
-      render: text => <a href="#">{text}</a>,
+      render: (text, record) => <Link to={'/Numder/' + record.id}>{text}</Link>
   },{
     title: '状态',
     dataIndex: 'state',
@@ -29,9 +34,9 @@ const columns = [{
     className:styles['right'],
     render: (text, record) => (
       <span>
-        <a href="">授权</a>
+          <Link to={'/auth/' + record.id}>授权</Link>
         <span className="ant-divider" />
-        <a href="" className="ant-dropdown-link">查看</a>
+          <Link to={'/users/' + record.id}>查看</Link>
       </span>
     ),
   }];
