@@ -1,10 +1,10 @@
 import React from 'react'
 import {Router, Route, Link, IndexRoute, hashHistory} from 'react-router'
-// 公用组件
+// 载入 公用组件
 import App from './routes/app'
 import Home from './routes/home'
 import Error from './routes/error'
-// 组件部分
+// 载入 组件部分
 import Role from './routes/role'
 import Auth from './routes/auth'
 import Users from './routes/users'

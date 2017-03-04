@@ -1,13 +1,13 @@
-// 载入模板
+// 载入 模板
 import './index.html'
 
-// 载入样式
+// 载入 样式
 import './index.css'
 
-// 载入框架
+// 载入 框架
 import dva from 'dva'
 
-// 载入loading组件
+// 载入 loading组件
 import createLoading from 'dva-loading'
 
 // 1. Initialize
