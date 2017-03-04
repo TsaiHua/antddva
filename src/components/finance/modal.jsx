@@ -1,8 +1,19 @@
 // 引入 React，组件
-import React, { PropTypes } from 'react'
+import React, {PropTypes} from 'react'
 
 // 引入 视觉组件
-import { Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select,Switch } from 'antd'
+import {
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Modal,
+  Upload,
+  Icon,
+  Button,
+  Select,
+  Switch
+} from 'antd'
 
 // 引入 样式
 import styles from './finance.less'
@@ -34,7 +45,7 @@ const Modals = ({
   }
 }) => {
 
-  function handleOk () {
+  function handleOk() {
     validateFields((errors) => {
       if (errors) {
         return
@@ -48,7 +59,9 @@ const Modals = ({
   }
 
   const modalOpts = {
-    title: `${type === 'create' ? '新增活动' : '修改活动'}`,
+    title: `${type === 'create'
+      ? '新增活动'
+      : '修改活动'}`,
     visible,
     onOk: handleOk,
     onCancel,
@@ -67,7 +80,7 @@ const Modals = ({
                 message: '活动名称未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='活动图片：' hasFeedback {...formItemLayout}>
@@ -79,11 +92,14 @@ const Modals = ({
                 message: '图片未上传'
               }
             ]
-          })(<Upload name="logo" action="/upload.do" listType="picture" >
-            <Button>
-              <Icon type="upload" /> 点击上传
-            </Button>
-          </Upload>)}
+          })(
+            <Upload name="logo" action="/upload.do" listType="picture">
+              <Button>
+                <Icon type="upload"/>
+                点击上传
+              </Button>
+            </Upload>
+          )}
         </FormItem>
 
         <FormItem label='活动简介：' hasFeedback {...formItemLayout}>
@@ -98,20 +114,22 @@ const Modals = ({
           })(<Input type="textarea"/>)}
         </FormItem>
 
-        <FormItem label="状态" hasFeedback {...formItemLayout} >
-            {getFieldDecorator('name3', {
-              initialValue: item.name3,
-              rules: [
-                {
-                  required: true,
-                  message: '状态未填写'
-                }
-              ]
-            })(<Select>
+        <FormItem label="状态" hasFeedback {...formItemLayout}>
+          {getFieldDecorator('name3', {
+            initialValue: item.name3,
+            rules: [
+              {
+                required: true,
+                message: '状态未填写'
+              }
+            ]
+          })(
+            <Select>
               <Select.Option value="one">one</Select.Option>
               <Select.Option value="two">two</Select.Option>
               <Select.Option value="three">three</Select.Option>
-            </Select>)}
+            </Select>
+          )}
         </FormItem>
 
         <FormItem label='活动时间：' hasFeedback {...formItemLayout}>
@@ -123,7 +141,7 @@ const Modals = ({
                 message: '活动时间未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
       </Form>
     </Modal>

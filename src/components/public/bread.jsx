@@ -1,7 +1,7 @@
 // 引入 React，参数
 import React, {PropTypes} from 'react'
 
-// 引入 阿里的antd视觉组件
+// 引入 视觉组件
 import {Breadcrumb, Icon} from 'antd'
 
 // 引入 菜单配置
@@ -13,25 +13,24 @@ import styles from '../layouts.less'
 //let pathSet = [];
 //console.log(menu);
 //const getPathSet = function (menuArray, parentPath) {
-  //parentPath = parentPath || '/'
-  // menuArray.map(item => {
-  //   pathSet[(parentPath + item.key).replace(/\//g, '-').hyphenToHump()] = {
-  //     path: parentPath + item.key,
-  //     name: item.name,
-  //     icon: item.icon || '',
-  //     clickable: item.clickable === undefined
-  //   }
-  //   if (item.child) {
-  //     getPathSet(item.child, parentPath + item.key + '/')
-  //   }
-  // })
+//parentPath = parentPath || '/'
+// menuArray.map(item => {
+//   pathSet[(parentPath + item.key).replace(/\//g, '-').hyphenToHump()] = {
+//     path: parentPath + item.key,
+//     name: item.name,
+//     icon: item.icon || '',
+//     clickable: item.clickable === undefined
+//   }
+//   if (item.child) {
+//     getPathSet(item.child, parentPath + item.key + '/')
+//   }
+// })
 //}
 
 //getPathSet(menu)
 
-
 // 方法
-function Bread ({ location }) {
+function Bread({location}) {
 
   //let pathNames = []
 
@@ -75,7 +74,7 @@ function Bread ({ location }) {
 // 参数验证
 Bread.propTypes = {
   location: PropTypes.object
-};
+}
 
 // 暴露方法
-export default Bread;
+export default Bread

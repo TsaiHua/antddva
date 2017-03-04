@@ -1,14 +1,21 @@
 // 引入 React，组件
-import React, { PropTypes } from 'react'
+import React, {PropTypes} from 'react'
 
 // 引入 视觉组件
-import {Form, Input, InputNumber, Radio, Modal ,Select} from 'antd'
+import {
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Modal,
+  Select
+} from 'antd'
 
 // 定义 FormItem标签
 const FormItem = Form.Item
 
 // 引入 样式
-import styles from './auth.less';
+import styles from './auth.less'
 
 // 定义 FormItem标签的布局样式
 const formItemLayout = {
@@ -34,7 +41,7 @@ const Modals = ({
   }
 }) => {
 
-  function handleOk () {
+  function handleOk() {
     validateFields((errors) => {
       if (errors) {
         return
@@ -48,7 +55,9 @@ const Modals = ({
   }
 
   const modalOpts = {
-    title: `${type === 'create' ? '新增规则' : '修改用户'}`,
+    title: `${type === 'create'
+      ? '新增规则'
+      : '修改用户'}`,
     visible,
     onOk: handleOk,
     onCancel,
@@ -67,7 +76,7 @@ const Modals = ({
                 message: '规则名称未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
         <FormItem label='规则描述' hasFeedback {...formItemLayout}>
           {getFieldDecorator('description', {
@@ -78,7 +87,7 @@ const Modals = ({
                 message: '规则描述未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
       </Form>
     </Modal>
@@ -95,4 +104,4 @@ Modals.propTypes = {
 };
 
 // 暴露方法
-export default Form.create()(Modals);
+export default Form.create()(Modals)

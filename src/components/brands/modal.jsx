@@ -1,8 +1,19 @@
 // 引入 React，组件
-import React, { PropTypes } from 'react'
+import React, {PropTypes} from 'react'
 
 // 引入 视觉组件
-import { Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select,Switch } from 'antd'
+import {
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Modal,
+  Upload,
+  Icon,
+  Button,
+  Select,
+  Switch
+} from 'antd'
 
 // 引入 样式
 import styles from './brands.less'
@@ -34,7 +45,7 @@ const Modals = ({
   }
 }) => {
 
-  function handleOk () {
+  function handleOk() {
     validateFields((errors) => {
       if (errors) {
         return
@@ -48,7 +59,9 @@ const Modals = ({
   }
 
   const modalOpts = {
-    title: `${type === 'create' ? '新增品牌' : '修改品牌'}`,
+    title: `${type === 'create'
+      ? '新增品牌'
+      : '修改品牌'}`,
     visible,
     onOk: handleOk,
     onCancel,
@@ -67,10 +80,10 @@ const Modals = ({
                 message: '品牌名未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
-        <FormItem label='网站'  {...formItemLayout}>
+        <FormItem label='网站' {...formItemLayout}>
           {getFieldDecorator('site', {
             initialValue: item.site,
             rules: [
@@ -83,27 +96,21 @@ const Modals = ({
         </FormItem>
 
         <FormItem label='logo' {...formItemLayout}>
-          {getFieldDecorator('logo', {
-            initialValue: item.logo
-          })(<Input />)}
+          {getFieldDecorator('logo', {initialValue: item.logo})(<Input/>)}
         </FormItem>
 
         <FormItem label='描述：' {...formItemLayout}>
-          {getFieldDecorator('desc', {
-            initialValue: item.desc
-          })(<Input type="textarea"/>)}
+          {getFieldDecorator('desc', {initialValue: item.desc})(<Input type="textarea"/>)}
         </FormItem>
 
         <FormItem label='排序' {...formItemLayout}>
-          {getFieldDecorator('sort', {
-            initialValue: item.sort
-          })(<Input style={{ width: '60%'}} />)}
+          {getFieldDecorator('sort', {initialValue: item.sort})(<Input style={{
+            width: '60%'
+          }}/>)}
         </FormItem>
 
         <FormItem {...formItemLayout} label="状态">
-          {getFieldDecorator('status', { valuePropName: 'checked' })(
-            <Switch />
-          )}
+          {getFieldDecorator('status', {valuePropName: 'checked'})(<Switch/>)}
         </FormItem>
       </Form>
     </Modal>

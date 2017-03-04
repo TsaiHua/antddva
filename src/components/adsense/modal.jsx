@@ -19,8 +19,7 @@ import {
 const FormItem = Form.Item
 
 // 引入 样式
-import styles from './adsense.less';
-
+import styles from './adsense.less'
 
 const props = {
   name: 'file',
@@ -38,7 +37,8 @@ const props = {
       message.error(`${info.file.name} file upload failed.`);
     }
   }
-};
+}
+
 // 定义 FormItem标签的布局样式
 const formItemLayout = {
   labelCol: {
@@ -134,27 +134,32 @@ const Modals = ({
                 message: '图片未上传'
               }
             ]
-          })(<Upload name="logo" action="/upload.do" listType="picture" >
-            <Button>
-              <Icon type="upload" /> 点击上传
-            </Button>
-          </Upload>)}
+          })(
+            <Upload name="logo" action="/upload.do" listType="picture">
+              <Button>
+                <Icon type="upload"/>
+                点击上传
+              </Button>
+            </Upload>
+          )}
         </FormItem>
-        
-        <FormItem label="状态" hasFeedback {...formItemLayout} >
-            {getFieldDecorator('status', {
-              initialValue: item.status,
-              rules: [
-                {
-                  message: '状态未填写'
-                }
-              ]
-            })(<Select placeholder="false" style={{
+
+        <FormItem label="状态" hasFeedback {...formItemLayout}>
+          {getFieldDecorator('status', {
+            initialValue: item.status,
+            rules: [
+              {
+                message: '状态未填写'
+              }
+            ]
+          })(
+            <Select placeholder="false" style={{
               width: '50%'
             }}>
               <Select.Option value="false">false</Select.Option>
               <Select.Option value="true">true</Select.Option>
-            </Select>)}
+            </Select>
+          )}
         </FormItem>
       </Form>
     </Modal>
@@ -171,4 +176,4 @@ Modals.propTypes = {
 };
 
 // 暴露方法
-export default Form.create()(Modals);
+export default Form.create()(Modals)

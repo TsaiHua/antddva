@@ -1,8 +1,18 @@
 // 引入 React，组件
-import React, { PropTypes } from 'react'
+import React, {PropTypes} from 'react'
 
 // 引入 视觉组件
-import {Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select} from 'antd'
+import {
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Modal,
+  Upload,
+  Icon,
+  Button,
+  Select
+} from 'antd'
 
 // 定义 FormItem标签
 const FormItem = Form.Item
@@ -34,7 +44,7 @@ const Modals = ({
   }
 }) => {
 
-  function handleOk () {
+  function handleOk() {
     validateFields((errors) => {
       if (errors) {
         return
@@ -48,7 +58,9 @@ const Modals = ({
   }
 
   const modalOpts = {
-    title: `${type === 'create' ? '新增商品' : '修改用户'}`,
+    title: `${type === 'create'
+      ? '新增商品'
+      : '修改用户'}`,
     visible,
     onOk: handleOk,
     onCancel,
@@ -58,17 +70,17 @@ const Modals = ({
   return (
     <Modal {...modalOpts}>
       <Form horizontal>
-      <FormItem label='用户id' hasFeedback {...formItemLayout}>
-        {getFieldDecorator('user_id', {
-          initialValue: item.user_id,
-          rules: [
-            {
-              required: true,
-              message: 'id未填写'
-            }
-          ]
-        })(<Input />)}
-      </FormItem>
+        <FormItem label='用户id' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('user_id', {
+            initialValue: item.user_id,
+            rules: [
+              {
+                required: true,
+                message: 'id未填写'
+              }
+            ]
+          })(<Input/>)}
+        </FormItem>
 
         <FormItem label='商品名' hasFeedback {...formItemLayout}>
           {getFieldDecorator('name', {
@@ -79,7 +91,7 @@ const Modals = ({
                 message: '商品名未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='市场价' hasFeedback {...formItemLayout}>
@@ -91,7 +103,7 @@ const Modals = ({
                 message: '市场价未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='销售价' hasFeedback {...formItemLayout}>
@@ -103,7 +115,7 @@ const Modals = ({
                 message: '销售价未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='城市id' hasFeedback {...formItemLayout}>
@@ -115,7 +127,7 @@ const Modals = ({
                 message: '城市id未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='品牌id' hasFeedback {...formItemLayout}>
@@ -127,7 +139,7 @@ const Modals = ({
                 message: '品牌id未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='应商id' hasFeedback {...formItemLayout}>
@@ -139,7 +151,7 @@ const Modals = ({
                 message: '应商id未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='商品描述' hasFeedback {...formItemLayout}>
@@ -151,7 +163,7 @@ const Modals = ({
                 message: '商品描述未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='商品图片：' hasFeedback {...formItemLayout}>
@@ -163,30 +175,35 @@ const Modals = ({
                 message: '图片未上传'
               }
             ]
-          })(<Upload name="logo" action="/upload.do" listType="picture" >
-            <Button>
-              <Icon type="upload" /> 点击上传
-            </Button>
-          </Upload>)}
+          })(
+            <Upload name="logo" action="/upload.do" listType="picture">
+              <Button>
+                <Icon type="upload"/>
+                点击上传
+              </Button>
+            </Upload>
+          )}
         </FormItem>
 
-      <FormItem label='状态' hasFeedback {...formItemLayout}>
-        {getFieldDecorator('status', {
-          initialValue: item.status,
-          rules: [
-            {
-              message: '状态未填写'
-            }
-          ]
-        })(<Select placeholder="true" style={{
-          width: '50%'
-        }}>
-          <Select.Option value="false">true</Select.Option>
-          <Select.Option value="true">false</Select.Option>
-        </Select>)}
-      </FormItem>
-    </Form>
-  </Modal>
+        <FormItem label='状态' hasFeedback {...formItemLayout}>
+          {getFieldDecorator('status', {
+            initialValue: item.status,
+            rules: [
+              {
+                message: '状态未填写'
+              }
+            ]
+          })(
+            <Select placeholder="true" style={{
+              width: '50%'
+            }}>
+              <Select.Option value="false">true</Select.Option>
+              <Select.Option value="true">false</Select.Option>
+            </Select>
+          )}
+        </FormItem>
+      </Form>
+    </Modal>
   );
 };
 
@@ -197,7 +214,7 @@ Modals.propTypes = {
   item: PropTypes.object,
   onOk: PropTypes.func,
   onCancel: PropTypes.func
-};
+}
 
 // 暴露方法
-export default Form.create()(Modals);
+export default Form.create()(Modals)
