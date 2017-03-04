@@ -5,7 +5,7 @@ import React, {Component, PropTypes} from 'react'
 import {connect} from 'dva'
 
 // 引入 链接组件
-import {Link} from 'dva/router'
+import {routerRedux} from 'dva/router'
 
 // 引入 头管理组件
 import Helmet from "react-helmet"
@@ -16,7 +16,7 @@ import List from '../components/auth/list'
 import Modal from '../components/auth/modal'
 
 // 引入 视觉组件
-import {Table, Icon} from 'antd'
+//import {Table, Icon} from 'antd'
 
 // 引入 样式
 import styles from './auth.less'
