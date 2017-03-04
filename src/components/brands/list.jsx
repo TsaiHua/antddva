@@ -1,11 +1,16 @@
 // 引入 React
-import React from 'react';
-// 引入布局样式
-import styles from './brands.less';
-// 引入阿里的antd视觉组件
-import { Table, Icon } from 'antd';
+import React from 'react'
 
-//列表字段
+// 引入 链接组件
+import {Link} from 'dva/router'
+
+// 引入 视觉组件
+import {Table, Icon, Popconfirm, Button} from 'antd'
+
+// 引入 样式
+import styles from './brands.less';
+
+// 列表 字段格式
 const columns = [{
     title: 'ID',
     dataIndex: 'id',
@@ -37,7 +42,7 @@ const columns = [{
     className:styles['right'],
     render: (text, record) => (
       <span>
-        <a href="#" className="ant-dropdown-link">查看</a>
+        <Link to={'/brands/' + record.id}>查看</Link>
       </span>
     ),
   }];

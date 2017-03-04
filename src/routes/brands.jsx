@@ -4,29 +4,30 @@ import React, {Component, PropTypes} from 'react'
 // 引入 容器组件
 import {connect} from 'dva'
 
-// 引入 路由链接组件
-import {Link} from 'dva/router'
+// 引入 链接组件
+import {routerRedux} from 'dva/router'
 
 // 引入 头管理组件
 import Helmet from "react-helmet"
 
 // 引入 自定义模块
-import Modal from '../components/brands/modal'
 import Search from '../components/brands/search'
 import List from '../components/brands/list'
+import Modal from '../components/brands/modal'
 
 // 引入 视觉组件
-// import {Table, Icon} from 'antd'
+//import {Table, Icon} from 'antd'
 
 // 引入 样式
 import styles from './brands.less'
 
 // 方法
-function Brands({loading,location, dispatch, brands}) {
+function Brands({loading, location, dispatch, brands}) {
 
   // 从模型带参数到路由
   const {
     list,
+    total,
     pagination,
     currentItem,
     modalVisible,
@@ -53,37 +54,33 @@ function Brands({loading,location, dispatch, brands}) {
 
   // 数据列参数
   const listProps = {
-    // dispatch,
     loading: loading,
-    dataSource: list,
-    // pagination:
-    // total,
-    //page: pagination.current,
+    dataSource: list
   }
 
   // 搜索参数
   const searchProps = {
     field,
     keyword,
-  //   onSearch(fieldsValue) {
-  //     fieldsValue.keyword.length
-  //       ? dispatch(routerRedux.push({
-  //         pathname: '/brands',
-  //         query: {
-  //           field: fieldsValue.field,
-  //           keyword: fieldsValue.keyword
-  //         }
-  //       }))
-  //       : dispatch(routerRedux.push({pathname: '/brands'}))
-  //   },
-  //   onAdd() {
-  //     dispatch({
-  //       type: 'brands/showModal',
-  //       payload: {
-  //         modalType: 'create'
-  //       }
-  //     })
-  //   }
+    onSearch(fieldsValue) {
+      fieldsValue.keyword.length
+        ? dispatch(routerRedux.push({
+          pathname: '/brands',
+          query: {
+            field: fieldsValue.field,
+            keyword: fieldsValue.keyword
+          }
+        }))
+        : dispatch(routerRedux.push({pathname: '/brands'}))
+    },
+    onAdd() {
+      dispatch({
+        type: 'brands/showModal',
+        payload: {
+          modalType: 'create'
+        }
+      })
+    }
   }
 
   return (
@@ -93,15 +90,15 @@ function Brands({loading,location, dispatch, brands}) {
       <List {...listProps}/>
       <Modal {...modalProps}/>
     </div>
-  );
-};
+  )
+}
 
 // 参数验证
 Brands.propTypes = {
   brands: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
-};
+}
 
 // 输入逻辑（将外部state属性转进来当参数用）
 const mapStateToProps = (state) => {
@@ -109,8 +106,8 @@ const mapStateToProps = (state) => {
 }
 
 // 输出逻辑（把动作dispatch传出去）
-// const mapDispatchToProps = ({users}) =>{
-//   return {users}
+// const mapDispatchToProps = ({brands}) =>{
+//   return {brands}
 // }
 
 // 暴露方法
