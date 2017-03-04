@@ -4,29 +4,30 @@ import React, {Component, PropTypes} from 'react'
 // 引入 容器组件
 import {connect} from 'dva'
 
-// 引入 路由链接组件
-import {Link} from 'dva/router'
+// 引入 链接组件
+import {routerRedux} from 'dva/router'
 
 // 引入 头管理组件
 import Helmet from "react-helmet"
 
 // 引入 自定义模块
-import Modal from '../components/types/modal'
 import Search from '../components/types/search'
 import List from '../components/types/list'
+import Modal from '../components/types/modal'
 
 // 引入 视觉组件
-// import {Table, Icon} from 'antd'
+//import {Table, Icon} from 'antd'
 
 // 引入 样式
 import styles from './types.less'
 
 // 方法
-function Types({loading,location, dispatch, types}) {
+function Types({loading, location, dispatch, types}) {
 
   // 从模型带参数到路由
   const {
     list,
+    total,
     pagination,
     currentItem,
     modalVisible,
@@ -53,55 +54,51 @@ function Types({loading,location, dispatch, types}) {
 
   // 数据列参数
   const listProps = {
-    // dispatch,
     loading: loading,
-    dataSource: list,
-    // pagination:
-    // total,
-    //page: pagination.current,
+    dataSource: list
   }
 
   // 搜索参数
   const searchProps = {
     field,
     keyword,
-  //   onSearch(fieldsValue) {
-  //     fieldsValue.keyword.length
-  //       ? dispatch(routerRedux.push({
-  //         pathname: '/types',
-  //         query: {
-  //           field: fieldsValue.field,
-  //           keyword: fieldsValue.keyword
-  //         }
-  //       }))
-  //       : dispatch(routerRedux.push({pathname: '/types'}))
-  //   },
-  //   onAdd() {
-  //     dispatch({
-  //       type: 'types/showModal',
-  //       payload: {
-  //         modalType: 'create'
-  //       }
-  //     })
-  //   }
+    onSearch(fieldsValue) {
+      fieldsValue.keyword.length
+        ? dispatch(routerRedux.push({
+          pathname: '/types',
+          query: {
+            field: fieldsValue.field,
+            keyword: fieldsValue.keyword
+          }
+        }))
+        : dispatch(routerRedux.push({pathname: '/types'}))
+    },
+    onAdd() {
+      dispatch({
+        type: 'types/showModal',
+        payload: {
+          modalType: 'create'
+        }
+      })
+    }
   }
 
   return (
     <div>
-      <Helmet title="活动管理"/>
+      <Helmet title="分类管理"/>
       <Search {...searchProps}/>
       <List {...listProps}/>
       <Modal {...modalProps}/>
     </div>
-  );
-};
+  )
+}
 
 // 参数验证
 Types.propTypes = {
   types: PropTypes.object,
   location: PropTypes.object,
   dispatch: PropTypes.func
-};
+}
 
 // 输入逻辑（将外部state属性转进来当参数用）
 const mapStateToProps = (state) => {
@@ -109,8 +106,8 @@ const mapStateToProps = (state) => {
 }
 
 // 输出逻辑（把动作dispatch传出去）
-// const mapDispatchToProps = ({users}) =>{
-//   return {users}
+// const mapDispatchToProps = ({types}) =>{
+//   return {types}
 // }
 
 // 暴露方法

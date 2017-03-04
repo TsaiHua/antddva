@@ -1,13 +1,16 @@
 // 引入 React
 import React from 'react'
 
-// 引入布局样式
+// 引入 链接组件
+import {Link} from 'dva/router'
+
+// 引入 视觉组件
+import {Table, Icon, Popconfirm, Button} from 'antd'
+
+// 引入 样式
 import styles from './statistics.less'
 
-// 引入阿里的antd视觉组件
-import { Table, Icon } from 'antd'
-
-//列表数据来源
+// 列表
 const data = [{
   key: '1',
   username: '何晓亮',
@@ -31,12 +34,11 @@ const data = [{
   status:'正常'
 }];
 
-//列表字段
+// 列表字段
 const columns = [{
     title: '用户名',
     dataIndex: 'username',
     key: 'username',
-    render: text => <a href="#">{text}</a>,
   },{
     title: '手机号',
     dataIndex: 'mobile',
@@ -45,7 +47,6 @@ const columns = [{
       title: '角色',
       dataIndex: 'role',
       key: 'role',
-      render: text => <a href="#">{text}</a>,
   },{
     title: '昵称',
     dataIndex: 'nickname',
@@ -70,13 +71,6 @@ const columns = [{
     title: '操作',
     key: 'action',
     className:styles['right'],
-    render: (text, record) => (
-      <span>
-        <a href="#">授权</a>
-        <span className="ant-divider" />
-        <a href="/#users/" className="ant-dropdown-link">查看</a>
-      </span>
-    ),
   }];
 
 

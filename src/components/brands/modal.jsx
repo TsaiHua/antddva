@@ -1,13 +1,16 @@
 // 引入 React，组件
-import React, { PropTypes } from 'react';
-// 引入阿里的antd视觉组件
-import { Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select ,Switch} from 'antd';
-// 引入布局样式
-import styles from './brands.less';
-//定义FormItem标签
-const FormItem = Form.Item;
+import React, { PropTypes } from 'react'
 
-//定义FormItem标签的布局样式
+// 引入 视觉组件
+import { Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select,Switch } from 'antd'
+
+// 引入 样式
+import styles from './brands.less'
+
+// 定义 FormItem标签
+const FormItem = Form.Item
+
+// 定义 FormItem标签的布局样式
 const formItemLayout = {
   labelCol: {
     span: 6
@@ -19,11 +22,11 @@ const formItemLayout = {
 
 // 方法
 const Modals = ({
-  visible,
-  type,
+  visible, // 是否可见
+  type, // 窗口类型
   item = {},
-  onOk,
-  onCancel,
+  onOk, // 确定方法
+  onCancel, // 关闭方法
   form: {
     getFieldDecorator,
     validateFields,
@@ -98,14 +101,14 @@ const Modals = ({
         </FormItem>
 
         <FormItem {...formItemLayout} label="状态">
-          {getFieldDecorator('status', { valuePropName: 'unchecked' })(
+          {getFieldDecorator('status', { valuePropName: 'checked' })(
             <Switch />
           )}
         </FormItem>
       </Form>
     </Modal>
-  );
-};
+  )
+}
 
 // 参数验证
 Modals.propTypes = {
@@ -114,7 +117,7 @@ Modals.propTypes = {
   item: PropTypes.object,
   onOk: PropTypes.func,
   onCancel: PropTypes.func
-};
+}
 
 // 暴露方法
-export default Form.create()(Modals);
+export default Form.create()(Modals)

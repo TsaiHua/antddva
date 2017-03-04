@@ -1,10 +1,10 @@
-//引入 请求组件
+// 引入 请求组件
 import request from '../utils/request'
 
-//引入 配置文件
+// 引入 配置文件
 import {api_host, page_size} from '../utils/config'
 
-//增加
+// 增加
 export function create(values) {
   return request(`${api_host}finance`, {
     method: 'POST',
@@ -12,12 +12,12 @@ export function create(values) {
   })
 }
 
-//删除
+// 删除
 export function remove(id) {
   return request(`${api_host}finance/${id}`, {method: 'DELETE'})
 }
 
-//修改
+// 修改
 export function patch(id, values) {
   return request(`${api_host}finance/${id}`, {
     method: 'PATCH',
@@ -25,7 +25,7 @@ export function patch(id, values) {
   })
 }
 
-//查询
+// 查询
 export function fetch({
   page = 1
 }) {
