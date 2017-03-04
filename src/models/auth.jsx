@@ -9,14 +9,13 @@ export default {
 
   //状态
   state : {
-    list: [], //数据列表
-    total: 0, //总条数
-    page: 0, //总页数
+    list: [], // 数据列表
+    total: 0, // 总条数
+    page: 0, // 总页数
     currentItem: {},
-    modalVisible: false, //弹窗是否可见
-    modalType: 'create', //弹窗类型
-    //分页配置
-    pagination: {
+    modalVisible: false, // 弹窗是否可见
+    modalType: 'create', // 弹窗类型
+    pagination: {// 分页配置
       showSizeChanger: true,
       showQuickJumper: true,
       showTotal: total => `共 ${total} 条`,
@@ -25,7 +24,7 @@ export default {
     }
   },
 
-  //数据订阅
+  // 数据订阅
   subscriptions : {
     setup({dispatch, history}) {
       return history.listen(({pathname, query}) => {
@@ -36,7 +35,7 @@ export default {
     }
   },
 
-  //同步操作
+  // 同步操作
   reducers : {
     save(state, {
       payload: {
@@ -51,10 +50,27 @@ export default {
         total,
         page
       };
+    },
+
+    // 显示弹窗
+      showModal(state,action){
+          return {
+          ...state,
+          ...action.payload,
+          modalVisible:true
+          }
+        },
+
+      // 掩藏弹窗
+        hideModal(state){
+            return {
+            ...state,
+            modalVisible:false
+      }
     }
   },
 
-  //异步处理
+  // 异步处理
   effects : {
 
     *fetch({
