@@ -11,39 +11,41 @@ import {Table, Icon, Popconfirm, Button} from 'antd'
 import styles from './types.less'
 
 // 列表 字段格式
-const columns = [{
+const columns = [
+  {
     title: 'ID',
     dataIndex: 'id',
-    key: 'id',
-  },{
+    key: 'id'
+  }, {
     title: '分类名称',
     dataIndex: 'name',
-    key: 'name',
-  },{
+    key: 'name'
+  }, {
     title: '分类级别',
     dataIndex: 'unit',
-    key: 'unit',
-  },{
+    key: 'unit'
+  }, {
     title: '商品数量',
     dataIndex: 'quantity',
-    key: 'quantity',
-  },{
+    key: 'quantity'
+  }, {
     title: '状态',
     dataIndex: 'status',
-    key: 'status',
-  },{
+    key: 'status'
+  }, {
     title: '操作',
     dataIndex: 'operation',
     key: 'operation',
-    className:styles['right'],
+    className: styles['right'],
     render: (text, record) => (
       <span>
         <Link to={'/types/' + record.id}>增加子级</Link>
-        <span className="ant-divider" />
+        <span className="ant-divider"/>
         <Link to={'/types/' + record.id}>查看</Link>
       </span>
-    ),
-  }];
+    )
+  }
+];
 
 // 方法
 const List = (props) => {
@@ -51,12 +53,11 @@ const List = (props) => {
     <div>
       <Table columns={columns} dataSource={props.dataSource} loading={props.loading} rowKey={record => record.id} pagination={true}/>
     </div>
-  );
-};
+  )
+}
 
 // 参数验证
-List.propTypes = {
-};
+List.propTypes = {}
 
 // 暴露方法
-export default List;
+export default List

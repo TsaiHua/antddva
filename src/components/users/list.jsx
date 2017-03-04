@@ -15,7 +15,7 @@ const columns = [
   {
     title: '用户名',
     dataIndex: 'real_name',
-    key: 'real_name',
+    key: 'real_name'
   }, {
     title: '手机号',
     dataIndex: 'mobile',
@@ -29,7 +29,7 @@ const columns = [
     title: '昵称',
     dataIndex: 'nickname',
     key: 'nickname'
-  },{
+  }, {
     title: '积分',
     dataIndex: 'jifen',
     key: 'jifen'
@@ -63,13 +63,7 @@ const columns = [
 const List = (props) => {
   return (
     <div>
-      <Table
-        columns={columns}
-        dataSource={props.dataSource}
-        loading={props.loading}
-        rowKey={record => record.id}
-        pagination={true}
-      />
+      <Table columns={columns} dataSource={props.dataSource} loading={props.loading} rowKey={record => record.id} pagination={true}/>
     </div>
   )
 }

@@ -1,8 +1,19 @@
 // 引入 React，组件
-import React, { PropTypes } from 'react'
+import React, {PropTypes} from 'react'
 
 // 引入 视觉组件
-import { Form, Input, InputNumber, Radio, Modal,Upload,Icon,Button,Select,Switch } from 'antd'
+import {
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Modal,
+  Upload,
+  Icon,
+  Button,
+  Select,
+  Switch
+} from 'antd'
 
 // 引入 样式
 import styles from './types.less'
@@ -34,7 +45,7 @@ const Modals = ({
   }
 }) => {
 
-  function handleOk () {
+  function handleOk() {
     validateFields((errors) => {
       if (errors) {
         return
@@ -48,7 +59,9 @@ const Modals = ({
   }
 
   const modalOpts = {
-    title: `${type === 'create' ? '新增分类' : '修改分类'}`,
+    title: `${type === 'create'
+      ? '新增分类'
+      : '修改分类'}`,
     visible,
     onOk: handleOk,
     onCancel,
@@ -67,7 +80,7 @@ const Modals = ({
                 message: '名称未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='单位：' {...formItemLayout}>
@@ -79,7 +92,7 @@ const Modals = ({
                 message: '单位未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='父级id：' {...formItemLayout}>
@@ -90,13 +103,11 @@ const Modals = ({
                 message: '父级id未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem {...formItemLayout} label="状态">
-          {getFieldDecorator('status', { valuePropName: 'checked' })(
-            <Switch />
-          )}
+          {getFieldDecorator('status', {valuePropName: 'checked'})(<Switch/>)}
         </FormItem>
       </Form>
     </Modal>

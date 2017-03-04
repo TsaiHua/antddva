@@ -5,42 +5,43 @@ import React from 'react'
 import {Link} from 'dva/router'
 
 // 引入 视觉组件
-import { Table, Icon } from 'antd'
+import {Table, Icon} from 'antd'
 
 // 引入 样式
 import styles from './role.less'
 
 // 列表字段
-const columns = [{
+const columns = [
+  {
     title: '角色名',
     dataIndex: 'name',
     key: 'name'
-  },{
+  }, {
     title: '描述',
     dataIndex: 'description',
-    key: 'description',
-  },{
-      title: '数量',
-      dataIndex: 'Numder',
-      key: 'Numder',
-      render: (text, record) => <Link to={'/Numder/' + record.id}>{text}</Link>
-  },{
+    key: 'description'
+  }, {
+    title: '数量',
+    dataIndex: 'Numder',
+    key: 'Numder',
+    render: (text, record) => <Link to={'/Numder/' + record.id}>{text}</Link>
+  }, {
     title: '状态',
     dataIndex: 'state',
-    key: 'state',
+    key: 'state'
   }, {
     title: '操作',
     key: 'action',
-    className:styles['right'],
+    className: styles['right'],
     render: (text, record) => (
       <span>
-          <Link to={'/auth/' + record.id}>授权</Link>
-        <span className="ant-divider" />
-          <Link to={'/users/' + record.id}>查看</Link>
+        <Link to={'/auth/' + record.id}>授权</Link>
+        <span className="ant-divider"/>
+        <Link to={'/users/' + record.id}>查看</Link>
       </span>
-    ),
-  }]
-
+    )
+  }
+]
 
 // 方法
 const List = (props) => {
@@ -52,8 +53,7 @@ const List = (props) => {
 }
 
 // 参数验证
-List.propTypes = {
-}
+List.propTypes = {}
 
 // 暴露方法
 export default List

@@ -1,7 +1,7 @@
 // 引入 React，组件，参数
 import React, {Component, PropTypes} from 'react'
 
-// 引入 阿里的antd视觉组件
+// 引入 视觉组件
 import {Layout, Table, Breadcrumb, Icon} from 'antd'
 
 // 调出 视觉组件布局模块
@@ -19,12 +19,12 @@ import styles from './layouts.less'
 // 方法
 class Layouts extends React.Component {
 
-  //组件状态
+  // 组件状态
   state = {
     collapsed: false
   };
 
-  //头部属性
+  // 头部属性
   // const headerProps = {
   //   user:this.state.user,
   //   siderFold:this.state.siderFold,
@@ -90,14 +90,15 @@ class Layouts extends React.Component {
         </Sider>
         <Layout>
           <Header style={{
-            background: '#fff',padding: 0
+            background: '#fff',
+            padding: 0
           }}>
             <Icon className={styles.trigger} type={this.state.collapsed
               ? 'menu-unfold'
               : 'menu-fold'} onClick={this.toggle}/>
             <Headers/>
           </Header>
-          <Bread location={location} />
+          <Bread location={location}/>
           <Content style={{
             margin: '24px',
             background: '#fff'
@@ -112,7 +113,7 @@ class Layouts extends React.Component {
             </div>
           </Content>
 
-            <Footers/>
+          <Footers/>
 
         </Layout>
       </Layout>
@@ -121,7 +122,7 @@ class Layouts extends React.Component {
 };
 
 // 参数验证
-Layouts.propTypes = {};
+Layouts.propTypes = {}
 
 // 暴露方法
-export default Layouts;
+export default Layouts

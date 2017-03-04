@@ -1,8 +1,15 @@
 // 引入 React，组件
-import React, { PropTypes } from 'react'
+import React, {PropTypes} from 'react'
 
 // 引入 视觉组件
-import { Form, Input, InputNumber, Radio, Modal,Select } from 'antd'
+import {
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Modal,
+  Select
+} from 'antd'
 
 // 定义 FormItem标签
 const FormItem = Form.Item
@@ -34,7 +41,7 @@ const Modals = ({
   }
 }) => {
 
-  function handleOk () {
+  function handleOk() {
     validateFields((errors) => {
       if (errors) {
         return
@@ -48,7 +55,9 @@ const Modals = ({
   }
 
   const modalOpts = {
-    title: `${type === 'create' ? '新增角色' : '修改用户'}`,
+    title: `${type === 'create'
+      ? '新增角色'
+      : '修改用户'}`,
     visible,
     onOk: handleOk,
     onCancel,
@@ -67,7 +76,7 @@ const Modals = ({
                 message: '角色名称未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
         <FormItem label='角色描述：' hasFeedback {...formItemLayout}>
@@ -79,24 +88,26 @@ const Modals = ({
                 message: '角色描述未填写'
               }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
 
-        <FormItem label="状态" hasFeedback {...formItemLayout} >
-            {getFieldDecorator('status', {
-              initialValue: item.status,
-              rules: [
-                {
-                  required: true,
-                  message: '状态未填写'
-                }
-              ]
-            })(<Select placeholder="false" style={{
+        <FormItem label="状态" hasFeedback {...formItemLayout}>
+          {getFieldDecorator('status', {
+            initialValue: item.status,
+            rules: [
+              {
+                required: true,
+                message: '状态未填写'
+              }
+            ]
+          })(
+            <Select placeholder="false" style={{
               width: '50%'
             }}>
               <Select.Option value="false">false</Select.Option>
               <Select.Option value="true">true</Select.Option>
-            </Select>)}
+            </Select>
+          )}
         </FormItem>
       </Form>
     </Modal>
