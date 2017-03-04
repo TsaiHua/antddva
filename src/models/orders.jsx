@@ -1,4 +1,4 @@
-// 引入 用户接口
+// 引入 订单接口
 import * as ordersService from '../services/orders'
 
 // 暴露方法

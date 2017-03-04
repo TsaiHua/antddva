@@ -1,4 +1,4 @@
-// 引入 用户接口
+// 引入 广告接口
 import * as adsenseService from '../services/adsense'
 
 // 暴露方法
@@ -94,7 +94,7 @@ export default {
     *remove({
       payload: id
     }, {call, put, select}) {
-      yield call(usersService.remove, id);
+      yield call(usersService.remove, id)
       const page = yield select(state => state.users.page)
       yield put({type: 'fetch', payload: {
           page
@@ -107,7 +107,7 @@ export default {
         values
       }
     }, {call, put, select}) {
-      yield call(usersService.patch, id, values);
+      yield call(usersService.patch, id, values)
       const page = yield select(state => state.users.page)
       yield put({type: 'fetch', payload: {
           page
@@ -117,12 +117,12 @@ export default {
     *create({
       payload: values
     }, {call, put}) {
-      yield call(usersService.create, values);
+      yield call(usersService.create, values)
       yield put({type: 'reload'})
     },
 
     *reload(action, {put, select}) {
-      const page = yield select(state => state.users.page);
+      const page = yield select(state => state.users.page)
       yield put({type: 'fetch', payload: {
           page
         }})

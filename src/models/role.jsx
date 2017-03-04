@@ -92,7 +92,7 @@ export default {
       *remove({
         payload: id
       }, {call, put, select}) {
-        yield call(usersService.remove, id);
+        yield call(usersService.remove, id)
         const page = yield select(state => state.users.page)
         yield put({type: 'fetch', payload: {
             page
@@ -105,7 +105,7 @@ export default {
           values
         }
       }, {call, put, select}) {
-        yield call(usersService.patch, id, values);
+        yield call(usersService.patch, id, values)
         const page = yield select(state => state.users.page)
         yield put({type: 'fetch', payload: {
             page
@@ -120,7 +120,7 @@ export default {
       },
 
       *reload(action, {put, select}) {
-        const page = yield select(state => state.users.page);
+        const page = yield select(state => state.users.page)
         yield put({type: 'fetch', payload: {
             page
           }})

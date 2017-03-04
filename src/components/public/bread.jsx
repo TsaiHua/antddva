@@ -68,8 +68,8 @@ function Bread({location}) {
         {/* {breads} */}
       </Breadcrumb>
     </div>
-  );
-};
+  )
+}
 
 // 参数验证
 Bread.propTypes = {

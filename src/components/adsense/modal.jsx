@@ -29,12 +29,12 @@ const props = {
   },
   onChange(info) {
     if (info.file.status !== 'uploading') {
-      console.log(info.file, info.fileList);
+      console.log(info.file, info.fileList)
     }
     if (info.file.status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully`);
+      message.success(`${info.file.name} file uploaded successfully`)
     } else if (info.file.status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
+      message.error(`${info.file.name} file upload failed.`)
     }
   }
 }
@@ -163,8 +163,8 @@ const Modals = ({
         </FormItem>
       </Form>
     </Modal>
-  );
-};
+  )
+}
 
 // 参数验证
 Modals.propTypes = {
@@ -173,7 +173,7 @@ Modals.propTypes = {
   item: PropTypes.object,
   onOk: PropTypes.func,
   onCancel: PropTypes.func
-};
+}
 
 // 暴露方法
 export default Form.create()(Modals)

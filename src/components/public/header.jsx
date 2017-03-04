@@ -20,11 +20,11 @@ const Header = (props) => {
         </SubMenu> */}
       </Menu>
     </div>
-  );
-};
+  )
+}
 
 // 参数验证
-Header.propTypes = {};
+Header.propTypes = {}
 
 // 暴露方法
-export default Header;
+export default Header

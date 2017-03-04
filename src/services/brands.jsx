@@ -30,7 +30,7 @@ export function fetch({
   page = 1
 }) {
   // const hhh = request(`${api_host}brands?page=${page}&per-page=${page_size}`)
-  // console.log(hhh);
+  // console.log(hhh)
   // return hhh
   return request(`${api_host}brands?page=${page}&per-page=${page_size}`)
 

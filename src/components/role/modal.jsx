@@ -8,7 +8,7 @@ import { Form, Input, InputNumber, Radio, Modal,Select } from 'antd'
 const FormItem = Form.Item
 
 // 引入 样式
-import styles from './role.less';
+import styles from './role.less'
 
 // 定义 FormItem标签的布局样式
 const formItemLayout = {
@@ -100,8 +100,8 @@ const Modals = ({
         </FormItem>
       </Form>
     </Modal>
-  );
-};
+  )
+}
 
 // 参数验证
 Modals.propTypes = {
@@ -110,7 +110,7 @@ Modals.propTypes = {
   item: PropTypes.object,
   onOk: PropTypes.func,
   onCancel: PropTypes.func
-};
+}
 
 // 暴露方法
-export default Form.create()(Modals);
+export default Form.create()(Modals)

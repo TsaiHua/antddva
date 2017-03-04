@@ -109,11 +109,11 @@ const Sider = (props) => {
         </Menu.Item>
       </Menu>
     </div>
-  );
-};
+  )
+}
 
 // 参数验证
-Sider.propTypes = {};
+Sider.propTypes = {}
 
 // 暴露方法
-export default Sider;
+export default Sider

@@ -5,7 +5,7 @@ import React, {Component, PropTypes} from 'react'
 import {connect} from 'dva'
 
 // 引入 链接组件
-import {Link} from 'dva/router'
+import {routerRedux} from 'dva/router'
 
 // 引入 头管理组件
 import Helmet from "react-helmet"
@@ -16,7 +16,7 @@ import List from '../components/goods/list'
 import Modal from '../components/goods/modal'
 
 // 引入 视觉组件
-import {Table, Icon} from 'antd'
+//import {Table, Icon} from 'antd'
 
 // 引入 样式
 import styles from './goods.less'
@@ -31,8 +31,8 @@ function Goods({loading,location, dispatch, goods}) {
     currentItem,
     modalVisible,
     modalType
-  } = goods;
-  const {field, keyword} = location.query;
+  } = goods
+  const {field, keyword} = location.query
 
   // 弹窗参数
   const modalProps = {

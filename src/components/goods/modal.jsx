@@ -18,7 +18,7 @@ import {
 const FormItem = Form.Item
 
 // 引入 样式
-import styles from './goods.less';
+import styles from './goods.less'
 
 // 定义 FormItem标签的布局样式
 const formItemLayout = {
@@ -204,8 +204,8 @@ const Modals = ({
         </FormItem>
       </Form>
     </Modal>
-  );
-};
+  )
+}
 
 // 参数验证
 Modals.propTypes = {

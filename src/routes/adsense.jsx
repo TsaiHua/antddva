@@ -5,7 +5,7 @@ import React, {Component, PropTypes} from 'react'
 import {connect} from 'dva'
 
 // 引入 链接组件
-import {Link} from 'dva/router'
+import {routerRedux} from 'dva/router'
 
 // 引入 头管理组件
 import Helmet from "react-helmet"
@@ -16,7 +16,7 @@ import List from '../components/adsense/list'
 import Modal from '../components/adsense/modal'
 
 // 引入 视觉组件
-import {Table, Icon} from 'antd'
+//import {Table, Icon} from 'antd'
 
 // 引入 样式
 import styles from './adsense.less'
@@ -34,7 +34,7 @@ function Adsense({loading,location, dispatch, adsense}) {
   } = adsense
 
     // 搜索关键字
-  const {field, keyword} = location.query;
+  const {field, keyword} = location.query
 
   // 弹窗参数
   const modalProps = {

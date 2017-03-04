@@ -91,8 +91,8 @@ const Modals = ({
         </FormItem>
       </Form>
     </Modal>
-  );
-};
+  )
+}
 
 // 参数验证
 Modals.propTypes = {
@@ -101,7 +101,7 @@ Modals.propTypes = {
   item: PropTypes.object,
   onOk: PropTypes.func,
   onCancel: PropTypes.func
-};
+}
 
 // 暴露方法
 export default Form.create()(Modals)
